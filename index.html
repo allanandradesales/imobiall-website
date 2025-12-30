@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMOBI Holdings | World-Class Engineering Services</title>
     <meta name="description" content="US-based technology company connecting American businesses with elite engineering talent from Brazil's top research institutes. US contracts, competitive rates, exceptional quality.">
     <meta name="keywords" content="software development, engineering services, custom development, R&D services, nearshore development, technical consulting">
     <link rel="canonical" href="https://www.imobiallholdings.com/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="alternate" hreflang="en" href="https://www.imobiallholdings.com/">
+    <link rel="alternate" hreflang="pt" href="https://www.imobiallholdings.com/pt.html">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -92,6 +94,7 @@
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -106,6 +109,31 @@
         .nav-links a:hover {
             opacity: 1;
             color: var(--gold);
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid var(--gold);
+            border-radius: 6px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .lang-btn svg {
+            width: 16px;
+            height: 16px;
         }
 
         .mobile-menu {
@@ -788,6 +816,10 @@
                 display: flex;
             }
 
+            .nav-links .lang-btn {
+                align-self: flex-start;
+            }
+
             .mobile-menu {
                 display: flex;
             }
@@ -852,6 +884,14 @@
                 <li><a href="#why-us">Why Us</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="pt.html" class="lang-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                        </svg>
+                        PT
+                    </a>
+                </li>
             </ul>
             <div class="mobile-menu" id="mobileMenu">
                 <span></span>
@@ -987,7 +1027,7 @@
                 <div class="why-card">
                     <span class="why-number">3</span>
                     <h3>Significant Cost Advantage</h3>
-                    <p>Get 40-60% savings compared to US development shops, without sacrificing quality. Our model leverages Brazil's exceptional technical talent pool and favorable economics.</p>
+                    <p>Get 40-60% savings compared to US development shops—without sacrificing quality. Our model leverages Brazil's exceptional technical talent pool and favorable economics.</p>
                 </div>
             </div>
         </div>
