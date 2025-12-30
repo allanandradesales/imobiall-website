@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMOBI ALL Holdings | Inovação para Mercados Globais</title>
-    <meta name="description" content="IMOBI ALL Holdings conecta a inovação brasileira com mercados globais. Comercializamos propriedade intelectual de mercados emergentes através de parcerias estratégicas.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    
+    <title>IMOBI Holdings | Engenharia de Classe Mundial</title>
+    <meta name="description" content="Empresa americana conectando negócios globais com talentos de engenharia de elite dos principais institutos de pesquisa do Brasil. Contratos em USD, qualidade excepcional, preços competitivos.">
+    <meta name="keywords" content="desenvolvimento de software, serviços de engenharia, desenvolvimento customizado, serviços de P&D, consultoria técnica, nearshore">
+    <link rel="canonical" href="https://www.imobiallholdings.com/pt.html">
+    <link rel="alternate" hreflang="en" href="https://www.imobiallholdings.com/">
+    <link rel="alternate" hreflang="pt" href="https://www.imobiallholdings.com/pt.html">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy: #0a1628;
-            --navy-light: #142038;
-            --gold: #c9a962;
-            --gold-light: #e8d4a8;
-            --white: #fafafa;
-            --gray: #94a3b8;
-            --font-display: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --navy: #1B365D;
+            --navy-light: #2A4A7A;
+            --navy-dark: #0F1F3A;
+            --gold: #C9A227;
+            --gold-light: #D4AF37;
+            --white: #FFFFFF;
+            --gray-100: #F8F9FA;
+            --gray-200: #E9ECEF;
+            --gray-300: #DEE2E6;
+            --gray-600: #6C757D;
+            --gray-800: #343A40;
         }
 
         * {
@@ -33,51 +36,53 @@
         }
 
         body {
-            font-family: var(--font-body);
-            background: var(--navy);
-            color: var(--white);
-            line-height: 1.7;
-            overflow-x: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+            background: var(--white);
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 1000;
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.2;
         }
 
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
-            width: 100%;
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: linear-gradient(to bottom, var(--navy), transparent);
-            transition: background 0.3s ease;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(27, 54, 93, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            background: rgba(10, 22, 40, 0.95);
-            backdrop-filter: blur(10px);
+            padding: 0.75rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
-            font-family: var(--font-display);
+            font-family: 'Inter', sans-serif;
             font-size: 1.5rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
+            font-weight: 700;
             color: var(--white);
             text-decoration: none;
+            letter-spacing: 1px;
         }
 
         .logo span {
@@ -86,55 +91,47 @@
 
         .nav-links {
             display: flex;
-            gap: 3rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--gray);
+            color: var(--white);
             text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .lang-switch {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .lang-switch a {
-            color: var(--gray);
-            text-decoration: none;
-            font-size: 0.75rem;
-            padding: 0.3rem 0.6rem;
-            border: 1px solid transparent;
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.9;
             transition: all 0.3s ease;
         }
 
-        .lang-switch a.active {
-            color: var(--gold);
-            border-color: var(--gold);
-        }
-
-        .lang-switch a:hover {
+        .nav-links a:hover {
+            opacity: 1;
             color: var(--gold);
         }
 
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
         .hero {
             min-height: 100vh;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 0 5%;
+            padding: 8rem 2rem 4rem;
             position: relative;
             overflow: hidden;
         }
@@ -142,17 +139,12 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(201, 169, 98, 0.08) 0%, transparent 50%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 1; }
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
         }
 
         .hero-content {
@@ -161,68 +153,57 @@
             max-width: 900px;
         }
 
-        .hero-tagline {
-            font-size: 0.75rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 162, 39, 0.2);
             color: var(--gold);
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeUp 1s ease 0.3s forwards;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
         }
 
         .hero h1 {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeUp 1s ease 0.5s forwards;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
         }
 
         .hero h1 em {
-            font-style: italic;
             color: var(--gold);
+            font-style: normal;
         }
 
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--gray);
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.85);
             max-width: 600px;
-            margin: 0 auto 3rem;
-            opacity: 0;
-            animation: fadeUp 1s ease 0.7s forwards;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
         }
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .cta-group {
+        .hero-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
-            opacity: 0;
-            animation: fadeUp 1s ease 0.9s forwards;
+            flex-wrap: wrap;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
-            font-size: 0.8rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
             text-decoration: none;
-            border: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: all 0.4s ease;
+            border: none;
         }
 
         .btn-primary {
@@ -233,495 +214,630 @@
         .btn-primary:hover {
             background: var(--gold-light);
             transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(201, 169, 98, 0.3);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255,255,255,0.3);
         }
 
         .btn-secondary:hover {
-            border-color: var(--gold);
-            color: var(--gold);
+            border-color: var(--white);
+            background: rgba(255,255,255,0.1);
         }
 
         .scroll-indicator {
             position: absolute;
-            bottom: 3rem;
+            bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            opacity: 0;
-            animation: fadeUp 1s ease 1.2s forwards;
-        }
-
-        .scroll-indicator span {
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
+            color: var(--white);
+            opacity: 0.6;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            color: var(--gray);
+            letter-spacing: 2px;
+            animation: bounce 2s infinite;
         }
 
-        .scroll-line {
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, var(--gold), transparent);
-            animation: scrollPulse 2s ease-in-out infinite;
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
         }
 
-        @keyframes scrollPulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
+        /* Sections */
         section {
-            padding: 8rem 5%;
-            position: relative;
+            padding: 6rem 2rem;
         }
 
-        .section-label {
-            font-size: 0.7rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--gold);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--navy);
             margin-bottom: 1rem;
         }
 
-        .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 400;
-            margin-bottom: 2rem;
-            max-width: 700px;
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--gray-600);
         }
 
+        /* About Section */
         .about {
-            background: var(--navy-light);
+            background: var(--gray-100);
         }
 
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            gap: 4rem;
             align-items: center;
         }
 
+        .about-content h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content h2 em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
         .about-content p {
-            color: var(--gray);
+            color: var(--gray-600);
             margin-bottom: 1.5rem;
             font-size: 1.05rem;
         }
 
-        .about-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
+        .about-highlight {
+            background: var(--white);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
         }
 
-        .stat {
-            padding: 2rem;
-            background: rgba(201, 169, 98, 0.05);
-            border: 1px solid rgba(201, 169, 98, 0.1);
+        .about-highlight p {
+            margin: 0;
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        .about-locations {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        .location svg {
+            width: 18px;
+            height: 18px;
+            color: var(--gold);
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            background: var(--navy);
+            border-radius: 16px;
+            padding: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
         }
 
         .stat-number {
-            font-family: var(--font-display);
-            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
             color: var(--gold);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gray);
-            margin-top: 0.5rem;
-        }
-
-        .about-visual {
-            position: relative;
-            height: 500px;
-        }
-
-        .visual-card {
-            position: absolute;
-            background: var(--navy);
-            border: 1px solid rgba(201, 169, 98, 0.2);
-            padding: 2rem;
-        }
-
-        .visual-card:nth-child(1) {
-            top: 0;
-            right: 0;
-            width: 70%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .visual-card:nth-child(2) {
-            bottom: 10%;
-            left: 0;
-            width: 65%;
-            animation: float 6s ease-in-out infinite 1s;
-        }
-
-        .visual-card:nth-child(3) {
-            top: 40%;
-            right: 10%;
-            width: 50%;
-            animation: float 6s ease-in-out infinite 2s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .visual-card h4 {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
             margin-bottom: 0.5rem;
         }
 
-        .visual-card p {
-            font-size: 0.85rem;
-            color: var(--gray);
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
         }
 
-        .thesis {
-            background: var(--navy);
+        /* Services */
+        .services {
+            background: var(--white);
         }
 
-        .thesis-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .thesis-intro {
-            max-width: 700px;
-            margin-bottom: 5rem;
-        }
-
-        .thesis-intro p {
-            font-size: 1.2rem;
-            color: var(--gray);
-        }
-
-        .thesis-pillars {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
+            gap: 2rem;
         }
 
-        .pillar {
-            padding: 3rem;
-            background: linear-gradient(135deg, rgba(201, 169, 98, 0.03) 0%, transparent 100%);
-            border: 1px solid rgba(201, 169, 98, 0.1);
-            transition: all 0.4s ease;
+        .service-card {
+            background: var(--gray-100);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
 
-        .pillar:hover {
-            border-color: var(--gold);
+        .service-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(27, 54, 93, 0.1);
+            border-color: var(--gold);
         }
 
-        .pillar-number {
-            font-family: var(--font-display);
-            font-size: 4rem;
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--navy);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
             color: var(--gold);
-            opacity: 0.3;
-            line-height: 1;
         }
 
-        .pillar h3 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
+        .service-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Why Us */
+        .why-us {
+            background: var(--gray-100);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .why-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .why-number {
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            background: var(--gold);
+            color: var(--navy);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .why-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--navy);
             margin: 1rem 0;
         }
 
-        .pillar p {
-            color: var(--gray);
+        .why-card p {
+            color: var(--gray-600);
             font-size: 0.95rem;
+            line-height: 1.7;
         }
 
+        /* Portfolio */
         .portfolio {
-            background: var(--navy-light);
-        }
-
-        .portfolio-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 4rem;
+            background: var(--white);
         }
 
         .portfolio-card {
-            background: var(--navy);
-            border: 1px solid rgba(201, 169, 98, 0.15);
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-radius: 20px;
             padding: 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--gold), transparent);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
         .portfolio-badge {
             display: inline-block;
-            padding: 0.4rem 1rem;
-            background: rgba(201, 169, 98, 0.1);
-            border: 1px solid var(--gold);
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+            background: rgba(201, 162, 39, 0.2);
             color: var(--gold);
-            margin-bottom: 2rem;
-        }
-
-        .portfolio-card h3 {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             margin-bottom: 1rem;
         }
 
-        .portfolio-card .tagline {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            font-style: italic;
-            color: var(--gold-light);
-            margin-bottom: 2rem;
+        .portfolio-content h3 {
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
         }
 
-        .portfolio-card p {
-            color: var(--gray);
+        .portfolio-subtitle {
+            color: var(--gold);
+            font-size: 1.1rem;
             margin-bottom: 1.5rem;
         }
 
-        .portfolio-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .portfolio-content p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
-        .metric {
+        .portfolio-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-section h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .portfolio-section ul {
+            list-style: none;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+        }
+
+        .portfolio-section ul li {
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .portfolio-section ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .portfolio-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .portfolio-stat {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
             text-align: center;
         }
 
-        .metric-value {
-            font-family: var(--font-display);
-            font-size: 2rem;
+        .portfolio-stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
             color: var(--gold);
         }
 
-        .metric-label {
-            font-size: 0.75rem;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+        .portfolio-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 0.25rem;
         }
 
-        .portfolio-description h4 {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .portfolio-description p {
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-list {
-            list-style: none;
+        .portfolio-tech {
             margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        .portfolio-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        .portfolio-tech h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .tech-tags {
             display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: var(--gray);
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        .portfolio-list li::before {
-            content: '→';
-            color: var(--gold);
+        .tech-tag {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.85);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
         }
 
+        /* Contact */
         .contact {
             background: var(--navy);
-            text-align: center;
+            color: var(--white);
         }
 
-        .contact-content {
-            max-width: 700px;
-            margin: 0 auto;
+        .contact .section-header h2 {
+            color: var(--white);
         }
 
-        .contact .section-title {
-            margin: 0 auto 1.5rem;
+        .contact .section-header p {
+            color: rgba(255,255,255,0.7);
         }
 
-        .contact-description {
-            color: var(--gray);
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
         }
 
         .contact-email {
-            font-family: var(--font-display);
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            color: var(--white);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gold);
+            font-size: 1.25rem;
             text-decoration: none;
-            display: inline-block;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--gold);
+            margin-bottom: 2rem;
             transition: all 0.3s ease;
         }
 
         .contact-email:hover {
+            color: var(--gold-light);
+        }
+
+        .contact-email svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .contact-process h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
             color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .process-steps {
+            list-style: none;
+        }
+
+        .process-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .contact-locations {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .contact-location {
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .location-grid {
             display: flex;
-            justify-content: center;
-            gap: 4rem;
-        }
-
-        .location h5 {
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .location p {
-            color: var(--gray);
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255,255,255,0.7);
             font-size: 0.95rem;
         }
 
-        footer {
-            padding: 3rem 5%;
-            background: var(--navy-light);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-logo {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            letter-spacing: 0.1em;
-        }
-
-        .footer-logo span {
+        .contact-location svg {
+            width: 18px;
+            height: 18px;
             color: var(--gold);
         }
 
-        .footer-legal {
-            font-size: 0.8rem;
-            color: var(--gray);
+        .contact-cta {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
         }
 
-        .footer-legal a {
-            color: var(--gray);
+        .contact-cta h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-dark);
+            color: rgba(255,255,255,0.6);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.6);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .footer-legal a:hover {
+        footer a:hover {
             color: var(--gold);
         }
 
-        @media (max-width: 968px) {
-            .nav-links {
-                display: none;
-            }
-
-            .about-grid {
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid,
+            .contact-grid {
                 grid-template-columns: 1fr;
-                gap: 4rem;
+                gap: 3rem;
             }
 
-            .about-visual {
-                height: 400px;
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .thesis-pillars {
+            .services-grid,
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .portfolio-card {
                 grid-template-columns: 1fr;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .location-grid {
-                flex-direction: column;
                 gap: 2rem;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
             }
         }
 
-        @media (max-width: 600px) {
-            section {
-                padding: 5rem 5%;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-metrics {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-group {
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--navy);
                 flex-direction: column;
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-card {
+                padding: 2rem;
+            }
+
+            .portfolio-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .about-locations {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
             }
         }
     </style>
@@ -729,107 +845,150 @@
 <body>
     <!-- Navigation -->
     <nav id="navbar">
-        <a href="#" class="logo">IMOBI <span>ALL</span></a>
-        <ul class="nav-links">
-            <li><a href="#about">Sobre</a></li>
-            <li><a href="#thesis">Tese</a></li>
-            <li><a href="#portfolio">Portfólio</a></li>
-            <li><a href="#contact">Contato</a></li>
-        </ul>
-        <div class="lang-switch">
-            <a href="imobiall_website.html">EN</a>
-            <a href="#" class="active">PT</a>
+        <div class="nav-container">
+            <a href="#" class="logo">IMOBI <span>Holdings</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#why-us">Diferenciais</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+            <div class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <p class="hero-tagline">Holding Sediada em Delaware, EUA</p>
-            <h1>Conectando <em>Inovação</em> a Mercados Globais</h1>
-            <p class="hero-description">Fazemos a ponte entre a inovação brasileira e a comercialização global, transformando P&D de mercados emergentes em ventures tecnológicos escaláveis.</p>
-            <div class="cta-group">
-                <a href="#portfolio" class="btn btn-primary">Ver Portfólio</a>
-                <a href="#contact" class="btn btn-secondary">Entre em Contato</a>
+            <span class="hero-badge">Parceiro de Tecnologia nos EUA</span>
+            <h1>Engenharia de Classe Mundial<br><em>Com Preços Competitivos</em></h1>
+            <p>Conectamos empresas globais com talentos técnicos de elite dos principais institutos de pesquisa do Brasil. Contratos americanos, suporte americano, excelência brasileira.</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary">Ver Nosso Trabalho</a>
+                <a href="#contact" class="btn btn-secondary">Iniciar Conversa</a>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <span>Role</span>
-            <div class="scroll-line"></div>
-        </div>
+        <div class="scroll-indicator">Role</div>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
-        <div class="about-grid">
-            <div class="about-content">
-                <p class="section-label">Sobre Nós</p>
-                <h2 class="section-title">Desbloqueando Valor no Gap da Inovação</h2>
-                <p>A IMOBI ALL Holdings opera na interseção entre inovação de mercados emergentes e mercados de capitais globais. Identificamos uma ineficiência significativa: universidades e institutos de P&D brasileiros são excelentes em inovação, mas enfrentam barreiras estruturais para comercialização.</p>
-                <p>Nosso modelo "Innovation Middleware" cria parcerias estratégicas que combinam a excelência em P&D local com as vantagens corporativas americanas, fornecendo a infraestrutura necessária para levar tecnologias inovadoras a mercados globais.</p>
-                <p>Com sede em Delaware e presença operacional no Brasil, aproveitamos ambos os ecossistemas para criar vantagens competitivas sustentáveis para nossas empresas do portfólio.</p>
-                
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Excelência em Engenharia,<br><em>Entregue com Simplicidade</em></h2>
+                    <p>A IMOBI Holdings é sua porta de entrada americana para talentos de engenharia de classe mundial. Somos parceiros dos principais institutos de pesquisa do Brasil, organizações com mais de 20 anos de experiência e milhares de projetos bem-sucedidos para empresas globais.</p>
+                    <p>Você tem a simplicidade de trabalhar com uma empresa americana: contratos familiares, faturamento em USD, fusos horários alinhados e comunicação clara. Nos bastidores, seus projetos são executados por engenheiros e pesquisadores com doutorado que já entregaram para empresas Fortune 500.</p>
+                    <div class="about-highlight">
+                        <p>Sem dores de cabeça com fornecedores internacionais. Sem barreiras de comunicação. Apenas trabalho técnico excepcional com preços competitivos.</p>
+                    </div>
+                    <div class="about-locations">
+                        <div class="location">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Sede na Flórida, EUA
+                        </div>
+                        <div class="location">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Operações técnicas em Campina Grande, Brasil
+                        </div>
+                    </div>
+                </div>
                 <div class="about-stats">
-                    <div class="stat">
-                        <div class="stat-number">R$1T</div>
-                        <div class="stat-label">Oportunidade de Mercado</div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">20+</div>
+                            <div class="stat-label">Anos de Histórico do Instituto</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2.000+</div>
+                            <div class="stat-label">Projetos Entregues</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">40-60%</div>
+                            <div class="stat-label">Economia vs. Taxas EUA</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Contratos nos EUA</div>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <div class="stat-number">1M+</div>
-                        <div class="stat-label">Empresas Endereçáveis</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">85%+</div>
-                        <div class="stat-label">Margens Brutas Alvo</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">12-24x</div>
-                        <div class="stat-label">Ratio LTV/CAC</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="about-visual">
-                <div class="visual-card">
-                    <h4>Licenciamento de IP</h4>
-                    <p>Proteção global de propriedade intelectual através de estrutura corporativa americana</p>
-                </div>
-                <div class="visual-card">
-                    <h4>Parcerias de P&D</h4>
-                    <p>Acesso direto a institutos de pesquisa brasileiros e incentivos de inovação</p>
-                </div>
-                <div class="visual-card">
-                    <h4>Acesso a Mercados</h4>
-                    <p>Estratégia dual: expertise local + escalabilidade internacional</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Investment Thesis -->
-    <section class="thesis" id="thesis">
-        <div class="thesis-content">
-            <div class="thesis-intro">
-                <p class="section-label">Tese de Investimento</p>
-                <h2 class="section-title">Arbitragem de Ineficiências em Inovação</h2>
-                <p>Capitalizamos a desconexão fundamental entre criação de valor — onde institutos de mercados emergentes se destacam — e captura de valor — onde enfrentam barreiras estruturais. Isso é arbitragem de eficiência, não disrupção.</p>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Como Podemos Ajudar</h2>
+                <p>De protótipos rápidos a sistemas de escala empresarial, entregamos excelência técnica em todo o ciclo de desenvolvimento.</p>
             </div>
-            
-            <div class="thesis-pillars">
-                <div class="pillar">
-                    <div class="pillar-number">01</div>
-                    <h3>Vantagem Estrutural</h3>
-                    <p>Entidade corporativa americana oferece licenciamento global de IP, acesso a VC, proteção legal e credibilidade internacional que entidades brasileiras não conseguem replicar facilmente.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                    <h3>Desenvolvimento Customizado</h3>
+                    <p>De MVPs a sistemas empresariais, soluções web, mobile, backend e cloud construídas sob medida. Transformamos sua visão em software pronto para produção.</p>
                 </div>
-                <div class="pillar">
-                    <div class="pillar-number">02</div>
-                    <h3>Arbitragem de Incentivos</h3>
-                    <p>Leis brasileiras de inovação (Lei de Informática, EMBRAPII) financiam P&D enquanto cuidamos da comercialização — capturando valor sem arcar com custos totais de desenvolvimento.</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h3>P&D e Inovação</h3>
+                    <p>Acesse capacidades de pesquisa para desafios técnicos complexos, prototipagem e tecnologias emergentes. Aproveite décadas de expertise acadêmica e industrial.</p>
                 </div>
-                <div class="pillar">
-                    <div class="pillar-number">03</div>
-                    <h3>Eficiência Operacional</h3>
-                    <p>Operações "dolarizadas" criam vantagens de 12-15% em custos através de estruturas fiscais otimizadas e modelos de exportação de serviços para talentos brasileiros.</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3>Extensão de Equipe</h3>
+                    <p>Escale sua capacidade de engenharia com profissionais dedicados que se integram perfeitamente ao seu time existente. Modelos de engajamento flexíveis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>O Melhor dos Dois Mundos</h2>
+                <p>Trabalhar com equipes offshore pode ser frustrante. Trabalhar com agências americanas pode ser proibitivamente caro. Nós eliminamos esse trade-off.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="why-number">1</span>
+                    <h3>Empresa EUA, Contratos EUA</h3>
+                    <p>Você trabalha com uma LLC da Flórida. MSAs, NDAs e SOWs padrão. Faturamento em USD. Sem complicações com transferências internacionais ou estruturas legais estrangeiras.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-number">2</span>
+                    <h3>Qualidade de Instituto</h3>
+                    <p>Nossos parceiros técnicos não são freelancers ou recém-formados de bootcamp. São pesquisadores e engenheiros dos principais institutos de P&D do Brasil, as mesmas equipes que constroem soluções para gigantes automotivos e líderes de telecom.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-number">3</span>
+                    <h3>Vantagem de Custo Significativa</h3>
+                    <p>Economize 40-60% comparado a empresas de desenvolvimento americanas—sem sacrificar qualidade. Nosso modelo aproveita o excepcional pool de talentos técnicos do Brasil.</p>
                 </div>
             </div>
         </div>
@@ -837,45 +996,66 @@
 
     <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
-        <div class="portfolio-content">
-            <p class="section-label">Portfólio</p>
-            <h2 class="section-title">Construindo Empresas que Definem Categorias</h2>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <span class="portfolio-badge">Investimento Ativo</span>
+        <div class="container">
+            <div class="section-header">
+                <h2>Nosso Trabalho</h2>
+                <p>Resultados comprovados em diversos setores. Veja o que construímos.</p>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-content">
+                    <span class="portfolio-badge">Projeto em Destaque</span>
                     <h3>SW3 Innovations</h3>
-                    <p class="tagline">Customer Intelligence para Restaurantes</p>
-                    <p>Plataforma com IA que prevê churn de clientes e automatiza retenção via WhatsApp. Endereçando uma oportunidade de mercado de R$ 1,6 bilhão só no Brasil.</p>
-                    <p>SW3 combina machine learning proprietário para predição de churn com insights potencializados por GPT-4 e campanhas de engajamento automatizadas — uma proposta de valor única sem concorrentes diretos.</p>
+                    <p class="portfolio-subtitle">Plataforma de Retenção de Clientes com IA</p>
+                    <p>Desenvolvemos uma plataforma inteligente que prevê churn de clientes e automatiza campanhas de retenção via WhatsApp para o setor de restaurantes.</p>
                     
-                    <div class="portfolio-metrics">
-                        <div class="metric">
-                            <div class="metric-value">R$199</div>
-                            <div class="metric-label">Mensalidade SaaS</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">85%+</div>
-                            <div class="metric-label">Margem Bruta</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">700K</div>
-                            <div class="metric-label">Mercado Alvo</div>
+                    <div class="portfolio-section">
+                        <h4>O Desafio</h4>
+                        <p>70% dos clientes de restaurantes nunca retornam após a primeira visita. Soluções tradicionais de CRM são muito caras e complexas para pequenos negócios.</p>
+                    </div>
+                    
+                    <div class="portfolio-section">
+                        <h4>Nossa Solução</h4>
+                        <ul>
+                            <li>Modelos de machine learning analisando padrões de transação</li>
+                            <li>Campanhas automatizadas e personalizadas via WhatsApp</li>
+                            <li>Integração com principais plataformas de delivery e PDVs</li>
+                            <li>Dashboard simples projetado para usuários não técnicos</li>
+                        </ul>
+                    </div>
+
+                    <div class="portfolio-tech">
+                        <h4>Tecnologias</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">WhatsApp API</span>
+                            <span class="tech-tag">Cloud Infrastructure</span>
+                            <span class="tech-tag">React</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="portfolio-description">
-                    <h4>A Oportunidade</h4>
-                    <p>70% dos clientes de restaurantes nunca retornam após a primeira compra. Soluções de CRM atuais são caras e complexas demais para PMEs. SW3 resolve isso com uma abordagem acessível e IA-nativa.</p>
-                    
-                    <ul class="portfolio-list">
-                        <li>Predição de churn via análise ML de dados de transação</li>
-                        <li>Campanhas automatizadas no WhatsApp com mensagens personalizadas</li>
-                        <li>Integração com iFood, Uber Eats, Instagram e sistemas de PDV</li>
-                        <li>ROI positivo para clientes que recuperam apenas 2-3 clientes/mês</li>
-                        <li>Caminho de expansão para mercado 5x maior em verticais adjacentes</li>
-                    </ul>
+                <div class="portfolio-details">
+                    <div class="portfolio-stats">
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">70%</div>
+                            <div class="portfolio-stat-label">Churn de clientes endereçado</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">R$199</div>
+                            <div class="portfolio-stat-label">Preço mensal SaaS</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">85%+</div>
+                            <div class="portfolio-stat-label">Margem bruta</div>
+                        </div>
+                        <div class="portfolio-stat">
+                            <div class="portfolio-stat-value">Full-Stack</div>
+                            <div class="portfolio-stat-label">Entrega ponta a ponta</div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <a href="#contact" class="btn btn-primary">Interessado em projeto similar?</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -883,23 +1063,64 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <div class="contact-content">
-            <p class="section-label">Contato</p>
-            <h2 class="section-title">Vamos Construir Juntos</h2>
-            <p class="contact-description">Buscamos ativamente parcerias com institutos de pesquisa, investidores estratégicos e fundadores excepcionais construindo em mercados emergentes.</p>
-            
-            <a href="/cdn-cgi/l/email-protection#7c1f1312081d08133c1511131e151d10101413101815121b0f521f1311" class="contact-email"><span class="__cf_email__" data-cfemail="98fbf7f6ecf9ecf7d8f1f5f7faf1f9f4f4f0f7f4fcf1f6ffebb6fbf7f5">[email&#160;protected]</span></a>
-            
-            <div class="contact-location">
-                <div class="location-grid">
-                    <div class="location">
-                        <h5>Sede</h5>
-                        <p>Delaware, Estados Unidos</p>
+        <div class="container">
+            <div class="section-header">
+                <h2>Iniciar um Projeto</h2>
+                <p>Conte-nos sobre suas necessidades e responderemos em até 24 horas.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Vamos Discutir Suas Necessidades</h3>
+                    <a href="mailto:contact@imobiallholdings.com" class="contact-email">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        contact@imobiallholdings.com
+                    </a>
+                    
+                    <div class="contact-process">
+                        <h4>O Que Esperar</h4>
+                        <ul class="process-steps">
+                            <li>
+                                <span class="step-number">1</span>
+                                Chamada inicial para entender seus requisitos
+                            </li>
+                            <li>
+                                <span class="step-number">2</span>
+                                Escopo técnico com nossa equipe de engenharia
+                            </li>
+                            <li>
+                                <span class="step-number">3</span>
+                                Proposta clara com cronograma e investimento
+                            </li>
+                            <li>
+                                <span class="step-number">4</span>
+                                Gestão de projeto dedicada durante toda execução
+                            </li>
+                        </ul>
                     </div>
-                    <div class="location">
-                        <h5>Operações</h5>
-                        <p>São Paulo, Brasil</p>
+
+                    <div class="contact-locations">
+                        <div class="contact-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Sede: Flórida, Estados Unidos
+                        </div>
+                        <div class="contact-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Operações Técnicas: Campina Grande, Brasil
+                        </div>
                     </div>
+                </div>
+                <div class="contact-cta">
+                    <h3>Pronto para Começar?</h3>
+                    <p>Seja para uma equipe de desenvolvimento dedicada, uma solução técnica específica ou capacidades de P&D, estamos aqui para ajudar.</p>
+                    <a href="mailto:contact@imobiallholdings.com?subject=Consulta%20de%20Projeto" class="btn btn-primary">Envie uma Mensagem</a>
                 </div>
             </div>
         </div>
@@ -907,26 +1128,34 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-logo">IMOBI <span>ALL</span> Holdings</div>
-            <div class="footer-legal">
-                © 2025 IMOBI ALL LLC. Todos os direitos reservados. | 
-                <a href="#">Política de Privacidade</a> | 
-                <a href="#">Termos de Serviço</a>
-            </div>
-        </div>
+        <p>&copy; 2025 IMOBI ALL Holdings LLC. Todos os direitos reservados. | Florida, USA | Campina Grande, Brazil</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
+    <!-- JavaScript -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
         });
 
+        // Mobile menu toggle
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -939,22 +1168,6 @@
                 }
             });
         });
-
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition =
+    </script>
+</body>
+</html>
