@@ -8,23 +8,23 @@
     <meta name="keywords" content="desenvolvimento de software, serviços de engenharia, desenvolvimento customizado, serviços de P&D, consultoria técnica, nearshore">
     <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.imobiallholdings.com/">
-    <meta property="og:title" content="IMOBI Holdings | World-Class Engineering Services">
-    <meta property="og:description" content="US-based technology company connecting American businesses with elite engineering talent from Brazil's top research institutes.">
+    <meta property="og:url" content="https://www.imobiallholdings.com/pt.html">
+    <meta property="og:title" content="IMOBI Holdings | Engenharia de Classe Mundial">
+    <meta property="og:description" content="Empresa americana conectando negócios globais com talentos de engenharia de elite dos principais institutos de pesquisa do Brasil.">
     <meta property="og:image" content="https://www.imobiallholdings.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.imobiallholdings.com/">
-    <meta name="twitter:title" content="IMOBI Holdings | World-Class Engineering Services">
-    <meta name="twitter:description" content="US-based technology company connecting American businesses with elite engineering talent from Brazil's top research institutes.">
+    <meta name="twitter:url" content="https://www.imobiallholdings.com/pt.html">
+    <meta name="twitter:title" content="IMOBI Holdings | Engenharia de Classe Mundial">
+    <meta name="twitter:description" content="Empresa americana conectando negócios globais com talentos de engenharia de elite dos principais institutos de pesquisa do Brasil.">
     <meta name="twitter:image" content="https://www.imobiallholdings.com/og-image.png">
     <link rel="canonical" href="https://www.imobiallholdings.com/pt.html">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="alternate" hreflang="en" href="https://www.imobiallholdings.com/">
     <link rel="alternate" hreflang="pt" href="https://www.imobiallholdings.com/pt.html">
@@ -44,882 +44,186 @@
             --gray-800: #343A40;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--gray-800); line-height: 1.6; background: var(--white); }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; line-height: 1.2; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(27, 54, 93, 0.95); backdrop-filter: blur(10px); padding: 0.75rem 0; transition: all 0.3s ease; }
+        nav.scrolled { padding: 0.5rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+        .logo-symbol { width: 44px; height: 44px; flex-shrink: 0; }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-text .brand-name { font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--white); letter-spacing: 0.5px; }
+        .logo-text .brand-sub { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 2px; color: var(--gold); }
+        .logo-text .brand-sub span { color: var(--gray-600); }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.9rem; font-weight: 500; opacity: 0.9; transition: all 0.3s ease; }
+        .nav-links a:hover { opacity: 1; color: var(--gold); }
+        .lang-btn { display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; background: rgba(201, 162, 39, 0.2); border: 1px solid var(--gold); border-radius: 6px; color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: all 0.3s ease; }
+        .lang-btn:hover { background: var(--gold); color: var(--navy); }
+        .lang-btn svg { width: 16px; height: 16px; }
+        .mobile-menu { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .mobile-menu span { width: 25px; height: 2px; background: var(--white); transition: all 0.3s ease; }
+
+        .hero { min-height: 100vh; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; }
+        .hero-badge { display: inline-block; background: rgba(201, 162, 39, 0.2); color: var(--gold); padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--white); margin-bottom: 1.5rem; }
+        .hero h1 em { color: var(--gold); font-style: normal; }
+        .hero p { font-size: 1.25rem; color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.7; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; font-size: 1rem; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.3s ease; cursor: pointer; border: none; }
+        .btn-primary { background: var(--gold); color: var(--navy); }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3); }
+        .btn-secondary { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
+        .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+        .scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--white); opacity: 0.6; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
+
+        section { padding: 6rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
+        .section-header h2 { font-size: clamp(2rem, 4vw, 2.75rem); color: var(--navy); margin-bottom: 1rem; }
+        .section-header p { font-size: 1.1rem; color: var(--gray-600); }
+
+        .about { background: var(--gray-100); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-content h2 { font-size: clamp(2rem, 4vw, 2.75rem); color: var(--navy); margin-bottom: 1.5rem; }
+        .about-content h2 em { color: var(--gold); font-style: normal; }
+        .about-content p { color: var(--gray-600); margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .about-highlight { background: var(--white); border-left: 4px solid var(--gold); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0; }
+        .about-highlight p { margin: 0; font-weight: 500; color: var(--navy); }
+        .about-locations { display: flex; gap: 2rem; margin-top: 2rem; }
+        .location { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--gray-600); }
+        .location svg { width: 18px; height: 18px; color: var(--gold); }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; background: var(--navy); border-radius: 16px; padding: 3rem; }
+        .stat-item { text-align: center; }
+        .stat-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem; }
+        .stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+
+        .services { background: var(--white); }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .service-card { background: var(--gray-100); border-radius: 16px; padding: 2.5rem; transition: all 0.3s ease; border: 1px solid transparent; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(27, 54, 93, 0.1); border-color: var(--gold); }
+        .service-icon { width: 60px; height: 60px; background: var(--navy); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+        .service-icon svg { width: 28px; height: 28px; color: var(--gold); }
+        .service-card h3 { font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--navy); margin-bottom: 1rem; }
+        .service-card p { color: var(--gray-600); font-size: 0.95rem; line-height: 1.7; }
+
+        .why-us { background: var(--gray-100); }
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .why-card { background: var(--white); border-radius: 16px; padding: 2.5rem; position: relative; }
+        .why-number { position: absolute; top: -15px; left: 2rem; background: var(--gold); color: var(--navy); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
+        .why-card h3 { font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 600; color: var(--navy); margin: 1rem 0; }
+        .why-card p { color: var(--gray-600); font-size: 0.95rem; line-height: 1.7; }
+
+        .portfolio { background: var(--white); }
+        .portfolio-card { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border-radius: 20px; padding: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .portfolio-badge { display: inline-block; background: rgba(201, 162, 39, 0.2); color: var(--gold); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem; }
+        .portfolio-content h3 { font-size: 2rem; color: var(--white); margin-bottom: 0.5rem; }
+        .portfolio-subtitle { color: var(--gold); font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .portfolio-content p { color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; line-height: 1.7; }
+        .portfolio-section { margin-bottom: 1.5rem; }
+        .portfolio-section h4 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
+        .portfolio-section ul { list-style: none; color: rgba(255,255,255,0.85); font-size: 0.95rem; }
+        .portfolio-section ul li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
+        .portfolio-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
+        .portfolio-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .portfolio-stat { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; text-align: center; }
+        .portfolio-stat-value { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700; color: var(--gold); }
+        .portfolio-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 0.25rem; }
+        .portfolio-tech { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .portfolio-tech h4 { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tech-tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; }
+
+        .contact { background: var(--navy); color: var(--white); }
+        .contact .section-header h2 { color: var(--white); }
+        .contact .section-header p { color: rgba(255,255,255,0.7); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .contact-info h3 { font-family: 'Inter', sans-serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .contact-email { display: inline-flex; align-items: center; gap: 0.75rem; color: var(--gold); font-size: 1.25rem; text-decoration: none; margin-bottom: 2rem; transition: all 0.3s ease; }
+        .contact-email:hover { color: var(--gold-light); }
+        .contact-email svg { width: 24px; height: 24px; }
+        .contact-process h4 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+        .process-steps { list-style: none; }
+        .process-steps li { display: flex; align-items: flex-start; gap: 1rem; padding: 0.75rem 0; color: rgba(255,255,255,0.85); }
+        .step-number { width: 28px; height: 28px; background: rgba(201, 162, 39, 0.2); color: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 600; flex-shrink: 0; }
+        .contact-locations { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .contact-location { display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+        .contact-location svg { width: 18px; height: 18px; color: var(--gold); }
+        .contact-cta { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 2.5rem; text-align: center; }
+        .contact-cta h3 { font-size: 1.75rem; margin-bottom: 1rem; }
+        .contact-cta p { color: rgba(255,255,255,0.7); margin-bottom: 2rem; }
+
+        footer { background: var(--navy-dark); color: rgba(255,255,255,0.6); padding: 2rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-logo { display: flex; align-items: center; gap: 0.5rem; }
+        .footer-logo svg { width: 32px; height: 32px; }
+        .footer-logo span { font-weight: 600; color: rgba(255,255,255,0.8); }
+        footer p { font-size: 0.85rem; }
+        footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s ease; }
+        footer a:hover { color: var(--gold); }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--gray-800);
-            line-height: 1.6;
-            background: var(--white);
-        }
-
-        /* Typography */
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(27, 54, 93, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            padding: 0.75rem 0;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: var(--gold);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            opacity: 0.9;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            opacity: 1;
-            color: var(--gold);
-        }
-
-        .lang-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 1rem;
-            background: rgba(201, 162, 39, 0.2);
-            border: 1px solid var(--gold);
-            border-radius: 6px;
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn:hover {
-            background: var(--gold);
-            color: var(--navy);
-        }
-
-        .lang-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 2px;
-            background: var(--white);
-            transition: all 0.3s ease;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(201, 162, 39, 0.2);
-            color: var(--gold);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            color: var(--white);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 em {
-            color: var(--gold);
-            font-style: normal;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: rgba(255,255,255,0.85);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.7;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--gold);
-            color: var(--navy);
-        }
-
-        .btn-primary:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--white);
-            background: rgba(255,255,255,0.1);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--white);
-            opacity: 0.6;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
-        }
-
-        /* Sections */
-        section {
-            padding: 6rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-        }
-
-        .section-header h2 {
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            font-size: 1.1rem;
-            color: var(--gray-600);
-        }
-
-        /* About Section */
-        .about {
-            background: var(--gray-100);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-content h2 {
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-        }
-
-        .about-content h2 em {
-            color: var(--gold);
-            font-style: normal;
-        }
-
-        .about-content p {
-            color: var(--gray-600);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-
-        .about-highlight {
-            background: var(--white);
-            border-left: 4px solid var(--gold);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .about-highlight p {
-            margin: 0;
-            font-weight: 500;
-            color: var(--navy);
-        }
-
-        .about-locations {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .location {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--gray-600);
-        }
-
-        .location svg {
-            width: 18px;
-            height: 18px;
-            color: var(--gold);
-        }
-
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            background: var(--navy);
-            border-radius: 16px;
-            padding: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
-        }
-
-        /* Services */
-        .services {
-            background: var(--white);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: var(--gray-100);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(27, 54, 93, 0.1);
-            border-color: var(--gold);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--navy);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-icon svg {
-            width: 28px;
-            height: 28px;
-            color: var(--gold);
-        }
-
-        .service-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            color: var(--gray-600);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Why Us */
-        .why-us {
-            background: var(--gray-100);
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .why-card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 2.5rem;
-            position: relative;
-        }
-
-        .why-number {
-            position: absolute;
-            top: -15px;
-            left: 2rem;
-            background: var(--gold);
-            color: var(--navy);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-
-        .why-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--navy);
-            margin: 1rem 0;
-        }
-
-        .why-card p {
-            color: var(--gray-600);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Portfolio */
-        .portfolio {
-            background: var(--white);
-        }
-
-        .portfolio-card {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            border-radius: 20px;
-            padding: 4rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .portfolio-badge {
-            display: inline-block;
-            background: rgba(201, 162, 39, 0.2);
-            color: var(--gold);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-content h3 {
-            font-size: 2rem;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-subtitle {
-            color: var(--gold);
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .portfolio-content p {
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .portfolio-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .portfolio-section h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.75rem;
-        }
-
-        .portfolio-section ul {
-            list-style: none;
-            color: rgba(255,255,255,0.85);
-            font-size: 0.95rem;
-        }
-
-        .portfolio-section ul li {
-            padding: 0.3rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .portfolio-section ul li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-        }
-
-        .portfolio-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .portfolio-stat {
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .portfolio-stat-value {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-
-        .portfolio-stat-label {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
-            margin-top: 0.25rem;
-        }
-
-        .portfolio-tech {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .portfolio-tech h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.6);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.75rem;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            background: rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.85);
-            padding: 0.4rem 0.8rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-        }
-
-        /* Contact */
-        .contact {
-            background: var(--navy);
-            color: var(--white);
-        }
-
-        .contact .section-header h2 {
-            color: var(--white);
-        }
-
-        .contact .section-header p {
-            color: rgba(255,255,255,0.7);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .contact-info h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-email {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--gold);
-            font-size: 1.25rem;
-            text-decoration: none;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-email:hover {
-            color: var(--gold-light);
-        }
-
-        .contact-email svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .contact-process h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-
-        .process-steps {
-            list-style: none;
-        }
-
-        .process-steps li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 0.75rem 0;
-            color: rgba(255,255,255,0.85);
-        }
-
-        .step-number {
-            width: 28px;
-            height: 28px;
-            background: rgba(201, 162, 39, 0.2);
-            color: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-
-        .contact-locations {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .contact-location {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-        }
-
-        .contact-location svg {
-            width: 18px;
-            height: 18px;
-            color: var(--gold);
-        }
-
-        .contact-cta {
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-        }
-
-        .contact-cta h3 {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-cta p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 2rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--navy-dark);
-            color: rgba(255,255,255,0.6);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: var(--gold);
-        }
-
-        /* Responsive */
         @media (max-width: 1024px) {
-            .about-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .services-grid,
-            .why-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .portfolio-card {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid, .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .portfolio-card { grid-template-columns: 1fr; gap: 2rem; }
         }
-
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--navy);
-                flex-direction: column;
-                padding: 1rem 2rem;
-                gap: 1rem;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links .lang-btn {
-                align-self: flex-start;
-            }
-
-            .mobile-menu {
-                display: flex;
-            }
-
-            .hero {
-                padding: 6rem 1.5rem 3rem;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                padding: 2rem;
-                gap: 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            .services-grid,
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-card {
-                padding: 2rem;
-            }
-
-            .portfolio-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .about-locations {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 1rem 2rem; gap: 1rem; }
+            .nav-links.active { display: flex; }
+            .nav-links .lang-btn { align-self: flex-start; }
+            .mobile-menu { display: flex; }
+            .logo-text .brand-sub { display: none; }
+            .hero { padding: 6rem 1.5rem 3rem; }
+            section { padding: 4rem 1.5rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); padding: 2rem; gap: 1.5rem; }
+            .stat-number { font-size: 2rem; }
+            .services-grid, .why-grid { grid-template-columns: 1fr; }
+            .portfolio-card { padding: 2rem; }
+            .portfolio-stats { grid-template-columns: 1fr; }
+            .about-locations { flex-direction: column; gap: 1rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; justify-content: center; }
+            .footer-content { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">IMOBI <span>Holdings</span></a>
+            <a href="#" class="logo">
+                <svg class="logo-symbol" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="88" fill="#1B365D"/>
+                    <rect x="78" y="42" width="44" height="116" rx="3" fill="#FFFFFF"/>
+                    <rect x="58" y="42" width="84" height="22" rx="3" fill="#FFFFFF"/>
+                    <rect x="58" y="136" width="84" height="22" rx="3" fill="#FFFFFF"/>
+                    <ellipse cx="100" cy="100" rx="95" ry="28" fill="none" stroke="#C9A227" stroke-width="7" transform="rotate(-20 100 100)"/>
+                    <circle cx="178" cy="72" r="12" fill="#C9A227"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="brand-name">IMOBI</span>
+                    <span class="brand-sub">ALL <span>HOLDINGS</span></span>
+                </div>
+            </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">Sobre</a></li>
                 <li><a href="#services">Serviços</a></li>
                 <li><a href="#why-us">Diferenciais</a></li>
                 <li><a href="#portfolio">Portfólio</a></li>
                 <li><a href="#contact">Contato</a></li>
-                <li>
-                    <a href="index.html" class="lang-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                        </svg>
-                        EN
-                    </a>
-                </li>
+                <li><a href="index.html" class="lang-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>EN</a></li>
             </ul>
-            <div class="mobile-menu" id="mobileMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <div class="mobile-menu" id="mobileMenu"><span></span><span></span><span></span></div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <span class="hero-badge">Parceiro de Tecnologia nos EUA</span>
@@ -933,7 +237,6 @@
         <div class="scroll-indicator">Role</div>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <div class="about-grid">
@@ -941,290 +244,105 @@
                     <h2>Excelência em Engenharia,<br><em>Entregue com Simplicidade</em></h2>
                     <p>A IMOBI Holdings é sua porta de entrada americana para talentos de engenharia de classe mundial. Somos parceiros dos principais institutos de pesquisa do Brasil, organizações com mais de 20 anos de experiência e milhares de projetos bem-sucedidos para empresas globais.</p>
                     <p>Você tem a simplicidade de trabalhar com uma empresa americana: contratos familiares, faturamento em USD, fusos horários alinhados e comunicação clara. Nos bastidores, seus projetos são executados por engenheiros e pesquisadores com doutorado que já entregaram para empresas Fortune 500.</p>
-                    <div class="about-highlight">
-                        <p>Sem dores de cabeça com fornecedores internacionais. Sem barreiras de comunicação. Apenas trabalho técnico excepcional com preços competitivos.</p>
-                    </div>
+                    <div class="about-highlight"><p>Sem dores de cabeça com fornecedores internacionais. Sem barreiras de comunicação. Apenas trabalho técnico excepcional com preços competitivos.</p></div>
                     <div class="about-locations">
-                        <div class="location">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            Sede na Flórida, EUA
-                        </div>
-                        <div class="location">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            Operações técnicas em Campina Grande, Brasil
-                        </div>
+                        <div class="location"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>Sede na Flórida, EUA</div>
+                        <div class="location"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>Operações técnicas em Campina Grande, Brasil</div>
                     </div>
                 </div>
                 <div class="about-stats">
                     <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number">20+</div>
-                            <div class="stat-label">Anos de Histórico do Instituto</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">2.000+</div>
-                            <div class="stat-label">Projetos Entregues</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">Até 60%</div>
-                            <div class="stat-label">Economia vs. Taxas EUA</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Contratos nos EUA</div>
-                        </div>
+                        <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label">Anos de Histórico do Instituto</div></div>
+                        <div class="stat-item"><div class="stat-number">2.000+</div><div class="stat-label">Projetos Entregues</div></div>
+                        <div class="stat-item"><div class="stat-number">Até 60%</div><div class="stat-label">Economia vs. Taxas EUA</div></div>
+                        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Contratos nos EUA</div></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <div class="section-header">
-                <h2>Como Podemos Ajudar</h2>
-                <p>De protótipos rápidos a sistemas de escala empresarial, entregamos excelência técnica em todo o ciclo de desenvolvimento.</p>
-            </div>
+            <div class="section-header"><h2>Como Podemos Ajudar</h2><p>De protótipos rápidos a sistemas de escala empresarial, entregamos excelência técnica em todo o ciclo de desenvolvimento.</p></div>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                    </div>
-                    <h3>Desenvolvimento Customizado</h3>
-                    <p>De MVPs a sistemas empresariais, soluções web, mobile, backend e cloud construídas sob medida. Transformamos sua visão em software pronto para produção.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                    </div>
-                    <h3>P&D e Inovação</h3>
-                    <p>Acesse capacidades de pesquisa para desafios técnicos complexos, prototipagem e tecnologias emergentes. Aproveite décadas de expertise acadêmica e industrial.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                    </div>
-                    <h3>Extensão de Equipe</h3>
-                    <p>Escale sua capacidade de engenharia com profissionais dedicados que se integram perfeitamente ao seu time existente. Modelos de engajamento flexíveis.</p>
-                </div>
+                <div class="service-card"><div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg></div><h3>Desenvolvimento Customizado</h3><p>De MVPs a sistemas empresariais, soluções web, mobile, backend e cloud construídas sob medida. Transformamos sua visão em software pronto para produção.</p></div>
+                <div class="service-card"><div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg></div><h3>P&D e Inovação</h3><p>Acesse capacidades de pesquisa para desafios técnicos complexos, prototipagem e tecnologias emergentes. Aproveite décadas de expertise acadêmica e industrial.</p></div>
+                <div class="service-card"><div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg></div><h3>Extensão de Equipe</h3><p>Escale sua capacidade de engenharia com profissionais dedicados que se integram perfeitamente ao seu time existente. Modelos de engajamento flexíveis.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Why Us Section -->
     <section class="why-us" id="why-us">
         <div class="container">
-            <div class="section-header">
-                <h2>O Melhor dos Dois Mundos</h2>
-                <p>Trabalhar com equipes offshore pode ser frustrante. Trabalhar com agências americanas pode ser proibitivamente caro. Nós eliminamos esse trade-off.</p>
-            </div>
+            <div class="section-header"><h2>O Melhor dos Dois Mundos</h2><p>Trabalhar com equipes offshore pode ser frustrante. Trabalhar com agências americanas pode ser proibitivamente caro. Nós eliminamos esse trade-off.</p></div>
             <div class="why-grid">
-                <div class="why-card">
-                    <span class="why-number">1</span>
-                    <h3>Empresa EUA, Contratos EUA</h3>
-                    <p>Você trabalha com uma LLC da Flórida. MSAs, NDAs e SOWs padrão. Faturamento em USD. Sem complicações com transferências internacionais ou estruturas legais estrangeiras.</p>
-                </div>
-                <div class="why-card">
-                    <span class="why-number">2</span>
-                    <h3>Qualidade de Instituto</h3>
-                    <p>Nossos parceiros técnicos não são freelancers ou recém-formados de bootcamp. São pesquisadores e engenheiros dos principais institutos de P&D do Brasil, as mesmas equipes que constroem soluções para gigantes automotivos e líderes de telecom.</p>
-                </div>
-                <div class="why-card">
-                    <span class="why-number">3</span>
-                    <h3>Vantagem de Custo Significativa</h3>
-                    <p>Economize até 60% comparado a empresas de desenvolvimento americanas—sem sacrificar qualidade. Nosso modelo aproveita o excepcional pool de talentos técnicos do Brasil.</p>
-                </div>
+                <div class="why-card"><span class="why-number">1</span><h3>Empresa EUA, Contratos EUA</h3><p>Você trabalha com uma LLC da Flórida. MSAs, NDAs e SOWs padrão. Faturamento em USD. Sem complicações com transferências internacionais ou estruturas legais estrangeiras.</p></div>
+                <div class="why-card"><span class="why-number">2</span><h3>Qualidade de Instituto</h3><p>Nossos parceiros técnicos não são freelancers ou recém-formados de bootcamp. São pesquisadores e engenheiros dos principais institutos de P&D do Brasil, as mesmas equipes que constroem soluções para gigantes automotivos e líderes de telecom.</p></div>
+                <div class="why-card"><span class="why-number">3</span><h3>Vantagem de Custo Significativa</h3><p>Economize até 60% comparado a empresas de desenvolvimento americanas—sem sacrificar qualidade. Nosso modelo aproveita o excepcional pool de talentos técnicos do Brasil.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
         <div class="container">
-            <div class="section-header">
-                <h2>Nosso Trabalho</h2>
-                <p>Resultados comprovados em diversos setores. Veja o que construímos.</p>
-            </div>
+            <div class="section-header"><h2>Nosso Trabalho</h2><p>Resultados comprovados em diversos setores. Veja o que construímos.</p></div>
             <div class="portfolio-card">
                 <div class="portfolio-content">
                     <span class="portfolio-badge">Projeto em Destaque</span>
                     <h3>SW3 Innovations</h3>
                     <p class="portfolio-subtitle">Plataforma de Retenção de Clientes com IA</p>
                     <p>Desenvolvemos uma plataforma inteligente que prevê churn de clientes e automatiza campanhas de retenção via WhatsApp para o setor de restaurantes.</p>
-                    
-                    <div class="portfolio-section">
-                        <h4>O Desafio</h4>
-                        <p>70% dos clientes de restaurantes nunca retornam após a primeira visita. Soluções tradicionais de CRM são muito caras e complexas para pequenos negócios.</p>
-                    </div>
-                    
-                    <div class="portfolio-section">
-                        <h4>Nossa Solução</h4>
-                        <ul>
-                            <li>Modelos de machine learning analisando padrões de transação</li>
-                            <li>Campanhas automatizadas e personalizadas via WhatsApp</li>
-                            <li>Integração com principais plataformas de delivery e PDVs</li>
-                            <li>Dashboard simples projetado para usuários não técnicos</li>
-                        </ul>
-                    </div>
-
-                    <div class="portfolio-tech">
-                        <h4>Tecnologias</h4>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">WhatsApp API</span>
-                            <span class="tech-tag">Cloud Infrastructure</span>
-                            <span class="tech-tag">React</span>
-                        </div>
-                    </div>
+                    <div class="portfolio-section"><h4>O Desafio</h4><p>70% dos clientes de restaurantes nunca retornam após a primeira visita. Soluções tradicionais de CRM são muito caras e complexas para pequenos negócios.</p></div>
+                    <div class="portfolio-section"><h4>Nossa Solução</h4><ul><li>Modelos de machine learning analisando padrões de transação</li><li>Campanhas automatizadas e personalizadas via WhatsApp</li><li>Integração com principais plataformas de delivery e PDVs</li><li>Dashboard simples projetado para usuários não técnicos</li></ul></div>
+                    <div class="portfolio-tech"><h4>Tecnologias</h4><div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">Machine Learning</span><span class="tech-tag">WhatsApp API</span><span class="tech-tag">Cloud Infrastructure</span><span class="tech-tag">React</span></div></div>
                 </div>
                 <div class="portfolio-details">
                     <div class="portfolio-stats">
-                        <div class="portfolio-stat">
-                            <div class="portfolio-stat-value">70%</div>
-                            <div class="portfolio-stat-label">Churn de clientes endereçado</div>
-                        </div>
-                        <div class="portfolio-stat">
-                            <div class="portfolio-stat-value">R$199</div>
-                            <div class="portfolio-stat-label">Preço mensal SaaS</div>
-                        </div>
-                        <div class="portfolio-stat">
-                            <div class="portfolio-stat-value">85%+</div>
-                            <div class="portfolio-stat-label">Margem bruta</div>
-                        </div>
-                        <div class="portfolio-stat">
-                            <div class="portfolio-stat-value">Full-Stack</div>
-                            <div class="portfolio-stat-label">Entrega ponta a ponta</div>
-                        </div>
+                        <div class="portfolio-stat"><div class="portfolio-stat-value">70%</div><div class="portfolio-stat-label">Churn de clientes endereçado</div></div>
+                        <div class="portfolio-stat"><div class="portfolio-stat-value">R$199</div><div class="portfolio-stat-label">Preço mensal SaaS</div></div>
+                        <div class="portfolio-stat"><div class="portfolio-stat-value">85%+</div><div class="portfolio-stat-label">Margem bruta</div></div>
+                        <div class="portfolio-stat"><div class="portfolio-stat-value">Full-Stack</div><div class="portfolio-stat-label">Entrega ponta a ponta</div></div>
                     </div>
-                    <div style="margin-top: 2rem; text-align: center;">
-                        <a href="#contact" class="btn btn-primary">Interessado em projeto similar?</a>
-                    </div>
+                    <div style="margin-top: 2rem; text-align: center;"><a href="#contact" class="btn btn-primary">Interessado em projeto similar?</a></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <div class="section-header">
-                <h2>Iniciar um Projeto</h2>
-                <p>Conte-nos sobre suas necessidades e responderemos em até 24 horas.</p>
-            </div>
+            <div class="section-header"><h2>Iniciar um Projeto</h2><p>Conte-nos sobre suas necessidades e responderemos em até 24 horas.</p></div>
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3>Vamos Discutir Suas Necessidades</h3>
-                    <a href="mailto:contact@imobiallholdings.com" class="contact-email">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                        contact@imobiallholdings.com
-                    </a>
-                    
-                    <div class="contact-process">
-                        <h4>O Que Esperar</h4>
-                        <ul class="process-steps">
-                            <li>
-                                <span class="step-number">1</span>
-                                Chamada inicial para entender seus requisitos
-                            </li>
-                            <li>
-                                <span class="step-number">2</span>
-                                Escopo técnico com nossa equipe de engenharia
-                            </li>
-                            <li>
-                                <span class="step-number">3</span>
-                                Proposta clara com cronograma e investimento
-                            </li>
-                            <li>
-                                <span class="step-number">4</span>
-                                Gestão de projeto dedicada durante toda execução
-                            </li>
-                        </ul>
-                    </div>
-
+                    <a href="mailto:contact@imobiallholdings.com" class="contact-email"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>contact@imobiallholdings.com</a>
+                    <div class="contact-process"><h4>O Que Esperar</h4><ul class="process-steps"><li><span class="step-number">1</span>Chamada inicial para entender seus requisitos</li><li><span class="step-number">2</span>Escopo técnico com nossa equipe de engenharia</li><li><span class="step-number">3</span>Proposta clara com cronograma e investimento</li><li><span class="step-number">4</span>Gestão de projeto dedicada durante toda execução</li></ul></div>
                     <div class="contact-locations">
-                        <div class="contact-location">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            Sede: Flórida, Estados Unidos
-                        </div>
-                        <div class="contact-location">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                            Operações Técnicas: Campina Grande, Brasil
-                        </div>
+                        <div class="contact-location"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>Sede: Flórida, Estados Unidos</div>
+                        <div class="contact-location"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>Operações Técnicas: Campina Grande, Brasil</div>
                     </div>
                 </div>
-                <div class="contact-cta">
-                    <h3>Pronto para Começar?</h3>
-                    <p>Seja para uma equipe de desenvolvimento dedicada, uma solução técnica específica ou capacidades de P&D, estamos aqui para ajudar!</p>
-                    <a href="mailto:contact@imobiallholdings.com" class="btn btn-primary">Envie uma Mensagem</a>
-                </div>
+                <div class="contact-cta"><h3>Pronto para Começar?</h3><p>Seja para uma equipe de desenvolvimento dedicada, uma solução técnica específica ou capacidades de P&D, estamos aqui para ajudar!</p><a href="mailto:contact@imobiallholdings.com" class="btn btn-primary">Envie uma Mensagem</a></div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 IMOBI ALL Holdings LLC. Todos os direitos reservados. | Florida, USA | Campina Grande, Brazil</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg width="32" height="32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="88" fill="#1B365D"/><rect x="78" y="42" width="44" height="116" rx="3" fill="#FFFFFF"/><rect x="58" y="42" width="84" height="22" rx="3" fill="#FFFFFF"/><rect x="58" y="136" width="84" height="22" rx="3" fill="#FFFFFF"/><ellipse cx="100" cy="100" rx="95" ry="28" fill="none" stroke="#C9A227" stroke-width="7" transform="rotate(-20 100 100)"/><circle cx="178" cy="72" r="12" fill="#C9A227"/></svg>
+                <span>IMOBI ALL Holdings</span>
+            </div>
+            <p>&copy; 2026 IMOBI ALL Holdings LLC. Todos os direitos reservados. | Florida, USA | Campina Grande, Brazil</p>
+        </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        document.getElementById('mobileMenu').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('active');
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        window.addEventListener('scroll', function() { const navbar = document.getElementById('navbar'); if (window.scrollY > 50) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); } });
+        document.getElementById('mobileMenu').addEventListener('click', function() { document.getElementById('navLinks').classList.toggle('active'); });
+        document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('active'); }); });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
     </script>
 </body>
 </html>
