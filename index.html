@@ -24,7 +24,7 @@
     <link rel="canonical" href="https://www.imobiallholdings.com/">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="alternate" hreflang="en" href="https://www.imobiallholdings.com/">
     <link rel="alternate" hreflang="pt" href="https://www.imobiallholdings.com/pt.html">
@@ -77,12 +77,12 @@
             z-index: 1000;
             background: rgba(27, 54, 93, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            padding: 0.75rem 0;
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            padding: 0.75rem 0;
+            padding: 0.5rem 0;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
 
@@ -96,16 +96,42 @@
         }
 
         .logo {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             text-decoration: none;
-            letter-spacing: 1px;
         }
 
-        .logo span {
+        .logo-symbol {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .logo-text .brand-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text .brand-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 2px;
             color: var(--gold);
+        }
+
+        .logo-text .brand-sub span {
+            color: var(--gray-600);
         }
 
         .nav-links {
@@ -777,11 +803,36 @@
             background: var(--navy-dark);
             color: rgba(255,255,255,0.6);
             padding: 2rem;
-            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .footer-logo span {
+            font-weight: 600;
+            color: rgba(255,255,255,0.8);
         }
 
         footer p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         footer a {
@@ -842,6 +893,10 @@
                 display: flex;
             }
 
+            .logo-text .brand-sub {
+                display: none;
+            }
+
             .hero {
                 padding: 6rem 1.5rem 3rem;
             }
@@ -888,6 +943,11 @@
                 max-width: 280px;
                 justify-content: center;
             }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -895,7 +955,21 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">IMOBI <span>Holdings</span></a>
+            <a href="#" class="logo">
+                <!-- Logo Symbol V6 -->
+                <svg class="logo-symbol" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="88" fill="#1B365D"/>
+                    <rect x="78" y="42" width="44" height="116" rx="3" fill="#FFFFFF"/>
+                    <rect x="58" y="42" width="84" height="22" rx="3" fill="#FFFFFF"/>
+                    <rect x="58" y="136" width="84" height="22" rx="3" fill="#FFFFFF"/>
+                    <ellipse cx="100" cy="100" rx="95" ry="28" fill="none" stroke="#C9A227" stroke-width="7" transform="rotate(-20 100 100)"/>
+                    <circle cx="178" cy="72" r="12" fill="#C9A227"/>
+                </svg>
+                <div class="logo-text">
+                    <span class="brand-name">IMOBI</span>
+                    <span class="brand-sub">ALL <span>HOLDINGS</span></span>
+                </div>
+            </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
@@ -1185,7 +1259,20 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 IMOBI ALL Holdings LLC. All rights reserved. | Florida, USA | Campina Grande, Brazil</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg width="32" height="32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="88" fill="#1B365D"/>
+                    <rect x="78" y="42" width="44" height="116" rx="3" fill="#FFFFFF"/>
+                    <rect x="58" y="42" width="84" height="22" rx="3" fill="#FFFFFF"/>
+                    <rect x="58" y="136" width="84" height="22" rx="3" fill="#FFFFFF"/>
+                    <ellipse cx="100" cy="100" rx="95" ry="28" fill="none" stroke="#C9A227" stroke-width="7" transform="rotate(-20 100 100)"/>
+                    <circle cx="178" cy="72" r="12" fill="#C9A227"/>
+                </svg>
+                <span>IMOBI ALL Holdings</span>
+            </div>
+            <p>&copy; 2026 IMOBI ALL Holdings LLC. All rights reserved. | Florida, USA | Campina Grande, Brazil</p>
+        </div>
     </footer>
 
     <!-- JavaScript -->
