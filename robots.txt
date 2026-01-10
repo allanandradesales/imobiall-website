@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://imobiallholdings.com/sitemap.xml
+Sitemap: https://www.imobiallholdings.com/sitemap.xml
