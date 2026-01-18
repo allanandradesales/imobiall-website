@@ -67,21 +67,30 @@
         .mobile-menu { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
         .mobile-menu span { width: 25px; height: 2px; background: var(--white); transition: all 0.3s ease; }
 
-        .hero { min-height: 100vh; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); display: flex; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.5; }
-        .hero-content { position: relative; z-index: 1; max-width: 900px; }
-        .hero-badge { display: inline-block; background: rgba(201, 162, 39, 0.2); color: var(--gold); padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--white); margin-bottom: 1.5rem; }
-        .hero h1 em { color: var(--gold); font-style: normal; }
-        .hero p { font-size: 1.25rem; color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.7; }
-        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        /* Hero Section - Side by Side */
+        .hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; padding: 6rem 2rem 4rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%; background: linear-gradient(135deg, var(--navy-light) 0%, transparent 60%); transform: rotate(-15deg); z-index: 0; }
+        .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+        .hero-container { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+        .hero-content { max-width: 560px; }
+        .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gold); font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
+        .hero-tag::before { content: ''; width: 40px; height: 2px; background: var(--gold); }
+        .hero h1 { font-size: clamp(2.5rem, 4.5vw, 3.5rem); color: var(--white); margin-bottom: 1.5rem; line-height: 1.15; }
+        .hero h1 .highlight { color: var(--gold); display: block; }
+        .hero-description { font-size: 1.15rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 2.5rem; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
         .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; font-size: 1rem; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.3s ease; cursor: pointer; border: none; }
         .btn-primary { background: var(--gold); color: var(--navy); }
         .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3); }
         .btn-secondary { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
         .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
-        .scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--white); opacity: 0.6; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
+
+        /* Hero Stats */
+        .hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .hero-stat { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.75rem; text-align: center; transition: all 0.3s ease; }
+        .hero-stat:hover { background: rgba(255,255,255,0.08); border-color: var(--gold); transform: translateY(-4px); }
+        .hero-stat-value { font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 700; color: var(--gold); margin-bottom: 0.25rem; }
+        .hero-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.4; }
 
         section { padding: 6rem 2rem; }
         .container { max-width: 1200px; margin: 0 auto; }
@@ -100,9 +109,10 @@
         .location { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--gray-600); }
         .location svg { width: 18px; height: 18px; color: var(--gold); }
 
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; background: var(--navy); border-radius: 16px; padding: 3rem; }
-        .stat-item { text-align: center; }
-        .stat-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem; }
+        /* Stats in About */
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .stat-card { background: var(--navy); border-radius: 12px; padding: 2rem; text-align: center; }
+        .stat-number { font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem; }
         .stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
 
         .services { background: var(--white); }
@@ -121,25 +131,19 @@
         .why-card h3 { font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 600; color: var(--navy); margin: 1rem 0; }
         .why-card p { color: var(--gray-600); font-size: 0.95rem; line-height: 1.7; }
 
-        .portfolio { background: var(--white); }
-        .portfolio-card { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border-radius: 20px; padding: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .portfolio-badge { display: inline-block; background: rgba(201, 162, 39, 0.2); color: var(--gold); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem; }
-        .portfolio-content h3 { font-size: 2rem; color: var(--white); margin-bottom: 0.5rem; }
-        .portfolio-subtitle { color: var(--gold); font-size: 1.1rem; margin-bottom: 1.5rem; }
-        .portfolio-content p { color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; line-height: 1.7; }
-        .portfolio-section { margin-bottom: 1.5rem; }
-        .portfolio-section h4 { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
-        .portfolio-section ul { list-style: none; color: rgba(255,255,255,0.85); font-size: 0.95rem; }
-        .portfolio-section ul li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; }
-        .portfolio-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
-        .portfolio-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-        .portfolio-stat { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; text-align: center; }
-        .portfolio-stat-value { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700; color: var(--gold); }
-        .portfolio-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 0.25rem; }
-        .portfolio-tech { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
-        .portfolio-tech h4 { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
-        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .tech-tag { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.8rem; }
+        /* Partner Section */
+        .partner { background: var(--white); }
+        .partner-card { background: var(--gray-100); border-radius: 16px; padding: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .partner-content h3 { font-size: 1.75rem; color: var(--navy); margin-bottom: 1rem; }
+        .partner-content h3 em { color: var(--gold); font-style: normal; }
+        .partner-content p { color: var(--gray-600); margin-bottom: 1rem; line-height: 1.7; }
+        .partner-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gold); text-decoration: none; font-weight: 600; margin-top: 1rem; transition: all 0.3s ease; }
+        .partner-link:hover { color: var(--navy); }
+        .partner-link svg { width: 18px; height: 18px; }
+        .partner-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .partner-stat { background: var(--white); border-radius: 12px; padding: 1.5rem; text-align: center; }
+        .partner-stat-value { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--navy); }
+        .partner-stat-label { font-size: 0.85rem; color: var(--gray-600); margin-top: 0.25rem; }
 
         .contact { background: var(--navy); color: var(--white); }
         .contact .section-header h2 { color: var(--white); }
@@ -165,15 +169,22 @@
         .footer-logo { display: flex; align-items: center; gap: 0.5rem; }
         .footer-logo svg { width: 32px; height: 32px; }
         .footer-logo span { font-weight: 600; color: rgba(255,255,255,0.8); }
+        .footer-links { display: flex; gap: 2rem; align-items: center; }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--gold); }
         footer p { font-size: 0.85rem; }
         footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s ease; }
         footer a:hover { color: var(--gold); }
 
         @media (max-width: 1024px) {
-            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-container, .about-grid, .contact-grid, .partner-card { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-content { max-width: 100%; text-align: center; }
+            .hero-tag { justify-content: center; }
+            .hero-tag::before { display: none; }
+            .hero-buttons { justify-content: center; }
+            .hero-stats { max-width: 500px; margin: 0 auto; }
             .services-grid, .why-grid { grid-template-columns: repeat(2, 1fr); }
-            .portfolio-card { grid-template-columns: 1fr; gap: 2rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); flex-direction: column; padding: 1rem 2rem; gap: 1rem; }
@@ -181,17 +192,18 @@
             .nav-links .lang-btn { align-self: flex-start; }
             .mobile-menu { display: flex; }
             .logo-text .brand-sub { display: none; }
-            .hero { padding: 6rem 1.5rem 3rem; }
+            .hero { padding: 5rem 1.5rem 3rem; }
+            .hero-stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .hero-stat { padding: 1.25rem; }
+            .hero-stat-value { font-size: 1.75rem; }
             section { padding: 4rem 1.5rem; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); padding: 2rem; gap: 1.5rem; }
-            .stat-number { font-size: 2rem; }
             .services-grid, .why-grid { grid-template-columns: 1fr; }
-            .portfolio-card { padding: 2rem; }
-            .portfolio-stats { grid-template-columns: 1fr; }
+            .partner-stats { grid-template-columns: 1fr 1fr; }
             .about-locations { flex-direction: column; gap: 1rem; }
             .hero-buttons { flex-direction: column; align-items: center; }
             .btn { width: 100%; max-width: 280px; justify-content: center; }
             .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { flex-direction: column; gap: 1rem; }
         }
     </style>
 </head>
@@ -216,7 +228,7 @@
                 <li><a href="#about">Sobre</a></li>
                 <li><a href="#services">Serviços</a></li>
                 <li><a href="#why-us">Diferenciais</a></li>
-                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#partner">Parceiro</a></li>
                 <li><a href="#contact">Contato</a></li>
                 <li><a href="index.html" class="lang-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>EN</a></li>
             </ul>
@@ -224,17 +236,37 @@
         </div>
     </nav>
 
+    <!-- Hero Section - Side by Side Layout -->
     <section class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">Parceiro de Tecnologia nos EUA</span>
-            <h1>Engenharia de Classe Mundial<br><em>Com Preços Competitivos</em></h1>
-            <p>Conectamos empresas globais com talentos técnicos de elite dos principais institutos de pesquisa do Brasil. Contratos americanos, suporte americano, excelência brasileira.</p>
-            <div class="hero-buttons">
-                <a href="#portfolio" class="btn btn-primary">Ver Nosso Trabalho</a>
-                <a href="#contact" class="btn btn-secondary">Iniciar Conversa</a>
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-tag">Parceiro de Tecnologia nos EUA</span>
+                <h1>Engenharia de Classe Mundial<span class="highlight">Com Preços Competitivos</span></h1>
+                <p class="hero-description">Conectamos empresas globais com talentos técnicos de elite dos principais institutos de pesquisa do Brasil. Contratos americanos, faturamento em USD e termos comerciais familiares, respaldados por mais de 20 anos de excelência comprovada em P&D.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Iniciar Conversa</a>
+                    <a href="#services" class="btn btn-secondary">Explorar Serviços</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">20+</div>
+                    <div class="hero-stat-label">Anos de Experiência</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">2.000+</div>
+                    <div class="hero-stat-label">Projetos Entregues</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">Até 50%</div>
+                    <div class="hero-stat-label">Economia de Custos</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">100%</div>
+                    <div class="hero-stat-label">Contratação via EUA</div>
+                </div>
             </div>
         </div>
-        <div class="scroll-indicator">Role</div>
     </section>
 
     <section class="about" id="about">
@@ -252,10 +284,10 @@
                 </div>
                 <div class="about-stats">
                     <div class="stats-grid">
-                        <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label">Anos de Histórico do Instituto</div></div>
-                        <div class="stat-item"><div class="stat-number">2.000+</div><div class="stat-label">Projetos Entregues</div></div>
-                        <div class="stat-item"><div class="stat-number">Até 60%</div><div class="stat-label">Economia vs. Taxas EUA</div></div>
-                        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Contratos nos EUA</div></div>
+                        <div class="stat-card"><div class="stat-number">+250</div><div class="stat-label">Profissionais</div></div>
+                        <div class="stat-card"><div class="stat-number">+30</div><div class="stat-label">Projetos em Execução</div></div>
+                        <div class="stat-card"><div class="stat-number">+20</div><div class="stat-label">Parceiros Atuais</div></div>
+                        <div class="stat-card"><div class="stat-number">+30M</div><div class="stat-label">R$/Ano</div></div>
                     </div>
                 </div>
             </div>
@@ -266,7 +298,7 @@
         <div class="container">
             <div class="section-header"><h2>Como Podemos Ajudar</h2><p>De protótipos rápidos a sistemas de escala empresarial, entregamos excelência técnica em todo o ciclo de desenvolvimento.</p></div>
             <div class="services-grid">
-                <div class="service-card"><div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg></div><h3>Desenvolvimento Customizado</h3><p>De MVPs a sistemas empresariais, soluções web, mobile, backend e cloud construídas sob medida. Transformamos sua visão em software pronto para produção.</p></div>
+                <div class="service-card"><div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg></div><h3>Desenvolvimento Customizado</h3><p>De MVPs a sistemas empresariais: soluções web, mobile, backend e cloud construídas sob medida. Transformamos sua visão em software pronto para produção.</p></div>
                 <div class="service-card"><div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg></div><h3>P&D e Inovação</h3><p>Acesse capacidades de pesquisa para desafios técnicos complexos, prototipagem e tecnologias emergentes. Aproveite décadas de expertise acadêmica e industrial.</p></div>
                 <div class="service-card"><div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg></div><h3>Extensão de Equipe</h3><p>Escale sua capacidade de engenharia com profissionais dedicados que se integram perfeitamente ao seu time existente. Modelos de engajamento flexíveis.</p></div>
             </div>
@@ -279,32 +311,31 @@
             <div class="why-grid">
                 <div class="why-card"><span class="why-number">1</span><h3>Empresa EUA, Contratos EUA</h3><p>Você trabalha com uma LLC da Flórida. MSAs, NDAs e SOWs padrão. Faturamento em USD. Sem complicações com transferências internacionais ou estruturas legais estrangeiras.</p></div>
                 <div class="why-card"><span class="why-number">2</span><h3>Qualidade de Instituto</h3><p>Nossos parceiros técnicos não são freelancers ou recém-formados de bootcamp. São pesquisadores e engenheiros dos principais institutos de P&D do Brasil, as mesmas equipes que constroem soluções para gigantes automotivos e líderes de telecom.</p></div>
-                <div class="why-card"><span class="why-number">3</span><h3>Vantagem de Custo Significativa</h3><p>Economize até 60% comparado a empresas de desenvolvimento americanas—sem sacrificar qualidade. Nosso modelo aproveita o excepcional pool de talentos técnicos do Brasil.</p></div>
+                <div class="why-card"><span class="why-number">3</span><h3>Vantagem de Custo Significativa</h3><p>Economize até 50% comparado a empresas de desenvolvimento americanas, sem sacrificar qualidade. Nosso modelo aproveita o excepcional pool de talentos técnicos do Brasil.</p></div>
             </div>
         </div>
     </section>
 
-    <section class="portfolio" id="portfolio">
+    <!-- Partner Section -->
+    <section class="partner" id="partner">
         <div class="container">
-            <div class="section-header"><h2>Nosso Trabalho</h2><p>Resultados comprovados em diversos setores. Veja o que construímos.</p></div>
-            <div class="portfolio-card">
-                <div class="portfolio-content">
-                    <span class="portfolio-badge">Projeto em Destaque</span>
-                    <h3>SW3 Innovations</h3>
-                    <p class="portfolio-subtitle">Plataforma de Retenção de Clientes com IA</p>
-                    <p>Desenvolvemos uma plataforma inteligente que prevê churn de clientes e automatiza campanhas de retenção via WhatsApp para o setor de restaurantes.</p>
-                    <div class="portfolio-section"><h4>O Desafio</h4><p>70% dos clientes de restaurantes nunca retornam após a primeira visita. Soluções tradicionais de CRM são muito caras e complexas para pequenos negócios.</p></div>
-                    <div class="portfolio-section"><h4>Nossa Solução</h4><ul><li>Modelos de machine learning analisando padrões de transação</li><li>Campanhas automatizadas e personalizadas via WhatsApp</li><li>Integração com principais plataformas de delivery e PDVs</li><li>Dashboard simples projetado para usuários não técnicos</li></ul></div>
-                    <div class="portfolio-tech"><h4>Tecnologias</h4><div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">Machine Learning</span><span class="tech-tag">WhatsApp API</span><span class="tech-tag">Cloud Infrastructure</span><span class="tech-tag">React</span></div></div>
+            <div class="section-header"><h2>Nosso Parceiro Estratégico</h2><p>Fazemos parceria com o principal instituto de P&D do Brasil para entregar soluções de engenharia de classe mundial.</p></div>
+            <div class="partner-card">
+                <div class="partner-content">
+                    <h3>VIRTUS <em>CEEI, UFCG</em></h3>
+                    <p>O VIRTUS faz parte do Centro de Engenharia Elétrica e Informática da Universidade Federal de Campina Grande (UFCG), uma das principais universidades técnicas do Brasil.</p>
+                    <p>Completamente focado em projetos de Pesquisa, Desenvolvimento e Inovação com parceiros da indústria, o VIRTUS entregou soluções para líderes globais de tecnologia incluindo Samsung, LG, Motorola, HP, Foxconn e muitos outros.</p>
+                    <p><strong>Certificações:</strong> ISO 9001 Gestão da Qualidade, Processos CMMI, Metodologia Ágil/Scrum, NDA e Proteção de IP.</p>
+                    <a href="https://www.virtus.ufcg.edu.br/" target="_blank" rel="noopener" class="partner-link">
+                        Visitar Site do VIRTUS
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
                 </div>
-                <div class="portfolio-details">
-                    <div class="portfolio-stats">
-                        <div class="portfolio-stat"><div class="portfolio-stat-value">70%</div><div class="portfolio-stat-label">Churn de clientes endereçado</div></div>
-                        <div class="portfolio-stat"><div class="portfolio-stat-value">R$199</div><div class="portfolio-stat-label">Preço mensal SaaS</div></div>
-                        <div class="portfolio-stat"><div class="portfolio-stat-value">85%+</div><div class="portfolio-stat-label">Margem bruta</div></div>
-                        <div class="portfolio-stat"><div class="portfolio-stat-value">Full-Stack</div><div class="portfolio-stat-label">Entrega ponta a ponta</div></div>
-                    </div>
-                    <div style="margin-top: 2rem; text-align: center;"><a href="#contact" class="btn btn-primary">Interessado em projeto similar?</a></div>
+                <div class="partner-stats">
+                    <div class="partner-stat"><div class="partner-stat-value">+250</div><div class="partner-stat-label">Profissionais</div></div>
+                    <div class="partner-stat"><div class="partner-stat-value">+30</div><div class="partner-stat-label">Projetos em Execução</div></div>
+                    <div class="partner-stat"><div class="partner-stat-value">+20</div><div class="partner-stat-label">Parceiros Atuais</div></div>
+                    <div class="partner-stat"><div class="partner-stat-value">+30M</div><div class="partner-stat-label">R$/Ano</div></div>
                 </div>
             </div>
         </div>
@@ -334,7 +365,11 @@
                 <svg width="32" height="32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="88" fill="#1B365D"/><rect x="78" y="42" width="44" height="116" rx="3" fill="#FFFFFF"/><rect x="58" y="42" width="84" height="22" rx="3" fill="#FFFFFF"/><rect x="58" y="136" width="84" height="22" rx="3" fill="#FFFFFF"/><ellipse cx="100" cy="100" rx="95" ry="28" fill="none" stroke="#C9A227" stroke-width="7" transform="rotate(-20 100 100)"/><circle cx="178" cy="72" r="12" fill="#C9A227"/></svg>
                 <span>IMOBI ALL Holdings</span>
             </div>
-            <p>&copy; 2026 IMOBI ALL Holdings LLC. Todos os direitos reservados. | Florida, USA | Campina Grande, Brazil</p>
+            <div class="footer-links">
+                <a href="https://www.imobiallholdings.com" target="_blank">imobiallholdings.com</a>
+                <a href="https://www.virtus.ufcg.edu.br/" target="_blank">virtus.ufcg.edu.br</a>
+            </div>
+            <p>&copy; 2026 IMOBI ALL Holdings LLC. Todos os direitos reservados. | Flórida, EUA | Campina Grande, Brasil</p>
         </div>
     </footer>
 
