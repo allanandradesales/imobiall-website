@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Thank You | IMOBI Holdings</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --navy: #1B365D;
+            --navy-light: #2A4A7A;
+            --gold: #C9A227;
+            --gold-light: #D4AF37;
+            --white: #FFFFFF;
+            --gray: #6B7280;
+            --gray-light: #F8F9FA;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--navy);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        
+        .logo-symbol {
+            width: 48px;
+            height: 48px;
+        }
+        
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--white);
+        }
+        
+        .logo-text span {
+            color: var(--gold);
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        /* Success Icon */
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.5s ease-out;
+        }
+        
+        .success-icon svg {
+            width: 50px;
+            height: 50px;
+            stroke: var(--navy);
+            stroke-width: 3;
+            fill: none;
+        }
+        
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Typography */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        h1 span {
+            color: var(--gold);
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        /* What's Next Box */
+        .next-steps {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .next-steps h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.25rem;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: var(--gold);
+            color: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            color: var(--white);
+            font-size: 1rem;
+            line-height: 1.5;
+            padding-top: 2px;
+        }
+        
+        .step-text strong {
+            color: var(--gold);
+        }
+        
+        /* CTA */
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-text {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        .footer-text a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .next-steps {
+                padding: 1.5rem;
+            }
+            
+            .cta-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+    
+    <!-- Google Analytics - GA4 Event -->
+    <script>
+        // Disparar evento de conversão quando a página carrega
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        
+        // Evento de conversão
+        gtag('event', 'conversion', {
+            'event_category': 'Contact',
+            'event_label': 'Contact Form Submitted'
+        });
+        
+        gtag('event', 'generate_lead', {
+            'event_category': 'Contact',
+            'value': 1
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <svg class="logo-symbol" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- I com serifas -->
+                <rect x="38" y="20" width="24" height="60" fill="white"/>
+                <rect x="28" y="20" width="44" height="10" fill="white"/>
+                <rect x="28" y="70" width="44" height="10" fill="white"/>
+                <!-- Órbita -->
+                <ellipse cx="50" cy="50" rx="42" ry="18" stroke="#C9A227" stroke-width="4" transform="rotate(-15 50 50)"/>
+                <!-- Nó -->
+                <circle cx="82" cy="38" r="6" fill="#C9A227"/>
+            </svg>
+            <div class="logo-text">IMOBI <span>ALL</span> Holdings</div>
+        </a>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            
+            <h1>Message <span>Received!</span></h1>
+            
+            <p class="subtitle">
+                Thank you for reaching out. We'll review your inquiry and get back to you within 24 hours.
+            </p>
+            
+            <div class="next-steps">
+                <h2>What Happens Next</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">Our team reviews your message and <strong>prepares a tailored response</strong></div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">We'll reach out via email to <strong>schedule an introductory call</strong></div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">On the call, we'll discuss your needs and <strong>explore how we can help</strong></div>
+                </div>
+            </div>
+            
+            <div class="cta-group">
+                <a href="index.html" class="btn btn-primary">
+                    ← Back to Home
+                </a>
+                <a href="https://www.linkedin.com/company/imobiallholdings" target="_blank" class="btn btn-secondary">
+                    Follow on LinkedIn
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p class="footer-text">
+            Questions? Email us at <a href="mailto:contact@imobiallholdings.com">contact@imobiallholdings.com</a>
+        </p>
+    </footer>
+</body>
+</html>
