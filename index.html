@@ -1237,11 +1237,11 @@
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3>Let's Discuss Your Needs</h3>
-                    <a href="/cdn-cgi/l/email-protection#52313d3c26333126123b3f3d303b333e3e3a3d3e363b3c35217c313d3f" class="contact-email">
+                    <a href="mailto:contact@imobiallholdings.com" class="contact-email">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
-                        <span class="__cf_email__" data-cfemail="2a4945445e4b495e6a43474548434b46464245464e43444d5904494547">[email&#160;protected]</span>
+                        contact@imobiallholdings.com
                     </a>
                     
                     <div class="contact-process">
@@ -1286,7 +1286,7 @@
                 <div class="contact-cta">
                     <h3>Ready to Get Started?</h3>
                     <p>Whether you need a dedicated development team, a specific technical solution, or R&D capabilities, we're here to help!</p>
-                    <a href="/cdn-cgi/l/email-protection#40232f2e3421233400292d2f2229212c2c282f2c24292e27336e232f2d" class="btn btn-primary">Send Us a Message</a>
+                    <a href="mailto:contact@imobiallholdings.com" class="btn btn-primary">Send Us a Message</a>
                 </div>
             </div>
         </div>
@@ -1315,9 +1315,10 @@
     </footer>
 
     <!-- JavaScript -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
+        // Scroll effect
         window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
+            var navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
@@ -1325,17 +1326,33 @@
             }
         });
 
-        document.getElementById('mobileMenu').addEventListener('click', function() {
-            document.getElementById('navLinks').classList.toggle('active');
+        // Mobile menu toggle
+        var mobileMenu = document.getElementById('mobileMenu');
+        var navLinks = document.getElementById('navLinks');
+        
+        mobileMenu.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
         });
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('active');
+        // Close menu when clicking a link
+        var links = document.querySelectorAll('.nav-links a');
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', function() {
+                navLinks.classList.remove('active');
             });
-        });
+        }
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // Smooth scroll for anchor links
+        var anchors = document.querySelectorAll('a[href^="#"]');
+        for (var j = 0; j < anchors.length; j++) {
+            anchors[j].addEventListener('click', function(e) {
                 e.preventDefault();
-                const targe
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
