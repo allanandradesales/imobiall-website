@@ -30,13 +30,10 @@
             --gray-800: #343A40;
             --green: #28A745;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--gray-800); line-height: 1.6; background: var(--white); }
         h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; line-height: 1.2; }
-
-        /* Navigation */
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(27, 54, 93, 0.95); backdrop-filter: blur(10px); padding: 0.75rem 0; transition: all 0.3s ease; }
         nav.scrolled { padding: 0.5rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
         .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
@@ -52,8 +49,6 @@
         .lang-btn:hover { background: var(--gold); color: var(--navy); }
         .mobile-menu { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
         .mobile-menu span { width: 25px; height: 2px; background: var(--white); transition: all 0.3s ease; }
-
-        /* Hero */
         .hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; padding: 6rem 2rem 4rem; position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 200%; background: linear-gradient(135deg, var(--navy-light) 0%, transparent 60%); transform: rotate(-15deg); z-index: 0; }
         .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
@@ -69,8 +64,6 @@
         .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3); }
         .btn-secondary { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
         .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
-
-        /* Commission Cards */
         .commission-cards { display: flex; flex-direction: column; gap: 1rem; }
         .commission-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 1.5rem; display: flex; align-items: center; gap: 1rem; transition: all 0.3s ease; }
         .commission-card:hover { background: rgba(255,255,255,0.12); border-color: var(--gold); transform: translateX(5px); }
@@ -79,15 +72,11 @@
         .commission-content h3 { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
         .commission-content p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
         .commission-highlight { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); margin-left: auto; }
-
-        /* Sections */
         section { padding: 6rem 2rem; }
         .container { max-width: 1200px; margin: 0 auto; }
         .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
         .section-header h2 { font-size: clamp(2rem, 4vw, 2.75rem); color: var(--navy); margin-bottom: 1rem; }
         .section-header p { font-size: 1.1rem; color: var(--gray-600); }
-
-        /* Why Partner */
         .why-partner { background: var(--gray-100); }
         .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
         .benefit-card { background: var(--white); border-radius: 16px; padding: 2.5rem; text-align: center; transition: all 0.3s ease; border: 1px solid transparent; }
@@ -96,8 +85,6 @@
         .benefit-icon svg { width: 32px; height: 32px; color: var(--gold); }
         .benefit-card h3 { font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--navy); margin-bottom: 1rem; }
         .benefit-card p { color: var(--gray-600); font-size: 0.95rem; line-height: 1.7; }
-
-        /* Ideal Profile */
         .ideal-profile { background: var(--white); }
         .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
         .profile-content h2 { font-size: clamp(2rem, 4vw, 2.5rem); color: var(--navy); margin-bottom: 1.5rem; }
@@ -113,8 +100,6 @@
         .not-looking ul { list-style: none; color: var(--gray-600); font-size: 0.95rem; }
         .not-looking ul li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; }
         .not-looking ul li::before { content: '✕'; position: absolute; left: 0; color: #dc3545; font-weight: bold; }
-
-        /* How It Works */
         .how-it-works { background: var(--gray-100); }
         .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
         .step-card { text-align: center; position: relative; }
@@ -123,8 +108,6 @@
         .step-number { width: 60px; height: 60px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); }
         .step-card h3 { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
         .step-card p { color: var(--gray-600); font-size: 0.9rem; }
-
-        /* CTA */
         .cta { background: var(--navy); color: var(--white); }
         .cta-container { text-align: center; max-width: 700px; margin: 0 auto; }
         .cta h2 { font-size: clamp(2rem, 4vw, 2.75rem); color: var(--white); margin-bottom: 1rem; }
@@ -133,8 +116,6 @@
         .cta-email:hover { color: var(--gold-light); }
         .cta-email svg { width: 28px; height: 28px; }
         .cta-note { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 2rem; }
-
-        /* Footer */
         footer { background: var(--navy-dark); color: rgba(255,255,255,0.6); padding: 2rem; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
         .footer-logo { display: flex; align-items: center; gap: 0.5rem; }
@@ -143,8 +124,6 @@
         .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
         .footer-links a:hover { color: var(--gold); }
         footer p { font-size: 0.85rem; }
-
-        /* Responsive */
         @media (max-width: 1024px) {
             .hero-container, .profile-grid { grid-template-columns: 1fr; gap: 3rem; }
             .hero-content { max-width: 100%; text-align: center; }
@@ -189,13 +168,12 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#services">Services</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="partners-pt.html" class="lang-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>PT</a></li>
+                <li><a href="partners-pt.html" class="lang-btn">PT</a></li>
             </ul>
             <div class="mobile-menu" id="mobileMenu"><span></span><span></span><span></span></div>
         </div>
     </nav>
 
-    <!-- Hero -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
@@ -252,7 +230,6 @@
         </div>
     </section>
 
-    <!-- Why Partner -->
     <section class="why-partner">
         <div class="container">
             <div class="section-header">
@@ -285,7 +262,6 @@
         </div>
     </section>
 
-    <!-- Ideal Profile -->
     <section class="ideal-profile" id="profile">
         <div class="container">
             <div class="profile-grid">
@@ -338,7 +314,6 @@
         </div>
     </section>
 
-    <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
         <div class="container">
             <div class="section-header">
@@ -370,7 +345,6 @@
         </div>
     </section>
 
-    <!-- CTA -->
     <section class="cta" id="apply">
         <div class="container">
             <div class="cta-container">
@@ -388,7 +362,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
@@ -400,15 +373,27 @@
                 <a href="index.html#services">Services</a>
                 <a href="index.html#contact">Contact</a>
             </div>
-            <p>&copy; 2026 IMOBI ALL Holdings LLC. All rights reserved.</p>
+            <p>© 2026 IMOBI ALL Holdings LLC. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        window.addEventListener('scroll', function() { const navbar = document.getElementById('navbar'); if (window.scrollY > 50) { navbar.classList.add('scrolled'); } else { navbar.classList.remove('scrolled'); } });
-        document.getElementById('mobileMenu').addEventListener('click', function() { document.getElementById('navLinks').classList.toggle('active'); });
-        document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('active'); }); });
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
