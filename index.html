@@ -211,7 +211,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Hero Section - Redesigned */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             background: var(--navy);
@@ -708,7 +708,7 @@
             align-items: center;
             gap: 0.75rem;
             color: var(--gold);
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             text-decoration: none;
             margin-bottom: 2rem;
             transition: all 0.3s ease;
@@ -719,8 +719,8 @@
         }
 
         .contact-email svg {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
         }
 
         .contact-process h4 {
@@ -782,21 +782,114 @@
             color: var(--gold);
         }
 
-        .contact-cta {
+        /* Contact Form */
+        .contact-form-wrapper {
             background: rgba(255,255,255,0.05);
             border-radius: 16px;
             padding: 2.5rem;
-            text-align: center;
         }
 
-        .contact-cta h3 {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
+        .contact-form-wrapper h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        .contact-cta p {
+        .contact-form-wrapper > p {
             color: rgba(255,255,255,0.7);
             margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .form-group label .required {
+            color: var(--gold);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.875rem 1rem;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23C9A227'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.25rem;
+            padding-right: 3rem;
+        }
+
+        .form-group select option {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            margin-top: 0.5rem;
+        }
+
+        .form-submit .btn {
+            width: 100%;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-size: 1.05rem;
+        }
+
+        .form-note {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            margin-top: 1rem;
         }
 
         /* Footer */
@@ -980,6 +1073,10 @@
                 justify-content: center;
             }
 
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
             .footer-content {
                 flex-direction: column;
                 text-align: center;
@@ -1034,7 +1131,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Redesigned -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
@@ -1056,7 +1153,7 @@
                     <div class="hero-stat-label">Projects Delivered</div>
                 </div>
                 <div class="hero-stat">
-                    <div class="hero-stat-value">Up to 50%</div>
+                    <div class="hero-stat-value">30%+</div>
                     <div class="hero-stat-label">Cost Savings</div>
                 </div>
                 <div class="hero-stat">
@@ -1179,7 +1276,7 @@
                 <div class="why-card">
                     <span class="why-number">3</span>
                     <h3>Significant Cost Advantage</h3>
-                    <p>Get up to 50% savings compared to US development shops, without sacrificing quality. Our model leverages Brazil's exceptional technical talent pool and favorable economics.</p>
+                    <p>Save at least 30% compared to US development shops, without sacrificing quality. Our model leverages Brazil's exceptional technical talent pool and favorable economics.</p>
                 </div>
             </div>
         </div>
@@ -1283,10 +1380,78 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-cta">
-                    <h3>Ready to Get Started?</h3>
-                    <p>Whether you need a dedicated development team, a specific technical solution, or R&D capabilities, we're here to help!</p>
-                    <a href="mailto:contact@imobiallholdings.com" class="btn btn-primary">Send Us a Message</a>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h3>Send Us a Message</h3>
+                    <p>Fill out the form and we'll get back to you shortly.</p>
+                    
+                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms Access Key - Get yours free at web3forms.com -->
+                        <input type="hidden" name="access_key" value="31c0d468-13d6-4c79-8e66-68f95b169c46">
+                        
+                        <!-- Redirect to thank you page -->
+                        <input type="hidden" name="redirect" value="https://www.imobiallholdings.com/thank-you">
+                        
+                        <!-- Form identification -->
+                        <input type="hidden" name="from_name" value="IMOBI Website Contact">
+                        <input type="hidden" name="subject" value="New Contact from IMOBI Website">
+                        
+                        <!-- Honeypot Spam Protection -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company" placeholder="Your company">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interest">What are you interested in?</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select an option</option>
+                                <option value="Custom Development">Custom Software Development</option>
+                                <option value="R&D Services">R&D & Innovation Services</option>
+                                <option value="Team Extension">Team Extension / Staff Augmentation</option>
+                                <option value="AI/ML Solutions">AI/ML Solutions</option>
+                                <option value="IoT Solutions">IoT Solutions</option>
+                                <option value="Partnership">Partnership Opportunity</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Tell us about your project <span class="required">*</span></label>
+                            <textarea id="message" name="message" placeholder="Describe your project, timeline, and any specific requirements..." required></textarea>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-primary">
+                                Send Message
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <p class="form-note">We respect your privacy. Your information will never be shared.</p>
+                    </form>
                 </div>
             </div>
         </div>
