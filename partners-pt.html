@@ -1185,7 +1185,7 @@
             });
         });
     </script>
-    <!-- ============================================
+   <!-- ============================================
      IMOBI CHATBOT WIDGET v3.0 - PORTUGUÊS
      Com Claude API + Geração de Propostas
      ============================================ -->
@@ -1463,6 +1463,7 @@
   window.imobiCancelProposal = function(){
     var form = document.getElementById('imobi-proposal-form');
     if(form) form.remove();
+    isLoading = false;
     addBot("Sem problemas! Me avise se precisar de algo.", ['Nossos Serviços', 'Preços']);
   };
   
@@ -1470,6 +1471,7 @@
     var msgLower = userMessage.toLowerCase();
     if(msgLower.includes('proposta') || msgLower.includes('orçamento')){
       hideTyping();
+      isLoading = false;
       addBot("Vou gerar uma proposta personalizada para você!", null);
       setTimeout(showProposalForm, 500);
       return;
