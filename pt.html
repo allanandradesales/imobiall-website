@@ -1527,27 +1527,29 @@
             });
         }
     </script>
-    !-- ============================================
-     IMOBI CHATBOT WIDGET v2.0
+    <!-- ============================================
+     IMOBI CHATBOT WIDGET v3.0
+     Com Claude API + Geração de Propostas
      ============================================ -->
+
 <style>
   @keyframes imobiPulse{0%,100%{box-shadow:0 0 20px rgba(201,162,39,0.4)}50%{box-shadow:0 0 35px rgba(201,162,39,0.7)}}
   @keyframes imobiFade{from{opacity:0;transform:translateY(10px)scale(0.95)}to{opacity:1;transform:translateY(0)scale(1)}}
   @keyframes imobiBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
   
-  #imobi-chatbot-toggle{position:fixed;bottom:24px;right:24px;width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--navy) 0%,#0a1628 100%);border:2px solid var(--gold);cursor:pointer;box-shadow:0 4px 25px rgba(201,162,39,0.5);display:flex;align-items:center;justify-content:center;z-index:99999;animation:imobiPulse 2.5s infinite;transition:transform 0.2s}
+  #imobi-chatbot-toggle{position:fixed;bottom:24px;right:24px;width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--navy,#1B365D) 0%,#0a1628 100%);border:2px solid var(--gold,#C9A227);cursor:pointer;box-shadow:0 4px 25px rgba(201,162,39,0.5);display:flex;align-items:center;justify-content:center;z-index:99999;animation:imobiPulse 2.5s infinite;transition:transform 0.2s}
   #imobi-chatbot-toggle:hover{transform:scale(1.08)}
   #imobi-chatbot-toggle.hidden{display:none}
   #imobi-chatbot-toggle svg{width:48px;height:48px}
   
-  #imobi-chatbot-window{position:fixed;bottom:24px;right:24px;width:380px;height:560px;background:linear-gradient(180deg,#0F172A 0%,var(--navy) 100%);border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,0.5),0 0 40px rgba(201,162,39,0.15);display:none;flex-direction:column;overflow:hidden;z-index:99999;border:1px solid rgba(201,162,39,0.4);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
+  #imobi-chatbot-window{position:fixed;bottom:24px;right:24px;width:400px;height:600px;background:linear-gradient(180deg,#0F172A 0%,#1B365D 100%);border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,0.5),0 0 40px rgba(201,162,39,0.15);display:none;flex-direction:column;overflow:hidden;z-index:99999;border:1px solid rgba(201,162,39,0.4);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
   #imobi-chatbot-window.open{display:flex;animation:imobiFade 0.3s ease-out}
   
-  .imobi-chat-header{padding:14px 18px;background:linear-gradient(90deg,var(--navy),#0a1628);border-bottom:1px solid rgba(201,162,39,0.3);display:flex;align-items:center;gap:12px}
+  .imobi-chat-header{padding:14px 18px;background:linear-gradient(90deg,#1B365D,#0a1628);border-bottom:1px solid rgba(201,162,39,0.3);display:flex;align-items:center;gap:12px}
   .imobi-chat-header svg{width:42px;height:42px;flex-shrink:0}
   .imobi-chat-header-info{flex:1}
-  .imobi-chat-header-title{color:var(--white);font-weight:600;font-size:15px}
-  .imobi-chat-header-status{color:var(--gold);font-size:11px}
+  .imobi-chat-header-title{color:#fff;font-weight:600;font-size:15px}
+  .imobi-chat-header-status{color:#C9A227;font-size:11px}
   .imobi-chat-close{background:rgba(255,255,255,0.1);border:none;color:#999;width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
   .imobi-chat-close:hover{background:rgba(255,255,255,0.2)}
   
@@ -1555,42 +1557,50 @@
   .imobi-msg{margin-bottom:12px;animation:imobiFade 0.3s ease-out}
   .imobi-msg.bot{align-self:flex-start}
   .imobi-msg.user{align-self:flex-end}
-  .imobi-msg-bubble{max-width:85%;padding:12px 16px;color:var(--white);font-size:14px;line-height:1.5;white-space:pre-wrap}
-  .imobi-msg.bot .imobi-msg-bubble{border-radius:4px 16px 16px 16px;background:linear-gradient(135deg,var(--navy),#0a1628);box-shadow:0 2px 12px rgba(27,54,93,0.5);border:1px solid rgba(201,162,39,0.2)}
-  .imobi-msg.user .imobi-msg-bubble{border-radius:16px 4px 16px 16px;background:linear-gradient(135deg,var(--gold),#a08520);box-shadow:0 2px 12px rgba(201,162,39,0.4)}
+  .imobi-msg-bubble{max-width:85%;padding:12px 16px;color:#fff;font-size:14px;line-height:1.6;white-space:pre-wrap}
+  .imobi-msg.bot .imobi-msg-bubble{border-radius:4px 16px 16px 16px;background:linear-gradient(135deg,#1B365D,#0a1628);box-shadow:0 2px 12px rgba(27,54,93,0.5);border:1px solid rgba(201,162,39,0.2)}
+  .imobi-msg.user .imobi-msg-bubble{border-radius:16px 4px 16px 16px;background:linear-gradient(135deg,#C9A227,#a08520);box-shadow:0 2px 12px rgba(201,162,39,0.4)}
   .imobi-msg-time{font-size:10px;opacity:0.5;margin-top:5px}
   .imobi-msg.bot .imobi-msg-time{text-align:left}
   .imobi-msg.user .imobi-msg-time{text-align:right}
   
   .imobi-qr{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-  .imobi-qr-btn{padding:8px 14px;background:rgba(201,162,39,0.1);border:1px solid rgba(201,162,39,0.4);border-radius:18px;color:var(--gold);font-size:12px;cursor:pointer;transition:all 0.2s}
+  .imobi-qr-btn{padding:8px 14px;background:rgba(201,162,39,0.1);border:1px solid rgba(201,162,39,0.4);border-radius:18px;color:#C9A227;font-size:12px;cursor:pointer;transition:all 0.2s}
   .imobi-qr-btn:hover{background:rgba(201,162,39,0.25);transform:translateY(-2px)}
   
   .imobi-typing{display:flex;gap:5px;padding:12px 16px;background:rgba(27,54,93,0.8);border-radius:4px 16px 16px 16px;width:fit-content;margin-bottom:12px}
-  .imobi-typing-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:imobiBounce 0.6s infinite}
+  .imobi-typing-dot{width:8px;height:8px;border-radius:50%;background:#C9A227;animation:imobiBounce 0.6s infinite}
   .imobi-typing-dot:nth-child(2){animation-delay:0.15s}
   .imobi-typing-dot:nth-child(3){animation-delay:0.3s}
   
-  .imobi-lead-form{background:rgba(27,54,93,0.95);border-radius:12px;padding:16px;margin:12px 0;border:1px solid rgba(201,162,39,0.35)}
-  .imobi-lead-form p{font-size:13px;margin-bottom:12px;color:#ccc}
-  .imobi-lead-form input{width:100%;padding:10px 12px;margin-bottom:10px;background:rgba(0,0,0,0.4);border:1px solid rgba(201,162,39,0.4);border-radius:8px;color:var(--white);font-size:13px;outline:none;box-sizing:border-box}
-  .imobi-lead-form input:focus{border-color:var(--gold)}
-  .imobi-lead-form input::placeholder{color:#666}
-  .imobi-lead-btns{display:flex;gap:8px;margin-top:8px}
-  .imobi-lead-submit{flex:1;padding:10px;background:linear-gradient(135deg,var(--gold),#a08520);border:none;border-radius:8px;color:var(--navy);font-size:13px;font-weight:600;cursor:pointer}
-  .imobi-lead-skip{padding:10px 16px;background:transparent;border:1px solid rgba(255,255,255,0.2);border-radius:8px;color:#888;font-size:13px;cursor:pointer}
+  .imobi-proposal-form{background:rgba(27,54,93,0.95);border-radius:12px;padding:16px;margin:12px 0;border:1px solid rgba(201,162,39,0.35)}
+  .imobi-proposal-form h4{color:#C9A227;font-size:14px;margin-bottom:12px}
+  .imobi-proposal-form p{font-size:12px;margin-bottom:12px;color:#aaa}
+  .imobi-proposal-form input,.imobi-proposal-form select,.imobi-proposal-form textarea{width:100%;padding:10px 12px;margin-bottom:10px;background:rgba(0,0,0,0.4);border:1px solid rgba(201,162,39,0.4);border-radius:8px;color:#fff;font-size:13px;outline:none;box-sizing:border-box;font-family:inherit}
+  .imobi-proposal-form input:focus,.imobi-proposal-form select:focus,.imobi-proposal-form textarea:focus{border-color:#C9A227}
+  .imobi-proposal-form input::placeholder,.imobi-proposal-form textarea::placeholder{color:#666}
+  .imobi-proposal-form select{cursor:pointer}
+  .imobi-proposal-form select option{background:#1B365D;color:#fff}
+  .imobi-proposal-form textarea{min-height:80px;resize:vertical}
+  .imobi-proposal-btns{display:flex;gap:8px;margin-top:8px}
+  .imobi-proposal-submit{flex:1;padding:12px;background:linear-gradient(135deg,#C9A227,#a08520);border:none;border-radius:8px;color:#1B365D;font-size:13px;font-weight:600;cursor:pointer;transition:transform 0.2s}
+  .imobi-proposal-submit:hover{transform:translateY(-1px)}
+  .imobi-proposal-submit:disabled{opacity:0.6;cursor:not-allowed}
+  .imobi-proposal-cancel{padding:12px 16px;background:transparent;border:1px solid rgba(255,255,255,0.2);border-radius:8px;color:#888;font-size:13px;cursor:pointer}
   
   .imobi-chat-input{padding:14px;border-top:1px solid rgba(201,162,39,0.2);background:rgba(0,0,0,0.35)}
   .imobi-chat-input-wrap{display:flex;gap:10px;align-items:center}
-  .imobi-chat-input input{flex:1;padding:12px 16px;background:rgba(0,0,0,0.4);border:1px solid rgba(201,162,39,0.3);border-radius:24px;color:var(--white);font-size:14px;outline:none}
-  .imobi-chat-input input:focus{border-color:var(--gold)}
+  .imobi-chat-input input{flex:1;padding:12px 16px;background:rgba(0,0,0,0.4);border:1px solid rgba(201,162,39,0.3);border-radius:24px;color:#fff;font-size:14px;outline:none}
+  .imobi-chat-input input:focus{border-color:#C9A227}
   .imobi-chat-input input::placeholder{color:#555}
-  .imobi-chat-send{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#a08520);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+  .imobi-chat-send{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#C9A227,#a08520);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
   .imobi-chat-send:disabled{background:rgba(201,162,39,0.25);cursor:not-allowed}
-  .imobi-chat-send svg{width:20px;height:20px;fill:var(--navy)}
+  .imobi-chat-send svg{width:20px;height:20px;fill:#1B365D}
   .imobi-chat-footer{text-align:center;font-size:9px;color:#444;margin-top:8px}
+  .imobi-powered{display:flex;align-items:center;justify-content:center;gap:4px}
+  .imobi-powered svg{width:12px;height:12px}
   
-  @media(max-width:420px){
+  @media(max-width:440px){
     #imobi-chatbot-window{width:calc(100vw - 16px);height:calc(100vh - 90px);bottom:8px;right:8px;border-radius:16px}
     #imobi-chatbot-toggle{bottom:16px;right:16px;width:60px;height:60px}
   }
@@ -1604,7 +1614,7 @@
   <div class="imobi-chat-header">
     <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="#1B365D" stroke="#C9A227" stroke-width="1.5"/><ellipse cx="50" cy="50" rx="26" ry="11" fill="none" stroke="#C9A227" stroke-width="2.5" transform="rotate(-15 50 50)"/><rect x="44" y="28" width="12" height="44" rx="3" fill="#C9A227"/><rect x="38" y="28" width="24" height="6" rx="2" fill="#C9A227"/><rect x="38" y="66" width="24" height="6" rx="2" fill="#C9A227"/></svg>
     <div class="imobi-chat-header-info">
-      <div class="imobi-chat-header-title">IMOBI Assistant</div>
+      <div class="imobi-chat-header-title">NOVA - IMOBI Assistant</div>
       <div class="imobi-chat-header-status" id="imobi-status">Online</div>
     </div>
     <button class="imobi-chat-close" onclick="imobiToggleChat()">×</button>
@@ -1612,115 +1622,296 @@
   <div class="imobi-chat-messages" id="imobi-messages"></div>
   <div class="imobi-chat-input">
     <div class="imobi-chat-input-wrap">
-      <input type="text" id="imobi-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter')imobiSend()">
+      <input type="text" id="imobi-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter'&&!event.shiftKey)imobiSend()">
       <button class="imobi-chat-send" id="imobi-send-btn" onclick="imobiSend()" disabled>
         <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
       </button>
     </div>
-    <div class="imobi-chat-footer">Powered by IMOBI ALL Holdings</div>
+    <div class="imobi-chat-footer">
+      <div class="imobi-powered">
+        <svg viewBox="0 0 24 24" fill="#C9A227"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        Powered by Claude AI
+      </div>
+    </div>
   </div>
 </div>
 
 <script>
 (function(){
-  var isOpen=false,msgCount=0,leadDone=false;
-  var K={
-    hi:"Hello! I'm the IMOBI assistant. I can help you learn about our engineering services, discuss potential projects, or connect you with our team.\n\nHow can I help you today?",
-    about:"IMOBI ALL Holdings is a US-based technology company connecting global clients with Brazil's top R&D talent.\n\nThrough our partnership with Instituto VIRTUS (20+ years, 2,000+ projects), we deliver world-class engineering with minimum 30% cost savings.",
-    services:"We offer:\n\n• Custom Software Development\n• R&D & Innovation Services\n• Team Extension / Staff Augmentation\n• AI/ML Solutions\n• IoT & Embedded Systems\n\nWhich area interests you?",
-    pricing:"Our model leverages Brazil's premier research institutes to deliver exceptional quality with minimum 30% savings vs US rates.\n\nProjects typically range from $50K to $500K+.\n\nWant to discuss your specific needs?",
-    contact:"Reach us at:\n\n📧 contact@imobiallholdings.com\n📞 +1 407 205 9042\n🌐 imobiallholdings.com\n\nOr fill out the contact form on our website!",
-    partner:"Interested in becoming a Sales Partner?\n\nWe offer competitive commissions (15% initial + 10% residual) for qualified referrals.\n\nVisit our Partners page or email us to learn more!",
-    def:"I'd be happy to help! What would you like to know about IMOBI's engineering services?"
-  };
-  var QR={hi:['Our Services','Pricing','Contact'],services:['AI/ML','IoT','Custom Dev','Pricing'],def:['Services','Pricing','Contact']};
+  // ========== CONFIGURATION ==========
+  // IMPORTANT: Replace with your actual API endpoint after deploying to Vercel
+  var API_BASE = 'https://imobi-api.vercel.app/api';
   
-  window.imobiToggleChat=function(){
-    isOpen=!isOpen;
-    document.getElementById('imobi-chatbot-window').classList.toggle('open',isOpen);
-    document.getElementById('imobi-chatbot-toggle').classList.toggle('hidden',isOpen);
-    if(isOpen&&!document.getElementById('imobi-messages').children.length){
-      setTimeout(function(){showTyping()},300);
-      setTimeout(function(){hideTyping();addBot(K.hi,QR.hi)},1400);
+  // State
+  var isOpen = false;
+  var messages = []; // Conversation history for Claude
+  var isLoading = false;
+  var proposalData = {}; // Data collected for proposal
+  
+  // ========== CHAT FUNCTIONS ==========
+  
+  window.imobiToggleChat = function(){
+    isOpen = !isOpen;
+    document.getElementById('imobi-chatbot-window').classList.toggle('open', isOpen);
+    document.getElementById('imobi-chatbot-toggle').classList.toggle('hidden', isOpen);
+    if(isOpen && messages.length === 0){
+      // Initial greeting
+      setTimeout(function(){ showTyping() }, 300);
+      setTimeout(function(){
+        hideTyping();
+        var greeting = "Hello! I'm NOVA, the AI assistant for IMOBI ALL Holdings. I can help you learn about our engineering services, discuss potential projects, or even generate a custom proposal for you.\n\nHow can I help you today?";
+        addBot(greeting, ['Our Services', 'Get a Proposal', 'Pricing Info']);
+      }, 1000);
     }
   };
   
-  function ts(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}
+  function ts(){
+    return new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+  }
   
-  function addBot(txt,qr){
-    var c=document.getElementById('imobi-messages');
-    var m=document.createElement('div');m.className='imobi-msg bot';
-    m.innerHTML='<div class="imobi-msg-bubble">'+txt+'</div><div class="imobi-msg-time">'+ts()+'</div>';
+  function addBot(txt, qr){
+    var c = document.getElementById('imobi-messages');
+    var m = document.createElement('div');
+    m.className = 'imobi-msg bot';
+    m.innerHTML = '<div class="imobi-msg-bubble">' + escapeHtml(txt) + '</div><div class="imobi-msg-time">' + ts() + '</div>';
     c.appendChild(m);
-    if(qr){var q=document.createElement('div');q.className='imobi-qr';for(var i=0;i<qr.length;i++){(function(r){var b=document.createElement('button');b.className='imobi-qr-btn';b.textContent=r;b.onclick=function(){imobiSend(r)};q.appendChild(b)})(qr[i])}c.appendChild(q)}
-    c.scrollTop=c.scrollHeight;
+    
+    // Add to history
+    messages.push({role: 'assistant', content: txt});
+    
+    if(qr){
+      var q = document.createElement('div');
+      q.className = 'imobi-qr';
+      for(var i = 0; i < qr.length; i++){
+        (function(r){
+          var b = document.createElement('button');
+          b.className = 'imobi-qr-btn';
+          b.textContent = r;
+          b.onclick = function(){ imobiSend(r) };
+          q.appendChild(b);
+        })(qr[i]);
+      }
+      c.appendChild(q);
+    }
+    c.scrollTop = c.scrollHeight;
   }
   
   function addUser(txt){
-    var c=document.getElementById('imobi-messages');
-    var old=c.querySelector('.imobi-qr');if(old)old.remove();
-    var m=document.createElement('div');m.className='imobi-msg user';
-    m.innerHTML='<div class="imobi-msg-bubble">'+txt+'</div><div class="imobi-msg-time">'+ts()+'</div>';
-    c.appendChild(m);c.scrollTop=c.scrollHeight;
+    var c = document.getElementById('imobi-messages');
+    var old = c.querySelector('.imobi-qr');
+    if(old) old.remove();
+    
+    var m = document.createElement('div');
+    m.className = 'imobi-msg user';
+    m.innerHTML = '<div class="imobi-msg-bubble">' + escapeHtml(txt) + '</div><div class="imobi-msg-time">' + ts() + '</div>';
+    c.appendChild(m);
+    c.scrollTop = c.scrollHeight;
+    
+    // Add to history
+    messages.push({role: 'user', content: txt});
   }
   
   function showTyping(){
-    document.getElementById('imobi-status').textContent='Typing...';
-    var c=document.getElementById('imobi-messages');
-    var t=document.createElement('div');t.id='imobi-typing';t.className='imobi-typing';
-    t.innerHTML='<div class="imobi-typing-dot"></div><div class="imobi-typing-dot"></div><div class="imobi-typing-dot"></div>';
-    c.appendChild(t);c.scrollTop=c.scrollHeight;
-  }
-  function hideTyping(){var t=document.getElementById('imobi-typing');if(t)t.remove();document.getElementById('imobi-status').textContent='Online'}
-  
-  function showLead(){
-    var c=document.getElementById('imobi-messages');
-    var f=document.createElement('div');f.id='imobi-lead';f.className='imobi-lead-form';
-    f.innerHTML='<p>To better assist you, may I have your contact info?</p><input type="text" id="imobi-ln" placeholder="Your name *"><input type="email" id="imobi-le" placeholder="Email *"><input type="text" id="imobi-lc" placeholder="Company (optional)"><div class="imobi-lead-btns"><button class="imobi-lead-submit" onclick="imobiSubmitLead()">Continue</button><button class="imobi-lead-skip" onclick="imobiSkipLead()">Skip</button></div>';
-    c.appendChild(f);c.scrollTop=c.scrollHeight;
+    document.getElementById('imobi-status').textContent = 'Typing...';
+    var c = document.getElementById('imobi-messages');
+    var t = document.createElement('div');
+    t.id = 'imobi-typing';
+    t.className = 'imobi-typing';
+    t.innerHTML = '<div class="imobi-typing-dot"></div><div class="imobi-typing-dot"></div><div class="imobi-typing-dot"></div>';
+    c.appendChild(t);
+    c.scrollTop = c.scrollHeight;
   }
   
-  window.imobiSubmitLead=function(){
-    var n=document.getElementById('imobi-ln').value,e=document.getElementById('imobi-le').value,co=document.getElementById('imobi-lc').value;
-    if(!n||!e){alert('Please enter name and email');return}
-    leadDone=true;document.getElementById('imobi-lead').remove();
-    console.log('IMOBI Lead:',{name:n,email:e,company:co,page:window.location.href,time:new Date().toISOString()});
-    addBot('Thanks '+n+'! Our team will reach out soon.\n\nFeel free to continue asking questions.',['Services','Start a Project']);
+  function hideTyping(){
+    var t = document.getElementById('imobi-typing');
+    if(t) t.remove();
+    document.getElementById('imobi-status').textContent = 'Online';
+  }
+  
+  function escapeHtml(text){
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+  
+  // ========== PROPOSAL FORM ==========
+  
+  function showProposalForm(){
+    var c = document.getElementById('imobi-messages');
+    var f = document.createElement('div');
+    f.id = 'imobi-proposal-form';
+    f.className = 'imobi-proposal-form';
+    f.innerHTML = 
+      '<h4>📋 Generate Your Proposal</h4>' +
+      '<p>Fill in the details below and we\'ll send a customized proposal to your email.</p>' +
+      '<input type="text" id="imobi-pf-name" placeholder="Your name *">' +
+      '<input type="text" id="imobi-pf-company" placeholder="Company name *">' +
+      '<input type="email" id="imobi-pf-email" placeholder="Email address *">' +
+      '<select id="imobi-pf-type">' +
+        '<option value="">Select project type *</option>' +
+        '<option value="Custom Software Development">Custom Software Development</option>' +
+        '<option value="AI/ML Solutions">AI/ML Solutions</option>' +
+        '<option value="IoT Solutions">IoT & Embedded Systems</option>' +
+        '<option value="R&D & Innovation">R&D & Innovation</option>' +
+        '<option value="Team Extension">Team Extension / Staff Aug</option>' +
+      '</select>' +
+      '<textarea id="imobi-pf-desc" placeholder="Briefly describe your project..."></textarea>' +
+      '<select id="imobi-pf-budget">' +
+        '<option value="">Estimated budget (optional)</option>' +
+        '<option value="$25,000 - $50,000">$25,000 - $50,000</option>' +
+        '<option value="$50,000 - $100,000">$50,000 - $100,000</option>' +
+        '<option value="$100,000 - $200,000">$100,000 - $200,000</option>' +
+        '<option value="$200,000+">$200,000+</option>' +
+        '<option value="Not sure yet">Not sure yet</option>' +
+      '</select>' +
+      '<div class="imobi-proposal-btns">' +
+        '<button class="imobi-proposal-submit" id="imobi-pf-submit" onclick="imobiSubmitProposal()">Generate & Send Proposal</button>' +
+        '<button class="imobi-proposal-cancel" onclick="imobiCancelProposal()">Cancel</button>' +
+      '</div>';
+    c.appendChild(f);
+    c.scrollTop = c.scrollHeight;
+  }
+  
+  window.imobiSubmitProposal = function(){
+    var name = document.getElementById('imobi-pf-name').value.trim();
+    var company = document.getElementById('imobi-pf-company').value.trim();
+    var email = document.getElementById('imobi-pf-email').value.trim();
+    var type = document.getElementById('imobi-pf-type').value;
+    var desc = document.getElementById('imobi-pf-desc').value.trim();
+    var budget = document.getElementById('imobi-pf-budget').value;
+    
+    if(!name || !company || !email || !type){
+      alert('Please fill in all required fields (name, company, email, project type)');
+      return;
+    }
+    
+    if(!email.includes('@')){
+      alert('Please enter a valid email address');
+      return;
+    }
+    
+    // Disable button
+    var btn = document.getElementById('imobi-pf-submit');
+    btn.disabled = true;
+    btn.textContent = 'Generating...';
+    
+    // Prepare data
+    var proposalData = {
+      contact_name: name,
+      company: company,
+      email: email,
+      project_type: type,
+      project_description: desc,
+      budget_range: budget,
+      conversation_summary: messages.slice(-6).map(function(m){ return m.role + ': ' + m.content }).join('\n')
+    };
+    
+    // Call proposal API
+    fetch(API_BASE + '/proposal', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(proposalData)
+    })
+    .then(function(res){ return res.json() })
+    .then(function(data){
+      document.getElementById('imobi-proposal-form').remove();
+      
+      if(data.success){
+        addBot("✅ Great news, " + name + "! I've generated a customized proposal and sent it to " + email + ".\n\nPlease check your inbox (and spam folder just in case). Our team will follow up within 24 hours to discuss next steps.\n\nIs there anything else I can help you with?", ['Contact Team', 'Learn More']);
+      } else {
+        addBot("I apologize, but there was an issue sending the proposal: " + (data.error || 'Unknown error') + "\n\nPlease try again or contact us directly at contact@imobiallholdings.com", ['Try Again', 'Contact Team']);
+      }
+    })
+    .catch(function(err){
+      document.getElementById('imobi-proposal-form').remove();
+      addBot("I apologize, but I couldn't connect to our proposal system. Please contact us directly at contact@imobiallholdings.com and we'll prepare a proposal for you.\n\nError: " + err.message, ['Contact Team']);
+    });
   };
   
-  window.imobiSkipLead=function(){leadDone=true;document.getElementById('imobi-lead').remove();addBot("No problem! Feel free to ask anything.",QR.def)};
+  window.imobiCancelProposal = function(){
+    var form = document.getElementById('imobi-proposal-form');
+    if(form) form.remove();
+    addBot("No problem! Let me know if you have any other questions or if you'd like to request a proposal later.", ['Our Services', 'Pricing Info']);
+  };
   
-  function getResp(t){
-    var m=t.toLowerCase();
-    if(m.indexOf('service')>=0||m.indexOf('offer')>=0||m.indexOf('help')>=0)return{txt:K.services,qr:QR.services};
-    if(m.indexOf('price')>=0||m.indexOf('cost')>=0||m.indexOf('rate')>=0||m.indexOf('saving')>=0||m.indexOf('budget')>=0)return{txt:K.pricing,qr:['Start Project','Contact']};
-    if(m.indexOf('contact')>=0||m.indexOf('email')>=0||m.indexOf('reach')>=0||m.indexOf('call')>=0)return{txt:K.contact,qr:QR.def};
-    if(m.indexOf('about')>=0||m.indexOf('imobi')>=0||m.indexOf('company')>=0||m.indexOf('who')>=0)return{txt:K.about,qr:['Services','Pricing']};
-    if(m.indexOf('partner')>=0||m.indexOf('commission')>=0||m.indexOf('referral')>=0)return{txt:K.partner,qr:['Contact','Services']};
-    if(m.indexOf('ai')>=0||m.indexOf('ml')>=0||m.indexOf('machine learning')>=0)return{txt:"Our AI/ML solutions include custom models, computer vision, NLP, predictive analytics, and AI-powered automation.\n\nWhat's your use case?",qr:['Get Quote','Contact']};
-    if(m.indexOf('iot')>=0||m.indexOf('embedded')>=0||m.indexOf('device')>=0)return{txt:"Our IoT expertise includes industrial monitoring, smart products, fleet tracking, and embedded firmware.\n\nWhat are you building?",qr:['Get Quote','Contact']};
-    if(m.indexOf('start')>=0||m.indexOf('project')>=0||m.indexOf('quote')>=0||m.indexOf('begin')>=0)return{txt:"Great! Tell me about your project, or fill out the contact form on our website.\n\nWe respond within 24 hours.",qr:['Contact Form','Services']};
-    if(m.indexOf('hello')>=0||m.indexOf('hi')>=0||m.indexOf('hey')>=0)return{txt:"Hello! How can I help you today?",qr:QR.hi};
-    return{txt:K.def,qr:QR.def};
-  }
+  // ========== CLAUDE API ==========
   
-  window.imobiSend=function(txt){
-    var i=document.getElementById('imobi-input'),msg=txt||i.value.trim();
-    if(!msg)return;
-    addUser(msg);i.value='';updateBtn();msgCount++;
-    showTyping();
-    setTimeout(function(){
+  function callClaudeAPI(userMessage){
+    // Check for proposal triggers
+    var msgLower = userMessage.toLowerCase();
+    if(msgLower.includes('proposal') || msgLower.includes('quote') || msgLower.includes('get a proposal')){
       hideTyping();
-      if(msgCount>=3&&!leadDone)showLead();
-      else{var r=getResp(msg);addBot(r.txt,r.qr)}
-    },700+Math.random()*700);
+      addBot("I'd be happy to generate a customized proposal for you! Let me collect a few details.", null);
+      setTimeout(showProposalForm, 500);
+      return;
+    }
+    
+    // Call Claude API
+    fetch(API_BASE + '/chat', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({messages: messages})
+    })
+    .then(function(res){ return res.json() })
+    .then(function(data){
+      hideTyping();
+      isLoading = false;
+      
+      if(data.error){
+        // Fallback to local responses if API fails
+        addBot("I'm having trouble connecting right now. You can reach our team directly at contact@imobiallholdings.com or call +1 407 205 9042.", ['Contact Info', 'Try Again']);
+        console.error('Chat API error:', data.error);
+      } else {
+        var response = data.response;
+        
+        // Determine quick replies based on response content
+        var qr = null;
+        if(response.toLowerCase().includes('proposal') || response.toLowerCase().includes('quote')){
+          qr = ['Get a Proposal', 'More Questions'];
+        } else if(response.toLowerCase().includes('service') || response.toLowerCase().includes('offer')){
+          qr = ['Pricing Info', 'Get a Proposal'];
+        } else if(response.toLowerCase().includes('contact') || response.toLowerCase().includes('reach')){
+          qr = ['Get a Proposal', 'Our Services'];
+        }
+        
+        addBot(response, qr);
+      }
+    })
+    .catch(function(err){
+      hideTyping();
+      isLoading = false;
+      addBot("I apologize, but I'm having connection issues. Please try again or contact us at contact@imobiallholdings.com", ['Try Again', 'Contact Info']);
+      console.error('Fetch error:', err);
+    });
+  }
+  
+  // ========== MAIN SEND FUNCTION ==========
+  
+  window.imobiSend = function(txt){
+    if(isLoading) return;
+    
+    var input = document.getElementById('imobi-input');
+    var msg = txt || input.value.trim();
+    if(!msg) return;
+    
+    addUser(msg);
+    input.value = '';
+    updateBtn();
+    
+    isLoading = true;
+    showTyping();
+    
+    // Small delay for natural feel
+    setTimeout(function(){
+      callClaudeAPI(msg);
+    }, 300);
   };
   
-  function updateBtn(){document.getElementById('imobi-send-btn').disabled=!document.getElementById('imobi-input').value.trim()}
-  document.getElementById('imobi-input').addEventListener('input',updateBtn);
+  function updateBtn(){
+    document.getElementById('imobi-send-btn').disabled = !document.getElementById('imobi-input').value.trim() || isLoading;
+  }
+  
+  document.getElementById('imobi-input').addEventListener('input', updateBtn);
 })();
 </script>
-<!-- FIM DO CHATBOT IMOBI -->
-
-</body>
-</html>
+<!-- FIM DO CHATBOT IMOBI v3 -->
