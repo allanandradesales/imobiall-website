@@ -490,8 +490,8 @@
         });
     </script>
     <!-- ============================================
-     IMOBI CHATBOT WIDGET v3.0
-     Com Claude API + Geração de Propostas
+     IMOBI CHATBOT WIDGET v3.1
+     Com Claude API + Geração de Propostas + Markdown
      ============================================ -->
 
 <style>
@@ -519,12 +519,15 @@
   .imobi-msg{margin-bottom:12px;animation:imobiFade 0.3s ease-out}
   .imobi-msg.bot{align-self:flex-start}
   .imobi-msg.user{align-self:flex-end}
-  .imobi-msg-bubble{max-width:85%;padding:12px 16px;color:#fff;font-size:14px;line-height:1.6;white-space:pre-wrap}
+  .imobi-msg-bubble{max-width:85%;padding:12px 16px;color:#fff;font-size:14px;line-height:1.6}
   .imobi-msg.bot .imobi-msg-bubble{border-radius:4px 16px 16px 16px;background:linear-gradient(135deg,#1B365D,#0a1628);box-shadow:0 2px 12px rgba(27,54,93,0.5);border:1px solid rgba(201,162,39,0.2)}
   .imobi-msg.user .imobi-msg-bubble{border-radius:16px 4px 16px 16px;background:linear-gradient(135deg,#C9A227,#a08520);box-shadow:0 2px 12px rgba(201,162,39,0.4)}
   .imobi-msg-time{font-size:10px;opacity:0.5;margin-top:5px}
   .imobi-msg.bot .imobi-msg-time{text-align:left}
   .imobi-msg.user .imobi-msg-time{text-align:right}
+  .imobi-msg-bubble strong{color:#C9A227;font-weight:600}
+  .imobi-msg-bubble em{font-style:italic;opacity:0.9}
+  .imobi-msg.user .imobi-msg-bubble strong{color:#1B365D}
   
   .imobi-qr{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
   .imobi-qr-btn{padding:8px 14px;background:rgba(201,162,39,0.1);border:1px solid rgba(201,162,39,0.4);border-radius:18px;color:#C9A227;font-size:12px;cursor:pointer;transition:all 0.2s}
@@ -600,29 +603,20 @@
 
 <script>
 (function(){
-  // ========== CONFIGURATION ==========
-  // IMPORTANT: Replace with your actual API endpoint after deploying to Vercel
   var API_BASE = 'https://imobi-api.vercel.app/api';
-  
-  // State
   var isOpen = false;
-  var messages = []; // Conversation history for Claude
+  var messages = [];
   var isLoading = false;
-  var proposalData = {}; // Data collected for proposal
-  
-  // ========== CHAT FUNCTIONS ==========
   
   window.imobiToggleChat = function(){
     isOpen = !isOpen;
     document.getElementById('imobi-chatbot-window').classList.toggle('open', isOpen);
     document.getElementById('imobi-chatbot-toggle').classList.toggle('hidden', isOpen);
     if(isOpen && messages.length === 0){
-      // Initial greeting
-      setTimeout(function(){ showTyping() }, 300);
+      setTimeout(function(){ showTyping(); }, 300);
       setTimeout(function(){
         hideTyping();
-        var greeting = "Hello! I'm NOVA, the AI assistant for IMOBI ALL Holdings. I can help you learn about our engineering services, discuss potential projects, or even generate a custom proposal for you.\n\nHow can I help you today?";
-        addBot(greeting, ['Our Services', 'Get a Proposal', 'Pricing Info']);
+        addBot("Hello! I'm NOVA, the AI assistant for IMOBI ALL Holdings. I can help you learn about our engineering services, discuss potential projects, or even generate a custom proposal for you.\n\nHow can I help you today?", ['Our Services', 'Get a Proposal', 'Pricing Info']);
       }, 1000);
     }
   };
@@ -631,14 +625,31 @@
     return new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
   }
   
+  function escapeHtml(text){
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+  
+  function formatMessage(text){
+    var escaped = escapeHtml(text);
+    return escaped
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/__(.*?)__/g, '<strong>$1</strong>')
+      .replace(/^### (.*?)$/gm, '<div style="color:#C9A227;font-weight:600;font-size:13px;margin:12px 0 6px;">$1</div>')
+      .replace(/^## (.*?)$/gm, '<div style="color:#C9A227;font-weight:600;font-size:14px;margin:14px 0 8px;">$1</div>')
+      .replace(/^- (.*?)$/gm, '<div style="display:flex;gap:8px;margin:4px 0;"><span style="color:#C9A227;">•</span><span>$1</span></div>')
+      .replace(/^(\d+)\. (.*?)$/gm, '<div style="display:flex;gap:8px;margin:4px 0;"><span style="color:#C9A227;font-weight:600;">$1.</span><span>$2</span></div>')
+      .replace(/\n\n/g, '<div style="height:12px;"></div>')
+      .replace(/\n/g, '<br>');
+  }
+  
   function addBot(txt, qr){
     var c = document.getElementById('imobi-messages');
     var m = document.createElement('div');
     m.className = 'imobi-msg bot';
-    m.innerHTML = '<div class="imobi-msg-bubble">' + escapeHtml(txt) + '</div><div class="imobi-msg-time">' + ts() + '</div>';
+    m.innerHTML = '<div class="imobi-msg-bubble">' + formatMessage(txt) + '</div><div class="imobi-msg-time">' + ts() + '</div>';
     c.appendChild(m);
-    
-    // Add to history
     messages.push({role: 'assistant', content: txt});
     
     if(qr){
@@ -649,7 +660,7 @@
           var b = document.createElement('button');
           b.className = 'imobi-qr-btn';
           b.textContent = r;
-          b.onclick = function(){ imobiSend(r) };
+          b.onclick = function(){ imobiSend(r); };
           q.appendChild(b);
         })(qr[i]);
       }
@@ -668,8 +679,6 @@
     m.innerHTML = '<div class="imobi-msg-bubble">' + escapeHtml(txt) + '</div><div class="imobi-msg-time">' + ts() + '</div>';
     c.appendChild(m);
     c.scrollTop = c.scrollHeight;
-    
-    // Add to history
     messages.push({role: 'user', content: txt});
   }
   
@@ -690,14 +699,6 @@
     document.getElementById('imobi-status').textContent = 'Online';
   }
   
-  function escapeHtml(text){
-    var div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
-  
-  // ========== PROPOSAL FORM ==========
-  
   function showProposalForm(){
     var c = document.getElementById('imobi-messages');
     var f = document.createElement('div');
@@ -711,14 +712,14 @@
       '<input type="email" id="imobi-pf-email" placeholder="Email address *">' +
       '<select id="imobi-pf-type">' +
         '<option value="">Select project type *</option>' +
-          '<option value="Custom Software Development">Custom Software Development</option>' +
-          '<option value="AI/ML Solutions">AI/ML Solutions</option>' +
-          '<option value="IoT Solutions">IoT & Embedded Systems</option>' +
-          '<option value="R&D & Innovation">R&D & Innovation</option>' +
-          '<option value="MVP & Prototypes">MVP & Prototypes</option>' +
-          '<option value="Team Extension">Team Extension / Staff Aug</option>' +
-          '<option value="Legacy Modernization">Legacy Modernization</option>' +
-          '<option value="Other">Other</option>' +
+        '<option value="Custom Software Development">Custom Software Development</option>' +
+        '<option value="AI/ML Solutions">AI/ML Solutions</option>' +
+        '<option value="IoT Solutions">IoT & Embedded Systems</option>' +
+        '<option value="R&D & Innovation">R&D & Innovation</option>' +
+        '<option value="MVP & Prototypes">MVP & Prototypes</option>' +
+        '<option value="Team Extension">Team Extension / Staff Aug</option>' +
+        '<option value="Legacy Modernization">Legacy Modernization</option>' +
+        '<option value="Other">Other</option>' +
       '</select>' +
       '<textarea id="imobi-pf-desc" placeholder="Briefly describe your project..."></textarea>' +
       '<select id="imobi-pf-budget">' +
@@ -755,12 +756,10 @@
       return;
     }
     
-    // Disable button
     var btn = document.getElementById('imobi-pf-submit');
     btn.disabled = true;
     btn.textContent = 'Generating...';
     
-    // Prepare data
     var proposalData = {
       contact_name: name,
       company: company,
@@ -768,16 +767,15 @@
       project_type: type,
       project_description: desc,
       budget_range: budget,
-      conversation_summary: messages.slice(-6).map(function(m){ return m.role + ': ' + m.content }).join('\n')
+      conversation_summary: messages.slice(-6).map(function(m){ return m.role + ': ' + m.content; }).join('\n')
     };
     
-    // Call proposal API
     fetch(API_BASE + '/proposal', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(proposalData)
     })
-    .then(function(res){ return res.json() })
+    .then(function(res){ return res.json(); })
     .then(function(data){
       document.getElementById('imobi-proposal-form').remove();
       
@@ -800,10 +798,7 @@
     addBot("No problem! Let me know if you have any other questions or if you'd like to request a proposal later.", ['Our Services', 'Pricing Info']);
   };
   
-  // ========== CLAUDE API ==========
-  
   function callClaudeAPI(userMessage){
-    // Check for proposal triggers
     var msgLower = userMessage.toLowerCase();
     if(msgLower.includes('proposal') || msgLower.includes('quote') || msgLower.includes('get a proposal')){
       hideTyping();
@@ -813,25 +808,21 @@
       return;
     }
     
-    // Call Claude API
     fetch(API_BASE + '/chat', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({messages: messages})
     })
-    .then(function(res){ return res.json() })
+    .then(function(res){ return res.json(); })
     .then(function(data){
       hideTyping();
       isLoading = false;
       
       if(data.error){
-        // Fallback to local responses if API fails
         addBot("I'm having trouble connecting right now. You can reach our team directly at contact@imobiallholdings.com or call +1 407 205 9042.", ['Contact Info', 'Try Again']);
         console.error('Chat API error:', data.error);
       } else {
         var response = data.response;
-        
-        // Determine quick replies based on response content
         var qr = null;
         if(response.toLowerCase().includes('proposal') || response.toLowerCase().includes('quote')){
           qr = ['Get a Proposal', 'More Questions'];
@@ -840,7 +831,6 @@
         } else if(response.toLowerCase().includes('contact') || response.toLowerCase().includes('reach')){
           qr = ['Get a Proposal', 'Our Services'];
         }
-        
         addBot(response, qr);
       }
     })
@@ -851,8 +841,6 @@
       console.error('Fetch error:', err);
     });
   }
-  
-  // ========== MAIN SEND FUNCTION ==========
   
   window.imobiSend = function(txt){
     if(isLoading) return;
@@ -868,7 +856,6 @@
     isLoading = true;
     showTyping();
     
-    // Small delay for natural feel
     setTimeout(function(){
       callClaudeAPI(msg);
     }, 300);
@@ -881,4 +868,4 @@
   document.getElementById('imobi-input').addEventListener('input', updateBtn);
 })();
 </script>
-<!-- FIM DO CHATBOT IMOBI v3 -->
+<!-- FIM DO CHATBOT IMOBI v3.1 -->
