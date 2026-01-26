@@ -793,6 +793,7 @@
   window.imobiCancelProposal = function(){
     var form = document.getElementById('imobi-proposal-form');
     if(form) form.remove();
+    isLoading = false;
     addBot("No problem! Let me know if you have any other questions or if you'd like to request a proposal later.", ['Our Services', 'Pricing Info']);
   };
   
@@ -803,6 +804,7 @@
     var msgLower = userMessage.toLowerCase();
     if(msgLower.includes('proposal') || msgLower.includes('quote') || msgLower.includes('get a proposal')){
       hideTyping();
+      isLoading = false;
       addBot("I'd be happy to generate a customized proposal for you! Let me collect a few details.", null);
       setTimeout(showProposalForm, 500);
       return;
