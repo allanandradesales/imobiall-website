@@ -1563,6 +1563,9 @@
   .imobi-msg-time{font-size:10px;opacity:0.5;margin-top:5px}
   .imobi-msg.bot .imobi-msg-time{text-align:left}
   .imobi-msg.user .imobi-msg-time{text-align:right}
+  .imobi-msg-bubble strong{color:#C9A227;font-weight:600}
+  .imobi-msg-bubble em{font-style:italic;opacity:0.9}
+  .imobi-msg.user .imobi-msg-bubble strong{color:#1B365D}
   
   .imobi-qr{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
   .imobi-qr-btn{padding:8px 14px;background:rgba(201,162,39,0.1);border:1px solid rgba(201,162,39,0.4);border-radius:18px;color:#C9A227;font-size:12px;cursor:pointer;transition:all 0.2s}
@@ -1673,7 +1676,7 @@
     var c = document.getElementById('imobi-messages');
     var m = document.createElement('div');
     m.className = 'imobi-msg bot';
-    m.innerHTML = '<div class="imobi-msg-bubble">' + escapeHtml(txt) + '</div><div class="imobi-msg-time">' + ts() + '</div>';
+    m.innerHTML = '<div class="imobi-msg-bubble">' + formatMessage(txt) + '</div><div class="imobi-msg-time">' + ts() + '</div>';
     c.appendChild(m);
     
     // Add to history
@@ -1728,11 +1731,33 @@
     document.getElementById('imobi-status').textContent = 'Online';
   }
   
-  function escapeHtml(text){
-    var div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
+  function formatMessage(text){
+  // Escape HTML first
+  var div = document.createElement('div');
+  div.textContent = text;
+  var escaped = div.innerHTML;
+  
+  // Convert Markdown to HTML
+  var formatted = escaped
+    // Bold: **text** or __text__
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/__(.*?)__/g, '<strong>$1</strong>')
+    // Italic: *text* or _text_
+    .replace(/\*(?!\*)(.*?)\*(?!\*)/g, '<em>$1</em>')
+    .replace(/_(?!_)(.*?)_(?!_)/g, '<em>$1</em>')
+    // Headers: ## text
+    .replace(/^### (.*?)$/gm, '<div style="color:#C9A227;font-weight:600;font-size:13px;margin:12px 0 6px;">$1</div>')
+    .replace(/^## (.*?)$/gm, '<div style="color:#C9A227;font-weight:600;font-size:14px;margin:14px 0 8px;">$1</div>')
+    // Bullet points: - text
+    .replace(/^- (.*?)$/gm, '<div style="display:flex;gap:8px;margin:4px 0;"><span style="color:#C9A227;">•</span><span>$1</span></div>')
+    // Numbered lists: 1. text
+    .replace(/^(\d+)\. (.*?)$/gm, '<div style="display:flex;gap:8px;margin:4px 0;"><span style="color:#C9A227;font-weight:600;">$1.</span><span>$2</span></div>')
+    // Line breaks
+    .replace(/\n\n/g, '<div style="height:12px;"></div>')
+    .replace(/\n/g, '<br>');
+  
+  return formatted;
+}
   
   // ========== PROPOSAL FORM ==========
   
