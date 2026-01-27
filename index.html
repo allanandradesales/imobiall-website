@@ -216,6 +216,7 @@
             border: none;
             cursor: pointer;
             padding: 8px;
+            z-index: 101;
         }
 
         .mobile-toggle span {
@@ -223,6 +224,34 @@
             height: 2px;
             background: var(--white);
             transition: all 0.3s;
+        }
+
+        /* Mobile menu dropdown */
+        .nav-links.mobile-open {
+            display: flex !important;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            background: var(--navy-deep);
+            border-top: 1px solid var(--border);
+            padding: 16px 24px;
+            gap: 0;
+        }
+
+        .nav-links.mobile-open li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-links.mobile-open li:last-child {
+            border-bottom: none;
+        }
+
+        .nav-links.mobile-open a {
+            display: block;
+            font-size: 0.95rem;
         }
 
         /* ========== HERO ========== */
@@ -1126,9 +1155,9 @@
             }
             
             /* Mobile font reductions */
-            .hero h1 { font-size: 1.75rem; }
-            .hero-tagline { font-size: 0.85rem; }
-            .hero-description { font-size: 0.875rem; }
+            .hero h1 { font-size: 1.5rem; line-height: 1.2; }
+            .hero-tagline { font-size: 0.8rem; }
+            .hero-description { font-size: 0.85rem; }
             .hero-stat-value { font-size: 1.5rem; }
             .hero-stat-label { font-size: 0.75rem; }
             .section-title { font-size: 1.5rem; }
@@ -1555,7 +1584,14 @@
         const mobileToggle = document.querySelector('.mobile-toggle');
         const navLinks = document.querySelector('.nav-links');
         mobileToggle?.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.classList.toggle('mobile-open');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+            });
         });
     </script>
 
