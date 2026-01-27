@@ -127,6 +127,12 @@
             align-items: center;
         }
 
+        .navbar .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
         .logo {
             display: flex;
             align-items: center;
@@ -201,7 +207,6 @@
             font-size: 0.8rem;
             text-decoration: none;
             transition: all 0.3s ease;
-            margin-left: 8px;
         }
 
         .nav-cta:hover {
@@ -1202,14 +1207,16 @@
                     <span class="logo-text-sub">Holdings</span>
                 </div>
             </a>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#why">Why Us</a></li>
-                <li><a href="#partner">Partner</a></li>
-                <li><a href="partners.html">Become a Partner</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="#contact" class="nav-cta">Get Started</a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#why">Why Us</a></li>
+                    <li><a href="#partner">Partner</a></li>
+                    <li><a href="partners.html">Become a Partner</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="nav-cta">Get Started</a>
+            </div>
             <button class="mobile-toggle">
                 <span></span>
                 <span></span>
