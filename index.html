@@ -195,10 +195,10 @@
         .nav-cta {
             background: var(--gold);
             color: var(--navy-deep);
-            padding: 12px 24px;
+            padding: 10px 18px;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -276,7 +276,7 @@
 
         .hero h1 {
             font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 4.5vw, 3rem);
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -0.02em;
@@ -291,7 +291,7 @@
         }
 
         .hero-tagline {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: var(--gold);
             font-style: italic;
             margin-bottom: 20px;
@@ -299,7 +299,7 @@
         }
 
         .hero-description {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: var(--gray-400);
             line-height: 1.7;
             margin-bottom: 32px;
@@ -516,13 +516,13 @@
 
         .section-title {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
             font-weight: 700;
             letter-spacing: -0.02em;
         }
 
         .section-subtitle {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: var(--gray-400);
             margin-top: 12px;
             max-width: 600px;
@@ -648,7 +648,7 @@
 
         .why-content h2 {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
             font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 20px;
@@ -656,7 +656,7 @@
 
         .why-content > p {
             color: var(--gray-400);
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             margin-bottom: 36px;
             line-height: 1.7;
         }
@@ -885,7 +885,7 @@
 
         .contact-info h2 {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
             font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 16px;
@@ -1111,13 +1111,38 @@
             .nav-links { display: none; }
             .mobile-toggle { display: flex; }
             .services-grid { grid-template-columns: 1fr; }
-            .hero-stats { gap: 32px; flex-wrap: wrap; }
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
             .why-visual { grid-template-columns: 1fr; }
             .stat-card.highlight { grid-column: span 1; }
             .form-row { grid-template-columns: 1fr; }
             .footer-content { flex-direction: column; gap: 24px; text-align: center; }
             .footer-links { flex-wrap: wrap; justify-content: center; }
             .trust-logos { gap: 24px; }
+            
+            /* Mobile nav-cta smaller */
+            .nav-cta {
+                padding: 8px 14px;
+                font-size: 0.75rem;
+            }
+            
+            /* Mobile font reductions */
+            .hero h1 { font-size: 1.75rem; }
+            .hero-tagline { font-size: 0.85rem; }
+            .hero-description { font-size: 0.875rem; }
+            .hero-stat-value { font-size: 1.5rem; }
+            .hero-stat-label { font-size: 0.75rem; }
+            .section-title { font-size: 1.5rem; }
+            .section-subtitle { font-size: 0.875rem; }
+            .service-card h3 { font-size: 1rem; }
+            .service-card p { font-size: 0.85rem; }
+            .why-content h2 { font-size: 1.5rem; }
+            .stat-value { font-size: 2rem; }
+            .contact-info h2 { font-size: 1.5rem; }
+            .partner-cta-content h2 { font-size: 1.4rem; }
+            .btn-primary, .btn-secondary { 
+                padding: 12px 24px; 
+                font-size: 0.9rem; 
+            }
         }
     </style>
 </head>
