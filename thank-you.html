@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You | IMOBI Holdings</title>
-    <meta name="description" content="Thank you for contacting IMOBI Holdings. We'll be in touch soon.">
-    <meta name="robots" content="noindex, nofollow">
+    <title>Become a Partner | IMOBI Holdings</title>
+    <meta name="description" content="Earn recurring commissions selling world-class engineering services. 15% on first contract + 10% residual for 24 months.">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.imobiallholdings.com/partners.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.imobiallholdings.com/partners.html">
+    <meta property="og:title" content="Become a Partner | IMOBI Holdings">
+    <meta property="og:description" content="Earn recurring commissions selling world-class engineering services.">
+    <meta property="og:image" content="https://www.imobiallholdings.com/og-image.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Become a Partner | IMOBI Holdings">
+    <meta name="twitter:description" content="Earn recurring commissions selling world-class engineering services.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,8 +39,6 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-YQ8ED4BHQN');
-        // Track conversion
-        gtag('event', 'conversion', {'send_to': 'G-YQ8ED4BHQN/form_submission'});
     </script>
     
     <style>
@@ -37,160 +50,199 @@
             --gold-dim: rgba(201, 162, 39, 0.1);
             --gold-glow: rgba(201, 162, 39, 0.4);
             --white: #ffffff;
+            --gray-100: #f8f9fa;
             --gray-400: #9ca3af;
             --gray-500: #6b7280;
+            --gray-600: #4b5563;
             --border: rgba(255,255,255,0.08);
             --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-display: 'Syne', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-body);
             background: var(--navy-deep);
             color: var(--white);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            text-align: center;
+            line-height: 1.6;
         }
 
-        .container {
-            max-width: 600px;
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 12px;
-            margin-bottom: 48px;
             text-decoration: none;
         }
 
         .logo-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
         }
 
         .logo-text {
             display: flex;
             align-items: baseline;
-            gap: 8px;
+            gap: 6px;
         }
 
         .logo-text-main {
             font-family: var(--font-display);
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: var(--white);
         }
 
         .logo-text-sub {
             font-family: var(--font-display);
             font-weight: 600;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: var(--gold);
         }
 
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--gold-dim);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
+        .nav-links {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 32px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 var(--gold-glow); }
-            50% { box-shadow: 0 0 0 20px transparent; }
-        }
-
-        .success-icon svg {
-            width: 40px;
-            height: 40px;
-            stroke: var(--gold);
-            stroke-width: 2;
-            fill: none;
-        }
-
-        h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 2.5rem);
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        h1 .highlight {
-            color: var(--gold);
-        }
-
-        .message {
-            font-size: 1.1rem;
-            color: var(--gray-400);
-            line-height: 1.7;
-            margin-bottom: 40px;
-        }
-
-        .next-steps {
-            background: var(--navy-mid);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 40px;
-            text-align: left;
-        }
-
-        .next-steps h2 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .next-steps h2 svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--gold);
-        }
-
-        .next-steps ul {
+            gap: 20px;
             list-style: none;
         }
 
-        .next-steps li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.95rem;
+        .nav-links a {
             color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
-        .next-steps li:last-child {
-            border-bottom: none;
+        .nav-links a:hover { color: var(--white); }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy-deep);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
-        .next-steps li svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--gold);
-            flex-shrink: 0;
-            margin-top: 2px;
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--gold-glow);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 101;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gold-dim);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 .highlight { color: var(--gold); }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--gray-400);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn-primary {
@@ -205,6 +257,8 @@
             font-size: 0.95rem;
             text-decoration: none;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary:hover {
@@ -212,86 +266,798 @@
             box-shadow: 0 12px 35px var(--gold-glow);
         }
 
-        .btn-primary svg {
-            width: 18px;
-            height: 18px;
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--white);
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
 
-        .contact-info {
-            margin-top: 48px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border);
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Sections */
+        section { padding: 80px 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--gray-400);
+        }
+
+        /* Commission Cards */
+        .commission-section { background: var(--navy-mid); }
+
+        .commission-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .commission-card {
+            background: var(--navy-deep);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .commission-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .commission-card.featured {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+            border-color: var(--gold);
+        }
+
+        .commission-value {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .commission-label {
+            font-size: 1rem;
+            color: var(--gray-400);
+            margin-bottom: 12px;
+        }
+
+        .commission-desc {
             font-size: 0.9rem;
             color: var(--gray-500);
+            line-height: 1.6;
         }
 
-        .contact-info a {
+        /* Benefits */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .benefit-card {
+            display: flex;
+            gap: 16px;
+            padding: 24px;
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            border-color: rgba(201, 162, 39, 0.3);
+        }
+
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--navy-deep);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .benefit-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--gold);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .benefit-content h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .benefit-content p {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+        }
+
+        /* Steps */
+        .steps-section { background: var(--navy-mid); }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 35px;
+            right: -12px;
+            width: calc(100% - 70px);
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            transform: translateX(50%);
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: var(--navy-deep);
+            border: 2px solid var(--gold);
             color: var(--gold);
-            text-decoration: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 16px;
         }
 
-        .contact-info a:hover {
-            text-decoration: underline;
+        .step h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        /* Profile */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .profile-card {
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .profile-card.looking {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+            border-color: var(--gold);
+        }
+
+        .profile-card.not-looking {
+            background: var(--navy-mid);
+        }
+
+        .profile-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-card.looking h3 { color: var(--gold); }
+        .profile-card.not-looking h3 { color: var(--gray-500); }
+
+        .profile-card h3 svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .profile-card ul { list-style: none; }
+
+        .profile-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .profile-card li:last-child { border-bottom: none; }
+
+        .profile-card li svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .profile-card.looking li { color: rgba(255,255,255,0.85); }
+        .profile-card.looking li svg { stroke: var(--gold); }
+        .profile-card.not-looking li { color: var(--gray-400); }
+        .profile-card.not-looking li svg { stroke: var(--gray-500); }
+
+        /* CTA */
+        .cta-section {
+            background: var(--navy-mid);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            color: var(--gray-400);
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Apply Form */
+        .apply-section { background: var(--navy-deep); }
+
+        .apply-container { max-width: 700px; margin: 0 auto; }
+
+        .apply-form {
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        .form-group { margin-bottom: 20px; }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--gray-400);
+        }
+
+        .form-group label .required { color: var(--gold); }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--navy-deep);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--white);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray-600);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23C9A227'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 18px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-submit { margin-top: 24px; }
+
+        .form-submit button {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-top: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-deep);
+            border-top: 1px solid var(--border);
+            padding: 32px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+
+        .footer-logo span {
+            font-weight: 600;
+            color: var(--gray-400);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: var(--gray-500);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--gold); }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .commission-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+            .step:not(:last-child)::after { display: none; }
+            .profile-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-right { gap: 12px; }
+            .mobile-toggle { display: flex; }
+            
+            .nav-links.mobile-open {
+                display: flex !important;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--navy-deep);
+                border-top: 1px solid var(--border);
+                padding: 12px 24px;
+                gap: 0;
+            }
+
+            .nav-links.mobile-open li {
+                padding: 10px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.mobile-open li:last-child {
+                border-bottom: none;
+            }
+
+            section { padding: 60px 0; }
+            .hero { padding: 120px 0 60px; }
+            .hero h1 { font-size: 1.75rem; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .apply-form { padding: 24px; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="logo">
-            <img src="logo.png" alt="IMOBI" class="logo-icon">
-            <div class="logo-text">
-                <span class="logo-text-main">IMOBI</span>
-                <span class="logo-text-sub">Holdings</span>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="IMOBI" class="logo-icon">
+                <div class="logo-text">
+                    <span class="logo-text-main">IMOBI</span>
+                    <span class="logo-text-sub">Holdings</span>
+                </div>
+            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <a href="#apply" class="nav-cta">Apply Now</a>
             </div>
-        </a>
-
-        <div class="success-icon">
-            <svg viewBox="0 0 24 24">
-                <path d="M20 6L9 17l-5-5"/>
-            </svg>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+    </nav>
 
-        <h1>Thank <span class="highlight">You!</span></h1>
-        
-        <p class="message">
-            Your message has been received successfully. Our team will review your inquiry and get back to you within 24 hours.
-        </p>
-
-        <div class="next-steps">
-            <h2>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M12 6v6l4 2"/>
-                </svg>
-                What Happens Next
-            </h2>
-            <ul>
-                <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-                    We'll review your message within the next few hours
-                </li>
-                <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-                    A team member will reach out via email within 24 hours
-                </li>
-                <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-                    We'll schedule a call to discuss your needs in detail
-                </li>
-            </ul>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    Partner Program
+                </div>
+                <h1>Earn <span class="highlight">Recurring Commissions</span> Selling World-Class Engineering</h1>
+                <p class="hero-description">Connect US companies with elite technical talent from Brazil. You sell, we deliver. Earn 15% on first contract + 10% residual for 24 months.</p>
+                <a href="#apply" class="btn-primary">
+                    Apply Now
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
         </div>
+    </section>
 
-        <a href="index.html" class="btn-primary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            Back to Home
-        </a>
-
-        <div class="contact-info">
-            <p>Need immediate assistance? Email us at <a href="mailto:contact@imobiholdings.com">contact@imobiholdings.com</a></p>
+    <!-- Commission -->
+    <section class="commission-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Commission Structure</h2>
+                <p class="section-subtitle">Transparent and lucrative model for sales partners</p>
+            </div>
+            <div class="commission-grid">
+                <div class="commission-card">
+                    <div class="commission-value">15%</div>
+                    <div class="commission-label">First Contract</div>
+                    <p class="commission-desc">Commission on the first contract closed with each client</p>
+                </div>
+                <div class="commission-card featured">
+                    <div class="commission-value">10%</div>
+                    <div class="commission-label">Residual for 24 Months</div>
+                    <p class="commission-desc">Ongoing commission on all renewals and expansions</p>
+                </div>
+                <div class="commission-card">
+                    <div class="commission-value">∞</div>
+                    <div class="commission-label">No Cap</div>
+                    <p class="commission-desc">No ceiling on earnings. The more you sell, the more you earn</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Partner with IMOBI?</h2>
+                <p class="section-subtitle">Exclusive advantages for our sales partners</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Deal Sizes $50K+</h3>
+                        <p>High-value projects with no ceiling. The bigger the deal, the bigger your commission.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Full Support</h3>
+                        <p>Sales materials, pitch decks, technical support for calls, and all the infrastructure you need.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Differentiated Product</h3>
+                        <p>World-class engineering with 30%+ savings vs US rates. Clear and proven value proposition.</p>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Payment in 30 Days</h3>
+                        <p>Receive your commission 30 days after IMOBI receives payment from the client.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="steps-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Simple and transparent process</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Apply</h3>
+                    <p>Fill out the form and tell us about your sales experience</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Onboarding</h3>
+                    <p>Receive training on our services and sales materials</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Prospect</h3>
+                    <p>Use your network to identify companies that need engineering</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Earn</h3>
+                    <p>Receive commissions on close and residuals for 24 months</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ideal Partner Profile</h2>
+            </div>
+            <div class="profile-grid">
+                <div class="profile-card looking">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                        We're Looking For
+                    </h3>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>VP, Directors, or Sales Managers with 3+ years experience</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Experience in B2B tech or services sales</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Network of contacts at US companies</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Ex-Big Tech or President's Club members</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Tech recruiters with access to decision makers</li>
+                    </ul>
+                </div>
+                <div class="profile-card not-looking">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                        Not the Right Fit
+                    </h3>
+                    <ul>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Junior SDR/BDR without closing experience</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Students or recent graduates</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>No experience in tech sales</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>Looking for full-time employment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Join our partner network and start earning recurring commissions selling world-class engineering.</p>
+            <div class="cta-buttons">
+                <a href="#apply" class="btn-primary">Apply Now</a>
+                <a href="mailto:contact@imobiallholdings.com" class="btn-secondary">Talk to the Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apply Form -->
+    <section class="apply-section" id="apply">
+        <div class="container">
+            <div class="apply-container">
+                <div class="section-header">
+                    <h2 class="section-title">Partner Application</h2>
+                    <p class="section-subtitle">Fill out the form below and we'll get back to you within 48 hours.</p>
+                </div>
+                <div class="apply-form">
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="31c0d468-13d6-4c79-8e66-68f95b169c46">
+                        <input type="hidden" name="redirect" value="https://www.imobiallholdings.com/thank-you.html">
+                        <input type="hidden" name="from_name" value="IMOBI Partner Application">
+                        <input type="hidden" name="subject" value="New Partner Application">
+                        <input type="checkbox" name="botcheck" style="display: none;">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                            </div>
+                            <div class="form-group">
+                                <label for="linkedin">LinkedIn</label>
+                                <input type="url" id="linkedin" name="linkedin" placeholder="linkedin.com/in/yourprofile">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experience">Sales Experience <span class="required">*</span></label>
+                            <select id="experience" name="experience" required>
+                                <option value="">Select</option>
+                                <option value="1-3 years">1-3 years</option>
+                                <option value="3-5 years">3-5 years</option>
+                                <option value="5-10 years">5-10 years</option>
+                                <option value="10+ years">10+ years</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="current_role">Current Role</label>
+                            <input type="text" id="current_role" name="current_role" placeholder="Ex: Account Executive @ Company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="network">Describe your network <span class="required">*</span></label>
+                            <textarea id="network" name="network" placeholder="What industries do you have contacts in? What types of companies? What's your access to decision makers?" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="motivation">Why do you want to partner with IMOBI?</label>
+                            <textarea id="motivation" name="motivation" placeholder="Tell us your motivation and expectations"></textarea>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="btn-primary">
+                                Submit Application
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                        <p class="form-note">Your information is confidential and will not be shared.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="IMOBI">
+                    <span>IMOBI Holdings</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="footer-copy">© 2026 IMOBI Holdings LLC. Florida, USA.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Navbar scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.querySelector('.nav-links');
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('mobile-open');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 
     <!-- ============================================
          NOVA CHATBOT - CLEAN VERSION
@@ -303,41 +1069,56 @@
     #nova-btn svg{width:28px;height:28px;stroke:var(--gold);stroke-width:1.5;fill:none}
     #nova-chat{position:fixed;bottom:24px;right:24px;width:380px;height:540px;background:var(--navy-deep);border:1px solid rgba(201,162,39,0.2);border-radius:20px;z-index:9999;display:flex;flex-direction:column;opacity:0;transform:translateY(20px) scale(0.95);pointer-events:none;transition:all .3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 25px 80px rgba(0,0,0,0.4)}
     #nova-chat.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
-    .nova-head{display:flex;align-items:center;gap:12px;padding:20px;background:linear-gradient(135deg,#1B365D 0%,#152238 100%);border-radius:20px 20px 0 0;border-bottom:1px solid rgba(201,162,39,0.15)}
+    .nova-head{display:flex;align-items:center;gap:12px;padding:20px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:20px 20px 0 0;border-bottom:1px solid rgba(201,162,39,0.15)}
     .nova-avatar{width:40px;height:40px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center}
     .nova-avatar svg{width:22px;height:22px;stroke:var(--navy-deep);stroke-width:1.5;fill:none}
     .nova-head-info{flex:1}
     .nova-head-title{font-weight:600;font-size:1rem}
-    .nova-head-status{font-size:0.75rem;color:#6b7280;display:flex;align-items:center;gap:6px}
+    .nova-head-status{font-size:0.75rem;color:var(--gray-500);display:flex;align-items:center;gap:6px}
     .nova-head-status::before{content:'';width:7px;height:7px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-    .nova-close{background:none;border:none;color:#6b7280;font-size:22px;cursor:pointer;padding:4px 8px;transition:color .2s}
+    .nova-close{background:none;border:none;color:var(--gray-500);font-size:22px;cursor:pointer;padding:4px 8px;transition:color .2s}
     .nova-close:hover{color:var(--white)}
     .nova-body{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px}
+    .nova-body::-webkit-scrollbar{width:4px}
+    .nova-body::-webkit-scrollbar-thumb{background:var(--navy);border-radius:2px}
     .nova-msg{max-width:85%;padding:14px 18px;border-radius:16px;font-size:0.9rem;line-height:1.55;animation:msgSlide .3s ease}
     @keyframes msgSlide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-    .nova-msg.bot{background:#152238;border:1px solid rgba(255,255,255,0.08);border-bottom-left-radius:4px;align-self:flex-start}
+    .nova-msg.bot{background:var(--navy-mid);border:1px solid var(--border);border-bottom-left-radius:4px;align-self:flex-start}
     .nova-msg.user{background:var(--gold);color:var(--navy-deep);border-bottom-right-radius:4px;align-self:flex-end}
     .nova-msg.bot strong{color:var(--gold)}
     .nova-quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-    .nova-qbtn{background:rgba(201,162,39,0.1);border:1px solid rgba(201,162,39,0.3);color:var(--gold);padding:8px 14px;border-radius:100px;font-size:0.8rem;cursor:pointer;transition:all .2s}
+    .nova-qbtn{background:var(--gold-dim);border:1px solid rgba(201,162,39,0.3);color:var(--gold);padding:8px 14px;border-radius:100px;font-size:0.8rem;cursor:pointer;transition:all .2s}
     .nova-qbtn:hover{background:var(--gold);color:var(--navy-deep)}
-    .nova-typing{display:flex;gap:5px;padding:14px 18px;background:#152238;border:1px solid rgba(255,255,255,0.08);border-radius:16px;border-bottom-left-radius:4px;align-self:flex-start}
+    .nova-typing{display:flex;gap:5px;padding:14px 18px;background:var(--navy-mid);border:1px solid var(--border);border-radius:16px;border-bottom-left-radius:4px;align-self:flex-start}
     .nova-typing span{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:bounce 1.4s infinite}
     .nova-typing span:nth-child(2){animation-delay:0.2s}
     .nova-typing span:nth-child(3){animation-delay:0.4s}
     @keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-8px)}}
-    .nova-input{padding:16px;border-top:1px solid rgba(255,255,255,0.08)}
-    .nova-input-row{display:flex;gap:10px;background:#152238;border-radius:14px;padding:6px 6px 6px 18px;border:1px solid rgba(255,255,255,0.08)}
+    .nova-input{padding:16px;border-top:1px solid var(--border)}
+    .nova-input-row{display:flex;gap:10px;background:var(--navy-mid);border-radius:14px;padding:6px 6px 6px 18px;border:1px solid var(--border)}
     .nova-input-row:focus-within{border-color:var(--gold)}
     #nova-text{flex:1;background:none;border:none;color:var(--white);font-size:0.9rem;outline:none;font-family:inherit}
-    #nova-text::placeholder{color:#4b5563}
+    #nova-text::placeholder{color:var(--gray-600)}
     .nova-send{width:40px;height:40px;background:var(--gold);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
     .nova-send:disabled{opacity:0.4;cursor:not-allowed}
     .nova-send:not(:disabled):hover{transform:scale(1.05)}
     .nova-send svg{width:18px;height:18px;fill:var(--navy-deep)}
-    .nova-foot{text-align:center;padding:10px;font-size:0.7rem;color:#4b5563}
+    .nova-foot{text-align:center;padding:10px;font-size:0.7rem;color:var(--gray-600)}
     @media(max-width:480px){#nova-chat{width:calc(100%-16px);height:70vh;bottom:8px;right:8px;left:8px}}
+    .nova-icon{width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:6px;stroke:var(--gold);flex-shrink:0}
+    .nova-icon-success{stroke:#22c55e}
+    .nova-proposal{background:var(--navy-deep);border:1px solid rgba(201,162,39,0.3);border-radius:12px;padding:16px;margin-top:12px}
+    .nova-proposal h4{color:var(--gold);font-size:0.9rem;margin-bottom:12px}
+    .nova-proposal input,.nova-proposal select,.nova-proposal textarea{width:100%;padding:10px 12px;margin-bottom:10px;background:var(--navy-mid);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:0.85rem;font-family:inherit}
+    .nova-proposal input:focus,.nova-proposal select:focus,.nova-proposal textarea:focus{border-color:var(--gold);outline:none}
+    .nova-proposal input::placeholder,.nova-proposal textarea::placeholder{color:var(--gray-600)}
+    .nova-proposal select{cursor:pointer}
+    .nova-proposal textarea{min-height:70px;resize:vertical}
+    .nova-proposal-btns{display:flex;gap:8px;margin-top:8px}
+    .nova-proposal-submit{flex:1;padding:12px;background:var(--gold);border:none;border-radius:8px;color:var(--navy-deep);font-weight:600;cursor:pointer;transition:all .2s}
+    .nova-proposal-submit:hover{transform:translateY(-1px)}
+    .nova-proposal-submit:disabled{opacity:0.5;cursor:not-allowed}
+    .nova-proposal-cancel{padding:12px 16px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--gray-500);cursor:pointer}
     </style>
 
     <button id="nova-btn" onclick="novaToggle()">
@@ -382,7 +1163,7 @@
                 setTimeout(showTyping, 300);
                 setTimeout(function(){
                     hideTyping();
-                    addBot("Thanks for reaching out! While you wait for our team to respond, I'm here to answer any questions about IMOBI Holdings.\n\nHow can I help?", ['Our Services', 'Pricing Info', 'About IMOBI']);
+                    addBot("Hello! I'm NOVA, the AI assistant for IMOBI Holdings.\n\nInterested in becoming a sales partner? I can answer your questions about our commission structure, ideal partner profile, or help you get started.\n\nHow can I help?", ['Commission Details', 'Partner Requirements', 'Apply Now']);
                 }, 1000);
             }
         };
@@ -394,7 +1175,14 @@
         }
         
         function formatMessage(text){
-            return escapeHtml(text)
+            var icons = {
+                '✅': '<svg class="nova-icon nova-icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>',
+                '💰': '<svg class="nova-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>',
+                '👥': '<svg class="nova-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>'
+            };
+            var result = escapeHtml(text);
+            for (var emoji in icons) { result = result.split(emoji).join(icons[emoji]); }
+            return result
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                 .replace(/\n\n/g, '<div style="height:8px;"></div>')
                 .replace(/\n/g, '<br>');
@@ -464,15 +1252,15 @@
                 hideTyping();
                 isLoading = false;
                 if(data.error){
-                    addBot("I'm having trouble connecting. You can reach us at contact@imobiholdings.com", ['Contact Info']);
+                    addBot("I'm having trouble connecting. You can reach us at contact@imobiallholdings.com or call +1 407 205 9042.", ['Contact Info']);
                 } else {
-                    addBot(data.response, ['More Questions']);
+                    addBot(data.response, ['More Questions', 'Apply Now']);
                 }
             })
             .catch(function(err){
                 hideTyping();
                 isLoading = false;
-                addBot("Connection issue. Please try again or email contact@imobiholdings.com", ['Try Again']);
+                addBot("Connection issue. Please try again or email contact@imobiallholdings.com", ['Try Again']);
             });
         }
         
