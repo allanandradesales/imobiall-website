@@ -1582,10 +1582,35 @@
          NOVA CHATBOT - CLEAN VERSION
          ============================================ -->
     <style>
-    #nova-btn{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border:2px solid var(--gold);cursor:pointer;z-index:9998;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(201,162,39,0.25);transition:all .3s ease}
+    /* NOVA Button - Animated Entry */
+    #nova-btn{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border:2px solid var(--gold);cursor:pointer;z-index:9998;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(201,162,39,0.25);transition:all .3s ease;transform:translateX(100px);opacity:0}
+    #nova-btn.visible{transform:translateX(0);opacity:1;animation:novaBounce 0.6s cubic-bezier(0.68,-0.55,0.265,1.55)}
+    #nova-btn.visible.attention{animation:novaAttention 1s ease-in-out}
+    @keyframes novaBounce{0%{transform:translateX(100px);opacity:0}60%{transform:translateX(-10px);opacity:1}100%{transform:translateX(0)}}
+    @keyframes novaAttention{0%,100%{transform:scale(1) rotate(0deg)}25%{transform:scale(1.1) rotate(-5deg)}50%{transform:scale(1.1) rotate(5deg)}75%{transform:scale(1.1) rotate(-3deg)}}
     #nova-btn:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(201,162,39,0.35)}
     #nova-btn.hidden{transform:scale(0);opacity:0;pointer-events:none}
     #nova-btn svg{width:28px;height:28px;stroke:var(--gold);stroke-width:1.5;fill:none}
+    /* NOVA Banner Flutuante */
+    #nova-banner{position:fixed;bottom:90px;right:24px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border:1px solid rgba(201,162,39,0.3);border-radius:16px;padding:16px 20px;z-index:9997;opacity:0;transform:translateY(20px);transition:all .4s cubic-bezier(0.4,0,0.2,1);pointer-events:none;max-width:280px;box-shadow:0 10px 40px rgba(0,0,0,0.3)}
+    #nova-banner.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+    #nova-banner::after{content:'';position:absolute;bottom:-8px;right:30px;border:8px solid transparent;border-top-color:var(--navy-mid)}
+    .nova-banner-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .nova-banner-avatar{width:36px;height:36px;background:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .nova-banner-avatar svg{width:20px;height:20px;stroke:var(--navy-deep);stroke-width:1.5;fill:none}
+    .nova-banner-info{flex:1}
+    .nova-banner-name{font-weight:600;font-size:0.9rem;color:var(--white)}
+    .nova-banner-status{font-size:0.7rem;color:#22c55e;display:flex;align-items:center;gap:4px}
+    .nova-banner-status::before{content:'';width:6px;height:6px;background:#22c55e;border-radius:50%}
+    .nova-banner-close{background:none;border:none;color:var(--gray-500);font-size:18px;cursor:pointer;padding:2px 6px;transition:color .2s;position:absolute;top:8px;right:8px}
+    .nova-banner-close:hover{color:var(--white)}
+    .nova-banner-text{font-size:0.85rem;color:var(--gray-400);line-height:1.5;margin-bottom:12px}
+    .nova-banner-cta{display:flex;gap:8px}
+    .nova-banner-btn{flex:1;padding:10px 16px;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all .2s;border:none;text-align:center}
+    .nova-banner-btn.primary{background:var(--gold);color:var(--navy-deep)}
+    .nova-banner-btn.primary:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(201,162,39,0.3)}
+    .nova-banner-btn.secondary{background:transparent;border:1px solid var(--border);color:var(--gray-400)}
+    .nova-banner-btn.secondary:hover{border-color:var(--gold);color:var(--gold)}
     #nova-chat{position:fixed;bottom:24px;right:24px;width:380px;height:540px;background:var(--navy-deep);border:1px solid rgba(201,162,39,0.2);border-radius:20px;z-index:9999;display:flex;flex-direction:column;opacity:0;transform:translateY(20px) scale(0.95);pointer-events:none;transition:all .3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 25px 80px rgba(0,0,0,0.4)}
     #nova-chat.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
     .nova-head{display:flex;align-items:center;gap:12px;padding:20px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:20px 20px 0 0;border-bottom:1px solid rgba(201,162,39,0.15)}
@@ -1640,6 +1665,25 @@
     .nova-proposal-cancel{padding:12px 16px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--gray-500);cursor:pointer}
     </style>
 
+    <!-- NOVA Banner Flutuante -->
+    <div id="nova-banner">
+        <button class="nova-banner-close" onclick="hideNovaBanner()">×</button>
+        <div class="nova-banner-header">
+            <div class="nova-banner-avatar">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>
+            </div>
+            <div class="nova-banner-info">
+                <div class="nova-banner-name">NOVA</div>
+                <div class="nova-banner-status">Online now</div>
+            </div>
+        </div>
+        <div class="nova-banner-text">Hi! I'm NOVA, your AI assistant. Need help exploring our services or getting a custom proposal?</div>
+        <div class="nova-banner-cta">
+            <button class="nova-banner-btn primary" onclick="novaToggle()">Let's Chat</button>
+            <button class="nova-banner-btn secondary" onclick="hideNovaBanner()">Maybe Later</button>
+        </div>
+    </div>
+
     <button id="nova-btn" onclick="novaToggle()">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
     </button>
@@ -1673,11 +1717,35 @@
         var isOpen = false;
         var messages = [];
         var isLoading = false;
+        var bannerDismissed = false;
+        
+        // Animação de entrada após 3 segundos
+        setTimeout(function(){
+            document.getElementById('nova-btn').classList.add('visible');
+        }, 3000);
+        
+        // Mostrar banner após 5 segundos
+        setTimeout(function(){
+            if(!bannerDismissed && !isOpen){
+                document.getElementById('nova-banner').classList.add('visible');
+            }
+        }, 5000);
+        
+        // Esconder banner após 15 segundos
+        setTimeout(function(){
+            if(!isOpen) hideNovaBanner();
+        }, 15000);
+        
+        window.hideNovaBanner = function(){
+            bannerDismissed = true;
+            document.getElementById('nova-banner').classList.remove('visible');
+        };
         
         window.novaToggle = function(){
             isOpen = !isOpen;
             document.getElementById('nova-chat').classList.toggle('open', isOpen);
             document.getElementById('nova-btn').classList.toggle('hidden', isOpen);
+            hideNovaBanner();
             if(isOpen && messages.length === 0){
                 setTimeout(showTyping, 300);
                 setTimeout(function(){
