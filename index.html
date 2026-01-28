@@ -515,7 +515,28 @@
         }
 
         /* ========== SERVICES ========== */
-        .services { background: transparent; }
+        .services { 
+            background: url('services-bg.webp') center center / cover no-repeat;
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, 
+                var(--navy-deep) 0%, 
+                rgba(10, 15, 26, 0.85) 20%,
+                rgba(10, 15, 26, 0.85) 80%,
+                var(--navy-deep) 100%
+            );
+            z-index: 0;
+        }
+
+        .services .container {
+            position: relative;
+            z-index: 1;
+        }
 
         .services-grid {
             display: grid;
@@ -620,7 +641,25 @@
 
         /* ========== WHY SECTION ========== */
         .why-section {
-            background: linear-gradient(180deg, transparent 0%, rgba(21, 34, 56, 0.4) 50%, transparent 100%);
+            background: url('about-bridge.webp') center center / cover no-repeat;
+            position: relative;
+        }
+
+        .why-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, 
+                rgba(10, 15, 26, 0.95) 0%, 
+                rgba(10, 15, 26, 0.85) 40%,
+                rgba(10, 15, 26, 0.7) 100%
+            );
+            z-index: 0;
+        }
+
+        .why-section .container {
+            position: relative;
+            z-index: 1;
         }
 
         .why-grid {
