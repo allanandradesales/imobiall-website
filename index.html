@@ -1503,6 +1503,19 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Were you referred by someone?</label>
+                        <select name="referral_source" id="referral-select">
+                            <option value="">No / Direct contact</option>
+                            <option value="Sales Partner">Yes, by a Sales Partner</option>
+                            <option value="Employee">Yes, by an IMOBI employee</option>
+                            <option value="Other Referral">Yes, other referral</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="referral-name-group" style="display:none;">
+                        <label>Referrer's Name</label>
+                        <input type="text" name="referrer_name" id="referrer-name" placeholder="Name of the person who referred you">
+                    </div>
+                    <div class="form-group">
                         <label>Project Details *</label>
                         <textarea name="message" rows="4" required placeholder="Tell us about your project, goals, and timeline..."></textarea>
                     </div>
@@ -1576,6 +1589,20 @@
                 navLinks.classList.remove('mobile-open');
             });
         });
+
+        // Referral field toggle
+        const referralSelect = document.getElementById('referral-select');
+        const referralNameGroup = document.getElementById('referral-name-group');
+        if (referralSelect && referralNameGroup) {
+            referralSelect.addEventListener('change', function() {
+                if (this.value && this.value !== '') {
+                    referralNameGroup.style.display = 'block';
+                } else {
+                    referralNameGroup.style.display = 'none';
+                    document.getElementById('referrer-name').value = '';
+                }
+            });
+        }
     </script>
 
     <!-- ============================================
