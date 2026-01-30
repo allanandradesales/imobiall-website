@@ -854,87 +854,266 @@
         }
 
         /* TERRITORY MAP SECTION */
+        /* ========== TERRITORY SECTION - SIMPLIFIED ========== */
         .territory-section {
             padding: 100px 0;
-            background: url('territory-bg.webp') center center / cover no-repeat;
+            background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-deep) 100%);
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
-        .territory-section::before {
+        .territory-card {
+            background: var(--navy-deep);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .territory-card::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, 
-                var(--navy-deep) 0%, 
-                rgba(10, 15, 26, 0.75) 15%,
-                rgba(10, 15, 26, 0.6) 50%,
-                rgba(10, 15, 26, 0.75) 85%,
-                var(--navy-deep) 100%
-            );
-            pointer-events: none;
-            z-index: 0;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            border-radius: 0 0 3px 3px;
         }
 
-        .territory-section .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .territory-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .territory-content h2 {
+        .territory-header h2 {
             font-family: var(--font-display);
             font-size: clamp(1.75rem, 3.5vw, 2.25rem);
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
-        .territory-content h2 .highlight {
+        .territory-header h2 .highlight {
             color: var(--gold);
         }
 
-        .territory-content > p {
+        .territory-header p {
             color: var(--gray-400);
             font-size: 1rem;
             line-height: 1.7;
-            margin-bottom: 24px;
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
 
-        .territory-stats {
+        .territory-stats-row {
             display: flex;
+            justify-content: center;
             gap: 32px;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
 
-        .territory-stat {
-            text-align: center;
+        .territory-stat-card {
+            position: relative;
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px 48px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
         }
 
-        .territory-stat-value {
+        .territory-stat-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .territory-stat-card.available-card:hover {
+            box-shadow: 0 20px 50px rgba(201, 162, 39, 0.2);
+        }
+
+        .territory-stat-card.claimed-card:hover {
+            box-shadow: 0 20px 50px rgba(34, 197, 94, 0.2);
+        }
+
+        .stat-number {
             font-family: var(--font-display);
-            font-size: 2rem;
+            font-size: 3.5rem;
             font-weight: 700;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .available-card .stat-number {
             color: var(--gold);
         }
 
-        .territory-stat-label {
-            font-size: 0.8rem;
+        .claimed-card .stat-number {
+            color: #22c55e;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .stat-hint {
+            font-size: 0.75rem;
             color: var(--gray-500);
-            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .stat-hint::before {
+            content: '⟨';
+            font-size: 0.65rem;
+        }
+
+        .stat-hint::after {
+            content: '⟩';
+            font-size: 0.65rem;
+        }
+
+        /* Dropdown Styles */
+        .cities-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--navy-deep);
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            padding: 20px;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            min-width: 600px;
+            text-align: left;
+        }
+
+        .territory-stat-card:hover .cities-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(16px);
+        }
+
+        .claimed-dropdown {
+            min-width: 280px;
+        }
+
+        .dropdown-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dropdown-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dropdown-dot.available {
+            background: var(--gold);
+            box-shadow: 0 0 8px rgba(201, 162, 39, 0.6);
+        }
+
+        .dropdown-dot.claimed {
+            background: #22c55e;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+        }
+
+        .dropdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .dropdown-column {
+            min-width: 130px;
+        }
+
+        .column-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .dropdown-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dropdown-column li {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            padding: 4px 0;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.2s;
+        }
+
+        .dropdown-column li:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-column li:hover {
+            color: var(--white);
+        }
+
+        .claimed-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .claimed-item {
+            background: var(--navy-mid);
+            border-radius: 8px;
+            padding: 12px 16px;
+        }
+
+        .claimed-city {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #22c55e;
+            margin-bottom: 2px;
+        }
+
+        .claimed-partner, .claimed-status {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        .claimed-status {
+            color: var(--green);
+        }
+
+        /* Actions */
+        .territory-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
         .territory-cta {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--gold);
-            color: var(--navy-deep);
             padding: 14px 28px;
             border-radius: 10px;
             font-weight: 600;
@@ -942,196 +1121,77 @@
             transition: all 0.3s ease;
         }
 
-        .territory-cta:hover {
+        .territory-cta svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .territory-cta.primary {
+            background: var(--gold);
+            color: var(--navy-deep);
+        }
+
+        .territory-cta.primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px var(--gold-glow);
         }
 
-        .territory-cta svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .map-container {
-            position: relative;
+        .territory-cta.secondary {
+            background: transparent;
+            color: var(--white);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
         }
 
-        .map-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--gold), transparent);
-            z-index: 10;
-        }
-
-        .map-image-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
-        .map-image {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .map-markers {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        .city-marker {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            pointer-events: auto;
-            z-index: 5;
-        }
-
-        .city-marker .marker-dot {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .city-marker .marker-pulse {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            animation: pulse-marker 2s infinite;
-        }
-
-        .city-marker.available .marker-dot {
-            background: var(--gold);
-            box-shadow: 0 0 10px rgba(201, 162, 39, 0.8), 0 0 20px rgba(201, 162, 39, 0.4);
-        }
-
-        .city-marker.available .marker-pulse {
-            background: var(--gold);
-        }
-
-        .city-marker.claimed .marker-dot {
-            background: #22c55e;
-            box-shadow: 0 0 10px rgba(34, 197, 94, 0.8), 0 0 20px rgba(34, 197, 94, 0.4);
-        }
-
-        .city-marker.claimed .marker-pulse {
-            background: #22c55e;
-        }
-
-        .city-marker:hover .marker-dot {
-            transform: translate(-50%, -50%) scale(1.5);
-        }
-
-        @keyframes pulse-marker {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
-        }
-
-        .map-tooltip {
-            position: absolute;
-            background: var(--navy);
-            border: 1px solid var(--gold);
-            border-radius: 8px;
-            padding: 12px 16px;
-            pointer-events: none;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.2s ease;
-            z-index: 100;
-            white-space: nowrap;
-        }
-
-        .map-tooltip.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .map-tooltip-city {
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 4px;
-        }
-
-        .map-tooltip-status {
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .map-tooltip-status.available {
+        .territory-cta.secondary:hover {
+            border-color: var(--gold);
             color: var(--gold);
         }
 
-        .map-tooltip-status.claimed {
-            color: #22c55e;
-        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .territory-card {
+                padding: 32px 24px;
+            }
 
-        .map-tooltip-status::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
+            .territory-stats-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
 
-        .map-tooltip-status.available::before {
-            background: var(--gold);
-        }
+            .territory-stat-card {
+                width: 100%;
+                max-width: 280px;
+            }
 
-        .map-tooltip-status.claimed::before {
-            background: #22c55e;
-        }
+            .cities-dropdown {
+                position: fixed;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                max-width: 90vw;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
 
-        .map-legend {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 20px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-        }
+            .territory-stat-card:hover .cities-dropdown {
+                transform: translate(-50%, -50%) !important;
+            }
 
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: var(--gray-400);
-        }
+            .dropdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-        .legend-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
+            .territory-actions {
+                flex-direction: column;
+                align-items: center;
+            }
 
-        .legend-dot.available {
-            background: var(--gold);
-            box-shadow: 0 0 8px rgba(201, 162, 39, 0.5);
-        }
-
-        .legend-dot.claimed {
-            background: #22c55e;
-            box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+            .territory-cta {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
         }
 
         /* PARTNER CTA */
@@ -1676,217 +1736,136 @@
         </div>
     </section>
 
-    <!-- Territory Map -->
+    <!-- Territory Section - Simplified with Hover Lists -->
     <section class="territory-section" id="territories">
         <div class="container">
-            <div class="territory-grid">
-                <div class="territory-content reveal">
+            <div class="territory-card reveal">
+                <div class="territory-header">
                     <h2>Claim Your <span class="highlight">Territory</span></h2>
                     <p>We're building an exclusive network of sales partners across the US. Each city has only one partner — secure yours before it's taken.</p>
-                    
-                    <div class="territory-stats">
-                        <div class="territory-stat">
-                            <div class="territory-stat-value" id="available-count">48</div>
-                            <div class="territory-stat-label">Cities Available</div>
-                        </div>
-                        <div class="territory-stat">
-                            <div class="territory-stat-value" id="claimed-count">2</div>
-                            <div class="territory-stat-label">Already Claimed</div>
+                </div>
+                
+                <div class="territory-stats-row">
+                    <div class="territory-stat-card available-card">
+                        <div class="stat-number">47</div>
+                        <div class="stat-label">Cities Available</div>
+                        <div class="stat-hint">Hover to see list</div>
+                        
+                        <div class="cities-dropdown">
+                            <div class="dropdown-header">
+                                <span class="dropdown-dot available"></span>
+                                Available Territories
+                            </div>
+                            <div class="dropdown-grid">
+                                <div class="dropdown-column">
+                                    <div class="column-title">West Coast</div>
+                                    <ul>
+                                        <li>San Francisco, CA</li>
+                                        <li>Los Angeles, CA</li>
+                                        <li>San Diego, CA</li>
+                                        <li>San Jose, CA</li>
+                                        <li>Seattle, WA</li>
+                                        <li>Portland, OR</li>
+                                        <li>Las Vegas, NV</li>
+                                        <li>Salt Lake City, UT</li>
+                                        <li>Boise, ID</li>
+                                        <li>Denver, CO</li>
+                                        <li>Boulder, CO</li>
+                                        <li>Albuquerque, NM</li>
+                                        <li>Tucson, AZ</li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown-column">
+                                    <div class="column-title">Central</div>
+                                    <ul>
+                                        <li>Dallas, TX</li>
+                                        <li>Austin, TX</li>
+                                        <li>Houston, TX</li>
+                                        <li>San Antonio, TX</li>
+                                        <li>Oklahoma City, OK</li>
+                                        <li>Kansas City, MO</li>
+                                        <li>St. Louis, MO</li>
+                                        <li>Chicago, IL</li>
+                                        <li>Minneapolis, MN</li>
+                                        <li>Madison, WI</li>
+                                        <li>Indianapolis, IN</li>
+                                        <li>Little Rock, AR</li>
+                                        <li>New Orleans, LA</li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown-column">
+                                    <div class="column-title">East Coast</div>
+                                    <ul>
+                                        <li>New York, NY</li>
+                                        <li>Boston, MA</li>
+                                        <li>Washington, DC</li>
+                                        <li>Philadelphia, PA</li>
+                                        <li>Pittsburgh, PA</li>
+                                        <li>Baltimore, MD</li>
+                                        <li>Hartford, CT</li>
+                                        <li>Detroit, MI</li>
+                                        <li>Columbus, OH</li>
+                                        <li>Cincinnati, OH</li>
+                                        <li>Richmond, VA</li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown-column">
+                                    <div class="column-title">Southeast</div>
+                                    <ul>
+                                        <li>Miami, FL</li>
+                                        <li>Tampa, FL</li>
+                                        <li>Orlando, FL</li>
+                                        <li>Jacksonville, FL</li>
+                                        <li>Charlotte, NC</li>
+                                        <li>Raleigh, NC</li>
+                                        <li>Charleston, SC</li>
+                                        <li>Nashville, TN</li>
+                                        <li>Birmingham, AL</li>
+                                        <li>Huntsville, AL</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <a href="partners.html#apply" class="territory-cta">
-                        Claim Your Territory
+                    <div class="territory-stat-card claimed-card">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Already Claimed</div>
+                        <div class="stat-hint">Hover to see cities</div>
+                        
+                        <div class="cities-dropdown claimed-dropdown">
+                            <div class="dropdown-header">
+                                <span class="dropdown-dot claimed"></span>
+                                Claimed Territories
+                            </div>
+                            <div class="claimed-list">
+                                <div class="claimed-item">
+                                    <div class="claimed-city">Phoenix, AZ</div>
+                                    <div class="claimed-status">Partner Active</div>
+                                </div>
+                                <div class="claimed-item">
+                                    <div class="claimed-city">Atlanta, GA</div>
+                                    <div class="claimed-status">Partner Active</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="territory-actions">
+                    <a href="territories.html" class="territory-cta primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+                        </svg>
+                        View Territory Map
+                    </a>
+                    <a href="partners.html#apply" class="territory-cta secondary">
+                        Apply Now
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </a>
-                </div>
-                
-                <div class="map-container reveal">
-                    <div class="map-tooltip" id="map-tooltip">
-                        <div class="map-tooltip-city"></div>
-                        <div class="map-tooltip-status"></div>
-                    </div>
-                    
-                    <div class="map-image-wrapper">
-                        <img src="territory-bg.webp" alt="US Territory Map" class="map-image">
-                        
-                        <div class="map-markers">
-                            <!-- 
-                            Coordenadas calculadas baseado na imagem DALL-E:
-                            - Mapa X: 15% a 85% (largura útil = 70%)
-                            - Mapa Y: 12% a 78% (altura útil = 66%)
-                            - Conversão: x_real = 15 + (lon_normalizada * 70)
-                            - Conversão: y_real = 12 + (lat_normalizada * 66)
-                            -->
-                            
-                            <!-- CLAIMED CITIES (Green) -->
-                            <!-- Phoenix, AZ - Connor Burris (33.4°N, 112.1°W) -->
-                            <div class="city-marker claimed" data-city="Phoenix, AZ" data-status="claimed" style="left: 26%; top: 54%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Atlanta, GA - Aline Munhoz (33.7°N, 84.4°W) -->
-                            <div class="city-marker claimed" data-city="Atlanta, GA" data-status="claimed" style="left: 68%; top: 53%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- TIER 1 - Major Tech Hubs -->
-                            <!-- Seattle, WA (47.6°N, 122.3°W) -->
-                            <div class="city-marker available" data-city="Seattle, WA" data-status="available" style="left: 20%; top: 18%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Portland, OR (45.5°N, 122.7°W) -->
-                            <div class="city-marker available" data-city="Portland, OR" data-status="available" style="left: 20%; top: 23%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- San Francisco, CA (37.8°N, 122.4°W) -->
-                            <div class="city-marker available" data-city="San Francisco, CA" data-status="available" style="left: 17%; top: 40%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- San Jose, CA (37.3°N, 121.9°W) -->
-                            <div class="city-marker available" data-city="San Jose, CA" data-status="available" style="left: 18%; top: 42%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Los Angeles, CA (34.1°N, 118.2°W) -->
-                            <div class="city-marker available" data-city="Los Angeles, CA" data-status="available" style="left: 21%; top: 50%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- San Diego, CA (32.7°N, 117.2°W) -->
-                            <div class="city-marker available" data-city="San Diego, CA" data-status="available" style="left: 22%; top: 54%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Las Vegas, NV (36.2°N, 115.1°W) -->
-                            <div class="city-marker available" data-city="Las Vegas, NV" data-status="available" style="left: 24%; top: 44%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Salt Lake City, UT (40.8°N, 111.9°W) -->
-                            <div class="city-marker available" data-city="Salt Lake City, UT" data-status="available" style="left: 28%; top: 34%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Boise, ID (43.6°N, 116.2°W) -->
-                            <div class="city-marker available" data-city="Boise, ID" data-status="available" style="left: 24%; top: 27%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Denver, CO (39.7°N, 105°W) -->
-                            <div class="city-marker available" data-city="Denver, CO" data-status="available" style="left: 34%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Boulder, CO (40°N, 105.3°W) -->
-                            <div class="city-marker available" data-city="Boulder, CO" data-status="available" style="left: 34%; top: 36%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Albuquerque, NM (35.1°N, 106.6°W) -->
-                            <div class="city-marker available" data-city="Albuquerque, NM" data-status="available" style="left: 32%; top: 48%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Tucson, AZ (32.2°N, 110.9°W) -->
-                            <div class="city-marker available" data-city="Tucson, AZ" data-status="available" style="left: 28%; top: 56%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- TEXAS -->
-                            <!-- Dallas, TX (32.8°N, 96.8°W) -->
-                            <div class="city-marker available" data-city="Dallas, TX" data-status="available" style="left: 44%; top: 54%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Austin, TX (30.3°N, 97.7°W) -->
-                            <div class="city-marker available" data-city="Austin, TX" data-status="available" style="left: 43%; top: 60%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- San Antonio, TX (29.4°N, 98.5°W) -->
-                            <div class="city-marker available" data-city="San Antonio, TX" data-status="available" style="left: 42%; top: 62%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Houston, TX (29.8°N, 95.4°W) -->
-                            <div class="city-marker available" data-city="Houston, TX" data-status="available" style="left: 46%; top: 62%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Oklahoma City, OK (35.5°N, 97.5°W) -->
-                            <div class="city-marker available" data-city="Oklahoma City, OK" data-status="available" style="left: 43%; top: 47%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- MIDWEST -->
-                            <!-- Minneapolis, MN (45°N, 93.3°W) -->
-                            <div class="city-marker available" data-city="Minneapolis, MN" data-status="available" style="left: 50%; top: 24%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Madison, WI (43.1°N, 89.4°W) -->
-                            <div class="city-marker available" data-city="Madison, WI" data-status="available" style="left: 54%; top: 28%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Chicago, IL (41.9°N, 87.6°W) -->
-                            <div class="city-marker available" data-city="Chicago, IL" data-status="available" style="left: 56%; top: 32%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Detroit, MI (42.3°N, 83.0°W) -->
-                            <div class="city-marker available" data-city="Detroit, MI" data-status="available" style="left: 61%; top: 31%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Indianapolis, IN (39.8°N, 86.2°W) -->
-                            <div class="city-marker available" data-city="Indianapolis, IN" data-status="available" style="left: 57%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Columbus, OH (40°N, 83°W) -->
-                            <div class="city-marker available" data-city="Columbus, OH" data-status="available" style="left: 61%; top: 37%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Cincinnati, OH (39.1°N, 84.5°W) -->
-                            <div class="city-marker available" data-city="Cincinnati, OH" data-status="available" style="left: 59%; top: 39%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Pittsburgh, PA (40.4°N, 80°W) -->
-                            <div class="city-marker available" data-city="Pittsburgh, PA" data-status="available" style="left: 64%; top: 36%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Kansas City, MO (39.1°N, 94.6°W) -->
-                            <div class="city-marker available" data-city="Kansas City, MO" data-status="available" style="left: 48%; top: 40%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- St. Louis, MO (38.6°N, 90.2°W) -->
-                            <div class="city-marker available" data-city="St. Louis, MO" data-status="available" style="left: 53%; top: 41%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Little Rock, AR (34.7°N, 92.3°W) -->
-                            <div class="city-marker available" data-city="Little Rock, AR" data-status="available" style="left: 51%; top: 49%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- New Orleans, LA (30°N, 90°W) -->
-                            <div class="city-marker available" data-city="New Orleans, LA" data-status="available" style="left: 53%; top: 60%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- SOUTHEAST -->
-                            <!-- Nashville, TN (36.2°N, 86.8°W) -->
-                            <div class="city-marker available" data-city="Nashville, TN" data-status="available" style="left: 57%; top: 45%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Birmingham, AL (33.5°N, 86.8°W) -->
-                            <div class="city-marker available" data-city="Birmingham, AL" data-status="available" style="left: 57%; top: 51%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Huntsville, AL (34.7°N, 86.6°W) -->
-                            <div class="city-marker available" data-city="Huntsville, AL" data-status="available" style="left: 57%; top: 48%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Charlotte, NC (35.2°N, 80.8°W) -->
-                            <div class="city-marker available" data-city="Charlotte, NC" data-status="available" style="left: 64%; top: 47%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Raleigh, NC (35.8°N, 78.6°W) -->
-                            <div class="city-marker available" data-city="Raleigh, NC" data-status="available" style="left: 67%; top: 46%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Charleston, SC (32.8°N, 79.9°W) -->
-                            <div class="city-marker available" data-city="Charleston, SC" data-status="available" style="left: 66%; top: 54%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- FLORIDA -->
-                            <!-- Jacksonville, FL (30.3°N, 81.7°W) -->
-                            <div class="city-marker available" data-city="Jacksonville, FL" data-status="available" style="left: 65%; top: 58%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Orlando, FL (28.5°N, 81.4°W) -->
-                            <div class="city-marker available" data-city="Orlando, FL" data-status="available" style="left: 66%; top: 63%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Tampa, FL (28°N, 82.5°W) -->
-                            <div class="city-marker available" data-city="Tampa, FL" data-status="available" style="left: 64%; top: 64%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Miami, FL (25.8°N, 80.2°W) -->
-                            <div class="city-marker available" data-city="Miami, FL" data-status="available" style="left: 68%; top: 72%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- NORTHEAST -->
-                            <!-- Richmond, VA (37.5°N, 77.4°W) -->
-                            <div class="city-marker available" data-city="Richmond, VA" data-status="available" style="left: 69%; top: 42%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Washington, DC (38.9°N, 77°W) -->
-                            <div class="city-marker available" data-city="Washington, DC" data-status="available" style="left: 70%; top: 39%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Baltimore, MD (39.3°N, 76.6°W) -->
-                            <div class="city-marker available" data-city="Baltimore, MD" data-status="available" style="left: 70%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Philadelphia, PA (40°N, 75.2°W) -->
-                            <div class="city-marker available" data-city="Philadelphia, PA" data-status="available" style="left: 72%; top: 36%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- New York, NY (40.7°N, 74°W) -->
-                            <div class="city-marker available" data-city="New York, NY" data-status="available" style="left: 74%; top: 34%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Hartford, CT (41.8°N, 72.7°W) -->
-                            <div class="city-marker available" data-city="Hartford, CT" data-status="available" style="left: 75%; top: 31%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            
-                            <!-- Boston, MA (42.4°N, 71.1°W) -->
-                            <div class="city-marker available" data-city="Boston, MA" data-status="available" style="left: 77%; top: 29%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                        </div>
-                    </div>
-                    
-                    <div class="map-legend">
-                        <div class="legend-item">
-                            <span class="legend-dot available"></span>
-                            <span>Available Territory</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot claimed"></span>
-                            <span>Partner Active</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -2086,49 +2065,7 @@
             });
         }
 
-        // Territory Map Interactions
-        (function() {
-            const tooltip = document.getElementById('map-tooltip');
-            const markers = document.querySelectorAll('.city-marker');
-            
-            // Update counts
-            const availableCount = document.querySelectorAll('.city-marker.available').length;
-            const claimedCount = document.querySelectorAll('.city-marker.claimed').length;
-            document.getElementById('available-count').textContent = availableCount;
-            document.getElementById('claimed-count').textContent = claimedCount;
-            
-            markers.forEach(marker => {
-                marker.addEventListener('mouseenter', (e) => {
-                    const city = marker.dataset.city;
-                    const status = marker.dataset.status;
-                    
-                    tooltip.querySelector('.map-tooltip-city').textContent = city;
-                    tooltip.querySelector('.map-tooltip-status').textContent = 
-                        status === 'claimed' ? 'Partner Active' : 'Available — Claim Now!';
-                    tooltip.querySelector('.map-tooltip-status').className = 'map-tooltip-status ' + status;
-                    
-                    // Position tooltip
-                    const rect = marker.getBoundingClientRect();
-                    const containerRect = document.querySelector('.map-container').getBoundingClientRect();
-                    
-                    tooltip.style.left = (rect.left - containerRect.left + rect.width/2 - tooltip.offsetWidth/2) + 'px';
-                    tooltip.style.top = (rect.top - containerRect.top - tooltip.offsetHeight - 10) + 'px';
-                    
-                    tooltip.classList.add('visible');
-                });
-                
-                marker.addEventListener('mouseleave', () => {
-                    tooltip.classList.remove('visible');
-                });
-                
-                // Click to go to apply form (only for available)
-                marker.addEventListener('click', () => {
-                    if (marker.dataset.status === 'available') {
-                        window.location.href = 'partners.html#apply';
-                    }
-                });
-            });
-        })();
+
     </script>
 
     <!-- NOVA CHATBOT -->
