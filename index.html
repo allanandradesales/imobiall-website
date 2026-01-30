@@ -1713,62 +1713,167 @@
                         <img src="territory-bg.webp" alt="US Territory Map" class="map-image">
                         
                         <div class="map-markers">
-                            <!-- CLAIMED CITIES (Green) - Phoenix & Atlanta -->
-                            <div class="city-marker claimed" data-city="Phoenix, AZ" data-status="claimed" style="left: 22%; top: 62%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker claimed" data-city="Atlanta, GA" data-status="claimed" style="left: 73%; top: 58%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <!-- 
+                            Coordenadas calculadas baseado na imagem DALL-E:
+                            - Mapa X: 15% a 85% (largura útil = 70%)
+                            - Mapa Y: 12% a 78% (altura útil = 66%)
+                            - Conversão: x_real = 15 + (lon_normalizada * 70)
+                            - Conversão: y_real = 12 + (lat_normalizada * 66)
+                            -->
+                            
+                            <!-- CLAIMED CITIES (Green) -->
+                            <!-- Phoenix, AZ - Connor Burris (33.4°N, 112.1°W) -->
+                            <div class="city-marker claimed" data-city="Phoenix, AZ" data-status="claimed" style="left: 26%; top: 54%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Atlanta, GA - Aline Munhoz (33.7°N, 84.4°W) -->
+                            <div class="city-marker claimed" data-city="Atlanta, GA" data-status="claimed" style="left: 68%; top: 53%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
                             
                             <!-- TIER 1 - Major Tech Hubs -->
-                            <div class="city-marker available" data-city="San Francisco, CA" data-status="available" style="left: 10%; top: 42%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="New York, NY" data-status="available" style="left: 87%; top: 32%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Austin, TX" data-status="available" style="left: 45%; top: 72%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Seattle, WA" data-status="available" style="left: 12%; top: 18%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Boston, MA" data-status="available" style="left: 91%; top: 26%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Washington, DC" data-status="available" style="left: 83%; top: 40%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Denver, CO" data-status="available" style="left: 32%; top: 45%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Los Angeles, CA" data-status="available" style="left: 12%; top: 55%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="San Diego, CA" data-status="available" style="left: 14%; top: 62%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <!-- Seattle, WA (47.6°N, 122.3°W) -->
+                            <div class="city-marker available" data-city="Seattle, WA" data-status="available" style="left: 20%; top: 18%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
                             
-                            <!-- TIER 2 - Growing Hubs -->
-                            <div class="city-marker available" data-city="Miami, FL" data-status="available" style="left: 82%; top: 82%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Dallas, TX" data-status="available" style="left: 45%; top: 62%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Houston, TX" data-status="available" style="left: 48%; top: 72%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Raleigh, NC" data-status="available" style="left: 80%; top: 48%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Charlotte, NC" data-status="available" style="left: 77%; top: 52%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Nashville, TN" data-status="available" style="left: 67%; top: 52%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Salt Lake City, UT" data-status="available" style="left: 24%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Chicago, IL" data-status="available" style="left: 62%; top: 35%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Minneapolis, MN" data-status="available" style="left: 52%; top: 25%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Detroit, MI" data-status="available" style="left: 68%; top: 32%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Pittsburgh, PA" data-status="available" style="left: 77%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Philadelphia, PA" data-status="available" style="left: 85%; top: 36%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <!-- Portland, OR (45.5°N, 122.7°W) -->
+                            <div class="city-marker available" data-city="Portland, OR" data-status="available" style="left: 20%; top: 23%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
                             
-                            <!-- TIER 3 - Emerging -->
-                            <div class="city-marker available" data-city="Portland, OR" data-status="available" style="left: 11%; top: 24%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Tampa, FL" data-status="available" style="left: 77%; top: 76%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Orlando, FL" data-status="available" style="left: 79%; top: 74%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Jacksonville, FL" data-status="available" style="left: 78%; top: 68%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Indianapolis, IN" data-status="available" style="left: 64%; top: 42%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Columbus, OH" data-status="available" style="left: 71%; top: 40%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Cincinnati, OH" data-status="available" style="left: 68%; top: 44%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Kansas City, MO" data-status="available" style="left: 50%; top: 45%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="St. Louis, MO" data-status="available" style="left: 57%; top: 46%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="San Antonio, TX" data-status="available" style="left: 42%; top: 75%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Las Vegas, NV" data-status="available" style="left: 18%; top: 50%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="San Jose, CA" data-status="available" style="left: 10%; top: 46%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Baltimore, MD" data-status="available" style="left: 82%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Richmond, VA" data-status="available" style="left: 80%; top: 44%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Birmingham, AL" data-status="available" style="left: 66%; top: 58%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="New Orleans, LA" data-status="available" style="left: 58%; top: 72%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Oklahoma City, OK" data-status="available" style="left: 43%; top: 55%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Albuquerque, NM" data-status="available" style="left: 28%; top: 58%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Tucson, AZ" data-status="available" style="left: 23%; top: 68%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Boise, ID" data-status="available" style="left: 18%; top: 28%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Madison, WI" data-status="available" style="left: 58%; top: 30%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Boulder, CO" data-status="available" style="left: 33%; top: 43%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Charleston, SC" data-status="available" style="left: 78%; top: 58%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Huntsville, AL" data-status="available" style="left: 67%; top: 55%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Little Rock, AR" data-status="available" style="left: 54%; top: 56%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
-                            <div class="city-marker available" data-city="Hartford, CT" data-status="available" style="left: 88%; top: 28%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <!-- San Francisco, CA (37.8°N, 122.4°W) -->
+                            <div class="city-marker available" data-city="San Francisco, CA" data-status="available" style="left: 17%; top: 40%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- San Jose, CA (37.3°N, 121.9°W) -->
+                            <div class="city-marker available" data-city="San Jose, CA" data-status="available" style="left: 18%; top: 42%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Los Angeles, CA (34.1°N, 118.2°W) -->
+                            <div class="city-marker available" data-city="Los Angeles, CA" data-status="available" style="left: 21%; top: 50%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- San Diego, CA (32.7°N, 117.2°W) -->
+                            <div class="city-marker available" data-city="San Diego, CA" data-status="available" style="left: 22%; top: 54%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Las Vegas, NV (36.2°N, 115.1°W) -->
+                            <div class="city-marker available" data-city="Las Vegas, NV" data-status="available" style="left: 24%; top: 44%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Salt Lake City, UT (40.8°N, 111.9°W) -->
+                            <div class="city-marker available" data-city="Salt Lake City, UT" data-status="available" style="left: 28%; top: 34%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Boise, ID (43.6°N, 116.2°W) -->
+                            <div class="city-marker available" data-city="Boise, ID" data-status="available" style="left: 24%; top: 27%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Denver, CO (39.7°N, 105°W) -->
+                            <div class="city-marker available" data-city="Denver, CO" data-status="available" style="left: 34%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Boulder, CO (40°N, 105.3°W) -->
+                            <div class="city-marker available" data-city="Boulder, CO" data-status="available" style="left: 34%; top: 36%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Albuquerque, NM (35.1°N, 106.6°W) -->
+                            <div class="city-marker available" data-city="Albuquerque, NM" data-status="available" style="left: 32%; top: 48%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Tucson, AZ (32.2°N, 110.9°W) -->
+                            <div class="city-marker available" data-city="Tucson, AZ" data-status="available" style="left: 28%; top: 56%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- TEXAS -->
+                            <!-- Dallas, TX (32.8°N, 96.8°W) -->
+                            <div class="city-marker available" data-city="Dallas, TX" data-status="available" style="left: 44%; top: 54%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Austin, TX (30.3°N, 97.7°W) -->
+                            <div class="city-marker available" data-city="Austin, TX" data-status="available" style="left: 43%; top: 60%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- San Antonio, TX (29.4°N, 98.5°W) -->
+                            <div class="city-marker available" data-city="San Antonio, TX" data-status="available" style="left: 42%; top: 62%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Houston, TX (29.8°N, 95.4°W) -->
+                            <div class="city-marker available" data-city="Houston, TX" data-status="available" style="left: 46%; top: 62%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Oklahoma City, OK (35.5°N, 97.5°W) -->
+                            <div class="city-marker available" data-city="Oklahoma City, OK" data-status="available" style="left: 43%; top: 47%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- MIDWEST -->
+                            <!-- Minneapolis, MN (45°N, 93.3°W) -->
+                            <div class="city-marker available" data-city="Minneapolis, MN" data-status="available" style="left: 50%; top: 24%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Madison, WI (43.1°N, 89.4°W) -->
+                            <div class="city-marker available" data-city="Madison, WI" data-status="available" style="left: 54%; top: 28%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Chicago, IL (41.9°N, 87.6°W) -->
+                            <div class="city-marker available" data-city="Chicago, IL" data-status="available" style="left: 56%; top: 32%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Detroit, MI (42.3°N, 83.0°W) -->
+                            <div class="city-marker available" data-city="Detroit, MI" data-status="available" style="left: 61%; top: 31%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Indianapolis, IN (39.8°N, 86.2°W) -->
+                            <div class="city-marker available" data-city="Indianapolis, IN" data-status="available" style="left: 57%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Columbus, OH (40°N, 83°W) -->
+                            <div class="city-marker available" data-city="Columbus, OH" data-status="available" style="left: 61%; top: 37%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Cincinnati, OH (39.1°N, 84.5°W) -->
+                            <div class="city-marker available" data-city="Cincinnati, OH" data-status="available" style="left: 59%; top: 39%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Pittsburgh, PA (40.4°N, 80°W) -->
+                            <div class="city-marker available" data-city="Pittsburgh, PA" data-status="available" style="left: 64%; top: 36%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Kansas City, MO (39.1°N, 94.6°W) -->
+                            <div class="city-marker available" data-city="Kansas City, MO" data-status="available" style="left: 48%; top: 40%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- St. Louis, MO (38.6°N, 90.2°W) -->
+                            <div class="city-marker available" data-city="St. Louis, MO" data-status="available" style="left: 53%; top: 41%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Little Rock, AR (34.7°N, 92.3°W) -->
+                            <div class="city-marker available" data-city="Little Rock, AR" data-status="available" style="left: 51%; top: 49%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- New Orleans, LA (30°N, 90°W) -->
+                            <div class="city-marker available" data-city="New Orleans, LA" data-status="available" style="left: 53%; top: 60%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- SOUTHEAST -->
+                            <!-- Nashville, TN (36.2°N, 86.8°W) -->
+                            <div class="city-marker available" data-city="Nashville, TN" data-status="available" style="left: 57%; top: 45%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Birmingham, AL (33.5°N, 86.8°W) -->
+                            <div class="city-marker available" data-city="Birmingham, AL" data-status="available" style="left: 57%; top: 51%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Huntsville, AL (34.7°N, 86.6°W) -->
+                            <div class="city-marker available" data-city="Huntsville, AL" data-status="available" style="left: 57%; top: 48%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Charlotte, NC (35.2°N, 80.8°W) -->
+                            <div class="city-marker available" data-city="Charlotte, NC" data-status="available" style="left: 64%; top: 47%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Raleigh, NC (35.8°N, 78.6°W) -->
+                            <div class="city-marker available" data-city="Raleigh, NC" data-status="available" style="left: 67%; top: 46%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Charleston, SC (32.8°N, 79.9°W) -->
+                            <div class="city-marker available" data-city="Charleston, SC" data-status="available" style="left: 66%; top: 54%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- FLORIDA -->
+                            <!-- Jacksonville, FL (30.3°N, 81.7°W) -->
+                            <div class="city-marker available" data-city="Jacksonville, FL" data-status="available" style="left: 65%; top: 58%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Orlando, FL (28.5°N, 81.4°W) -->
+                            <div class="city-marker available" data-city="Orlando, FL" data-status="available" style="left: 66%; top: 63%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Tampa, FL (28°N, 82.5°W) -->
+                            <div class="city-marker available" data-city="Tampa, FL" data-status="available" style="left: 64%; top: 64%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Miami, FL (25.8°N, 80.2°W) -->
+                            <div class="city-marker available" data-city="Miami, FL" data-status="available" style="left: 68%; top: 72%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- NORTHEAST -->
+                            <!-- Richmond, VA (37.5°N, 77.4°W) -->
+                            <div class="city-marker available" data-city="Richmond, VA" data-status="available" style="left: 69%; top: 42%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Washington, DC (38.9°N, 77°W) -->
+                            <div class="city-marker available" data-city="Washington, DC" data-status="available" style="left: 70%; top: 39%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Baltimore, MD (39.3°N, 76.6°W) -->
+                            <div class="city-marker available" data-city="Baltimore, MD" data-status="available" style="left: 70%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Philadelphia, PA (40°N, 75.2°W) -->
+                            <div class="city-marker available" data-city="Philadelphia, PA" data-status="available" style="left: 72%; top: 36%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- New York, NY (40.7°N, 74°W) -->
+                            <div class="city-marker available" data-city="New York, NY" data-status="available" style="left: 74%; top: 34%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Hartford, CT (41.8°N, 72.7°W) -->
+                            <div class="city-marker available" data-city="Hartford, CT" data-status="available" style="left: 75%; top: 31%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- Boston, MA (42.4°N, 71.1°W) -->
+                            <div class="city-marker available" data-city="Boston, MA" data-status="available" style="left: 77%; top: 29%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
                         </div>
                     </div>
                     
