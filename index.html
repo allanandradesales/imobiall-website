@@ -1048,68 +1048,115 @@
 
         /* Dropdown Styles */
         .cities-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            background: var(--navy-deep);
-            border: 1px solid var(--gold);
-            border-radius: 16px;
-            padding: 20px;
-            z-index: 1000;
+            display: none;
+        }
+
+        /* Cities Modal */
+        .cities-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 9990;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-            min-width: 600px;
-            text-align: left;
         }
 
-        .territory-stat-card:hover .cities-dropdown {
+        .cities-modal-overlay.active {
             opacity: 1;
             visibility: visible;
-            transform: translateX(-50%) translateY(16px);
         }
 
-        .claimed-dropdown {
-            min-width: 280px;
+        .cities-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--navy-deep);
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            padding: 32px;
+            z-index: 9991;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            max-width: 700px;
+            width: 90vw;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
         }
 
-        .dropdown-header {
+        .cities-modal.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .modal-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding-bottom: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
             border-bottom: 1px solid var(--border);
         }
 
-        .dropdown-dot {
-            width: 10px;
-            height: 10px;
+        .modal-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .modal-dot {
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
         }
 
-        .dropdown-dot.available {
+        .modal-dot.available {
             background: var(--gold);
-            box-shadow: 0 0 8px rgba(201, 162, 39, 0.6);
+            box-shadow: 0 0 12px rgba(201, 162, 39, 0.6);
         }
 
-        .dropdown-dot.claimed {
+        .modal-dot.claimed {
             background: #22c55e;
-            box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
         }
 
-        .dropdown-grid {
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--gray-400);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: var(--gold);
+            color: var(--navy-deep);
+            border-color: var(--gold);
+        }
+
+        .modal-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
+            gap: 20px;
         }
 
-        .dropdown-column {
-            min-width: 130px;
+        .modal-column {
+            min-width: 0;
         }
 
         .column-title {
@@ -1118,35 +1165,96 @@
             color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
-        .dropdown-column ul {
+        .modal-column ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .dropdown-column li {
-            font-size: 0.8rem;
+        .modal-column li {
+            font-size: 0.85rem;
             color: var(--gray-400);
-            padding: 4px 0;
+            padding: 6px 0;
             border-bottom: 1px solid var(--border);
             transition: color 0.2s;
         }
 
-        .dropdown-column li:last-child {
+        .modal-column li:last-child {
             border-bottom: none;
         }
 
-        .dropdown-column li:hover {
+        .modal-column li:hover {
             color: var(--white);
         }
 
+        /* Claimed modal specific */
         .claimed-list {
             display: flex;
             flex-direction: column;
+            gap: 16px;
+        }
+
+        .claimed-item {
+            display: flex;
+            align-items: center;
             gap: 12px;
+            padding: 12px 16px;
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .claimed-item-dot {
+            width: 10px;
+            height: 10px;
+            background: #22c55e;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .claimed-item-info {
+            flex: 1;
+        }
+
+        .claimed-item-city {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .claimed-item-partner {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
+        /* Modal responsive */
+        @media (max-width: 768px) {
+            .cities-modal {
+                padding: 24px;
+                width: 95vw;
+            }
+
+            .modal-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .modal-title {
+                font-size: 1.1rem;
+            }
+
+            .modal-column li {
+                font-size: 0.8rem;
+                padding: 5px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .claimed-item {
@@ -1231,24 +1339,6 @@
             .territory-stat-card {
                 width: 100%;
                 max-width: 280px;
-            }
-
-            .cities-dropdown {
-                position: fixed;
-                top: 50% !important;
-                left: 50% !important;
-                transform: translate(-50%, -50%) !important;
-                max-width: 90vw;
-                max-height: 80vh;
-                overflow-y: auto;
-            }
-
-            .territory-stat-card:hover .cities-dropdown {
-                transform: translate(-50%, -50%) !important;
-            }
-
-            .dropdown-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
 
             .territory-actions {
@@ -1839,119 +1929,26 @@
         </div>
     </section>
 
-    <!-- Territory Section - Simplified with Hover Lists -->
+    <!-- Territory Section - With Click Modals -->
     <section class="territory-section" id="territories">
         <div class="container">
             <div class="territory-card reveal">
                 <div class="territory-header">
                     <h2>Claim Your <span class="highlight">Territory</span></h2>
-                    <p>We're building an exclusive network of sales partners across the US. Each city has only one partner, secure yours before it's taken.</p>
+                    <p>We're building an exclusive network of sales partners across the US. Each city has only one partner — secure yours before it's taken.</p>
                 </div>
                 
                 <div class="territory-stats-row">
-                    <div class="territory-stat-card available-card">
+                    <div class="territory-stat-card available-card" onclick="openModal('available-modal')">
                         <div class="stat-number">47</div>
                         <div class="stat-label">Cities Available</div>
-                        <div class="stat-hint">Hover to see list</div>
-                        
-                        <div class="cities-dropdown">
-                            <div class="dropdown-header">
-                                <span class="dropdown-dot available"></span>
-                                Available Territories
-                            </div>
-                            <div class="dropdown-grid">
-                                <div class="dropdown-column">
-                                    <div class="column-title">West Coast</div>
-                                    <ul>
-                                        <li>San Francisco, CA</li>
-                                        <li>Los Angeles, CA</li>
-                                        <li>San Diego, CA</li>
-                                        <li>San Jose, CA</li>
-                                        <li>Seattle, WA</li>
-                                        <li>Portland, OR</li>
-                                        <li>Las Vegas, NV</li>
-                                        <li>Salt Lake City, UT</li>
-                                        <li>Boise, ID</li>
-                                        <li>Denver, CO</li>
-                                        <li>Boulder, CO</li>
-                                        <li>Albuquerque, NM</li>
-                                        <li>Tucson, AZ</li>
-                                    </ul>
-                                </div>
-                                <div class="dropdown-column">
-                                    <div class="column-title">Central</div>
-                                    <ul>
-                                        <li>Dallas, TX</li>
-                                        <li>Austin, TX</li>
-                                        <li>Houston, TX</li>
-                                        <li>San Antonio, TX</li>
-                                        <li>Oklahoma City, OK</li>
-                                        <li>Kansas City, MO</li>
-                                        <li>St. Louis, MO</li>
-                                        <li>Chicago, IL</li>
-                                        <li>Minneapolis, MN</li>
-                                        <li>Madison, WI</li>
-                                        <li>Indianapolis, IN</li>
-                                        <li>Little Rock, AR</li>
-                                        <li>New Orleans, LA</li>
-                                    </ul>
-                                </div>
-                                <div class="dropdown-column">
-                                    <div class="column-title">East Coast</div>
-                                    <ul>
-                                        <li>New York, NY</li>
-                                        <li>Boston, MA</li>
-                                        <li>Washington, DC</li>
-                                        <li>Philadelphia, PA</li>
-                                        <li>Pittsburgh, PA</li>
-                                        <li>Baltimore, MD</li>
-                                        <li>Hartford, CT</li>
-                                        <li>Detroit, MI</li>
-                                        <li>Columbus, OH</li>
-                                        <li>Cincinnati, OH</li>
-                                        <li>Richmond, VA</li>
-                                    </ul>
-                                </div>
-                                <div class="dropdown-column">
-                                    <div class="column-title">Southeast</div>
-                                    <ul>
-                                        <li>Miami, FL</li>
-                                        <li>Tampa, FL</li>
-                                        <li>Orlando, FL</li>
-                                        <li>Jacksonville, FL</li>
-                                        <li>Charlotte, NC</li>
-                                        <li>Raleigh, NC</li>
-                                        <li>Charleston, SC</li>
-                                        <li>Nashville, TN</li>
-                                        <li>Birmingham, AL</li>
-                                        <li>Huntsville, AL</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="stat-hint">Click to see list</div>
                     </div>
                     
-                    <div class="territory-stat-card claimed-card">
+                    <div class="territory-stat-card claimed-card" onclick="openModal('claimed-modal')">
                         <div class="stat-number">2</div>
                         <div class="stat-label">Already Claimed</div>
-                        <div class="stat-hint">Hover to see cities</div>
-                        
-                        <div class="cities-dropdown claimed-dropdown">
-                            <div class="dropdown-header">
-                                <span class="dropdown-dot claimed"></span>
-                                Claimed Territories
-                            </div>
-                            <div class="claimed-list">
-                                <div class="claimed-item">
-                                    <div class="claimed-city">Phoenix, AZ</div>
-                                    <div class="claimed-status">Partner Active</div>
-                                </div>
-                                <div class="claimed-item">
-                                    <div class="claimed-city">Atlanta, GA</div>
-                                    <div class="claimed-status">Partner Active</div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="stat-hint">Click to see cities</div>
                     </div>
                 </div>
                 
@@ -1973,6 +1970,115 @@
             </div>
         </div>
     </section>
+
+    <!-- Available Cities Modal -->
+    <div class="cities-modal-overlay" id="available-modal-overlay" onclick="closeModal('available-modal')"></div>
+    <div class="cities-modal" id="available-modal">
+        <div class="modal-header">
+            <div class="modal-title">
+                <span class="modal-dot available"></span>
+                47 Available Territories
+            </div>
+            <button class="modal-close" onclick="closeModal('available-modal')">×</button>
+        </div>
+        <div class="modal-grid">
+            <div class="modal-column">
+                <div class="column-title">West Coast</div>
+                <ul>
+                    <li>San Francisco, CA</li>
+                    <li>Los Angeles, CA</li>
+                    <li>San Diego, CA</li>
+                    <li>San Jose, CA</li>
+                    <li>Seattle, WA</li>
+                    <li>Portland, OR</li>
+                    <li>Las Vegas, NV</li>
+                    <li>Salt Lake City, UT</li>
+                    <li>Boise, ID</li>
+                    <li>Denver, CO</li>
+                    <li>Boulder, CO</li>
+                    <li>Albuquerque, NM</li>
+                    <li>Tucson, AZ</li>
+                </ul>
+            </div>
+            <div class="modal-column">
+                <div class="column-title">Central</div>
+                <ul>
+                    <li>Dallas, TX</li>
+                    <li>Austin, TX</li>
+                    <li>Houston, TX</li>
+                    <li>San Antonio, TX</li>
+                    <li>Oklahoma City, OK</li>
+                    <li>Kansas City, MO</li>
+                    <li>St. Louis, MO</li>
+                    <li>Chicago, IL</li>
+                    <li>Minneapolis, MN</li>
+                    <li>Madison, WI</li>
+                    <li>Indianapolis, IN</li>
+                    <li>Little Rock, AR</li>
+                    <li>New Orleans, LA</li>
+                </ul>
+            </div>
+            <div class="modal-column">
+                <div class="column-title">East Coast</div>
+                <ul>
+                    <li>New York, NY</li>
+                    <li>Boston, MA</li>
+                    <li>Washington, DC</li>
+                    <li>Philadelphia, PA</li>
+                    <li>Pittsburgh, PA</li>
+                    <li>Baltimore, MD</li>
+                    <li>Hartford, CT</li>
+                    <li>Detroit, MI</li>
+                    <li>Columbus, OH</li>
+                    <li>Cincinnati, OH</li>
+                    <li>Richmond, VA</li>
+                </ul>
+            </div>
+            <div class="modal-column">
+                <div class="column-title">Southeast</div>
+                <ul>
+                    <li>Miami, FL</li>
+                    <li>Tampa, FL</li>
+                    <li>Orlando, FL</li>
+                    <li>Jacksonville, FL</li>
+                    <li>Charlotte, NC</li>
+                    <li>Raleigh, NC</li>
+                    <li>Charleston, SC</li>
+                    <li>Nashville, TN</li>
+                    <li>Birmingham, AL</li>
+                    <li>Huntsville, AL</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Claimed Cities Modal -->
+    <div class="cities-modal-overlay" id="claimed-modal-overlay" onclick="closeModal('claimed-modal')"></div>
+    <div class="cities-modal" id="claimed-modal">
+        <div class="modal-header">
+            <div class="modal-title">
+                <span class="modal-dot claimed"></span>
+                2 Claimed Territories
+            </div>
+            <button class="modal-close" onclick="closeModal('claimed-modal')">×</button>
+        </div>
+        <div class="claimed-list">
+            <div class="claimed-item">
+                <div class="claimed-item-dot"></div>
+                <div class="claimed-item-info">
+                    <div class="claimed-item-city">Phoenix, AZ</div>
+                    <div class="claimed-item-partner">Partner Active</div>
+                </div>
+            </div>
+            <div class="claimed-item">
+                <div class="claimed-item-dot"></div>
+                <div class="claimed-item-info">
+                    <div class="claimed-item-city">Atlanta, GA</div>
+                    <div class="claimed-item-partner">Partner Active</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Become a Partner CTA -->
     <section class="partner-cta-section">
@@ -2168,6 +2274,26 @@
             });
         }
 
+        // Modal functions for territory cities
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.getElementById(modalId + '-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.getElementById(modalId + '-overlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal('available-modal');
+                closeModal('claimed-modal');
+            }
+        });
 
     </script>
 
