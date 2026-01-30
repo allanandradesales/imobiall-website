@@ -376,7 +376,7 @@
             max-width: 1100px;
         }
 
-        /* SVG Map */
+        /* Map Image */
         .us-map-image {
             width: 100%;
             height: auto;
@@ -393,8 +393,8 @@
         /* City Markers on Map */
         .map-marker {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             transform: translate(-50%, -50%);
             cursor: pointer;
             z-index: 10;
@@ -550,7 +550,7 @@
                 </div>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">← Back to Home</a></li>
                 <li><a href="index.html#services">Services</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
@@ -613,77 +613,76 @@
         <main class="map-area">
             <div class="map-wrapper" id="map-wrapper">
                 <!-- US Map Image -->
-                <img src="territory-bg.webp" alt="US Territory Map" class="us-map-image">
+                <img src="territory-map.webp" alt="US Territory Map" class="us-map-image">
 
-                <!-- Map Markers will be positioned here by JS -->
+                <!-- Map Markers positioned over image -->
                 <div id="markers-container"></div>
             </div>
         </main>
     </div>
 
     <script>
-        // City Data with coordinates calibrated for territory-bg.webp
-        // Image has USA map centered with padding around it
-        // Map area: X ~15-85%, Y ~15-75%
+        // City Data with coordinates calibrated for territory-map.webp (DALL-E image)
+        // Map boundaries: X ~13%-88%, Y ~13%-78%
         const cities = [
             // CLAIMED (green markers)
-            { name: "Phoenix, AZ", status: "claimed", x: 26, y: 54 },
-            { name: "Atlanta, GA", status: "claimed", x: 68, y: 52 },
+            { name: "Phoenix, AZ", status: "claimed", x: 25, y: 52 },      // Arizona
+            { name: "Atlanta, GA", status: "claimed", x: 70, y: 50 },      // Georgia
             
             // WEST COAST
-            { name: "Seattle, WA", status: "available", x: 18, y: 20 },
-            { name: "Portland, OR", status: "available", x: 17, y: 25 },
-            { name: "San Francisco, CA", status: "available", x: 15, y: 40 },
-            { name: "San Jose, CA", status: "available", x: 15.5, y: 42 },
-            { name: "Los Angeles, CA", status: "available", x: 18, y: 50 },
-            { name: "San Diego, CA", status: "available", x: 19, y: 54 },
-            { name: "Las Vegas, NV", status: "available", x: 22, y: 45 },
-            { name: "Salt Lake City, UT", status: "available", x: 27, y: 36 },
-            { name: "Boise, ID", status: "available", x: 23, y: 27 },
-            { name: "Denver, CO", status: "available", x: 34, y: 40 },
+            { name: "Seattle, WA", status: "available", x: 17, y: 18 },    // Washington
+            { name: "Portland, OR", status: "available", x: 16, y: 24 },   // Oregon
+            { name: "San Francisco, CA", status: "available", x: 14, y: 38 },
+            { name: "San Jose, CA", status: "available", x: 14, y: 41 },
+            { name: "Los Angeles, CA", status: "available", x: 17, y: 50 },
+            { name: "San Diego, CA", status: "available", x: 19, y: 55 },
+            { name: "Las Vegas, NV", status: "available", x: 22, y: 44 },  // Nevada
+            { name: "Salt Lake City, UT", status: "available", x: 27, y: 34 }, // Utah
+            { name: "Boise, ID", status: "available", x: 23, y: 26 },      // Idaho
+            { name: "Denver, CO", status: "available", x: 35, y: 40 },     // Colorado
             { name: "Boulder, CO", status: "available", x: 34, y: 38 },
-            { name: "Albuquerque, NM", status: "available", x: 30, y: 50 },
+            { name: "Albuquerque, NM", status: "available", x: 30, y: 50 }, // New Mexico
             { name: "Tucson, AZ", status: "available", x: 27, y: 56 },
             
             // TEXAS & CENTRAL
-            { name: "Dallas, TX", status: "available", x: 44, y: 54 },
-            { name: "Austin, TX", status: "available", x: 43, y: 58 },
-            { name: "San Antonio, TX", status: "available", x: 41, y: 60 },
-            { name: "Houston, TX", status: "available", x: 47, y: 60 },
-            { name: "Oklahoma City, OK", status: "available", x: 43, y: 48 },
-            { name: "Kansas City, MO", status: "available", x: 50, y: 42 },
-            { name: "St. Louis, MO", status: "available", x: 55, y: 44 },
-            { name: "Minneapolis, MN", status: "available", x: 52, y: 26 },
-            { name: "Madison, WI", status: "available", x: 56, y: 30 },
-            { name: "Chicago, IL", status: "available", x: 58, y: 34 },
-            { name: "Indianapolis, IN", status: "available", x: 61, y: 40 },
-            { name: "Detroit, MI", status: "available", x: 65, y: 32 },
-            { name: "Columbus, OH", status: "available", x: 66, y: 40 },
-            { name: "Cincinnati, OH", status: "available", x: 64, y: 42 },
-            { name: "Little Rock, AR", status: "available", x: 51, y: 52 },
-            { name: "New Orleans, LA", status: "available", x: 55, y: 62 },
+            { name: "Dallas, TX", status: "available", x: 44, y: 54 },     // Texas
+            { name: "Austin, TX", status: "available", x: 42, y: 60 },
+            { name: "San Antonio, TX", status: "available", x: 40, y: 64 },
+            { name: "Houston, TX", status: "available", x: 48, y: 62 },
+            { name: "Oklahoma City, OK", status: "available", x: 42, y: 46 }, // Oklahoma
+            { name: "Kansas City, MO", status: "available", x: 50, y: 40 }, // Missouri
+            { name: "St. Louis, MO", status: "available", x: 56, y: 42 },
+            { name: "Minneapolis, MN", status: "available", x: 52, y: 22 }, // Minnesota
+            { name: "Madison, WI", status: "available", x: 58, y: 28 },    // Wisconsin
+            { name: "Chicago, IL", status: "available", x: 60, y: 32 },    // Illinois
+            { name: "Indianapolis, IN", status: "available", x: 64, y: 38 }, // Indiana
+            { name: "Detroit, MI", status: "available", x: 68, y: 28 },    // Michigan
+            { name: "Columbus, OH", status: "available", x: 70, y: 36 },   // Ohio
+            { name: "Cincinnati, OH", status: "available", x: 68, y: 40 },
+            { name: "Little Rock, AR", status: "available", x: 52, y: 52 }, // Arkansas
+            { name: "New Orleans, LA", status: "available", x: 58, y: 64 }, // Louisiana
             
             // SOUTHEAST
-            { name: "Nashville, TN", status: "available", x: 62, y: 48 },
-            { name: "Birmingham, AL", status: "available", x: 62, y: 52 },
-            { name: "Huntsville, AL", status: "available", x: 63, y: 50 },
-            { name: "Charlotte, NC", status: "available", x: 72, y: 48 },
-            { name: "Raleigh, NC", status: "available", x: 75, y: 46 },
-            { name: "Charleston, SC", status: "available", x: 74, y: 54 },
-            { name: "Jacksonville, FL", status: "available", x: 74, y: 60 },
-            { name: "Orlando, FL", status: "available", x: 74, y: 65 },
-            { name: "Tampa, FL", status: "available", x: 72, y: 66 },
-            { name: "Miami, FL", status: "available", x: 76, y: 74 },
+            { name: "Nashville, TN", status: "available", x: 64, y: 46 },  // Tennessee
+            { name: "Birmingham, AL", status: "available", x: 64, y: 52 }, // Alabama
+            { name: "Huntsville, AL", status: "available", x: 66, y: 48 },
+            { name: "Charlotte, NC", status: "available", x: 76, y: 44 },  // North Carolina
+            { name: "Raleigh, NC", status: "available", x: 79, y: 42 },
+            { name: "Charleston, SC", status: "available", x: 77, y: 52 }, // South Carolina
+            { name: "Jacksonville, FL", status: "available", x: 75, y: 60 }, // Florida
+            { name: "Orlando, FL", status: "available", x: 76, y: 66 },
+            { name: "Tampa, FL", status: "available", x: 73, y: 68 },
+            { name: "Miami, FL", status: "available", x: 78, y: 76 },
             
             // NORTHEAST
-            { name: "Pittsburgh, PA", status: "available", x: 72, y: 38 },
-            { name: "Richmond, VA", status: "available", x: 76, y: 44 },
-            { name: "Washington, DC", status: "available", x: 77, y: 42 },
-            { name: "Baltimore, MD", status: "available", x: 78, y: 40 },
-            { name: "Philadelphia, PA", status: "available", x: 79, y: 38 },
-            { name: "New York, NY", status: "available", x: 81, y: 35 },
-            { name: "Hartford, CT", status: "available", x: 82, y: 32 },
-            { name: "Boston, MA", status: "available", x: 84, y: 30 }
+            { name: "Pittsburgh, PA", status: "available", x: 76, y: 34 }, // Pennsylvania
+            { name: "Richmond, VA", status: "available", x: 80, y: 42 },   // Virginia
+            { name: "Washington, DC", status: "available", x: 82, y: 40 },
+            { name: "Baltimore, MD", status: "available", x: 83, y: 38 },  // Maryland
+            { name: "Philadelphia, PA", status: "available", x: 84, y: 34 },
+            { name: "New York, NY", status: "available", x: 86, y: 30 },   // New York
+            { name: "Hartford, CT", status: "available", x: 87, y: 26 },   // Connecticut
+            { name: "Boston, MA", status: "available", x: 89, y: 24 }      // Massachusetts
         ];
 
         // DOM Elements
