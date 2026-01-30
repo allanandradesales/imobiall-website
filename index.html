@@ -48,7 +48,6 @@
 
     <style>
         :root {
-            /* Original IMOBI Brand Colors */
             --navy-deep: #0a0f1a;
             --navy: #1B365D;
             --navy-mid: #152238;
@@ -57,7 +56,6 @@
             --gold-light: #e3c564;
             --gold-glow: rgba(201, 162, 39, 0.25);
             --gold-dim: rgba(201, 162, 39, 0.1);
-            
             --white: #ffffff;
             --gray-100: #f3f4f6;
             --gray-400: #9ca3af;
@@ -65,15 +63,12 @@
             --gray-600: #4b5563;
             --border: rgba(255, 255, 255, 0.08);
             --border-hover: rgba(255, 255, 255, 0.15);
-            
             --font-display: 'Syne', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         html { scroll-behavior: smooth; }
-        
         body {
             font-family: var(--font-body);
             background: var(--navy-deep);
@@ -84,7 +79,6 @@
         }
 
         ::selection { background: var(--gold); color: var(--navy-deep); }
-
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--navy-deep); }
         ::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 3px; }
@@ -92,7 +86,6 @@
 
         .container { width: min(90%, 1200px); margin: 0 auto; }
 
-        /* ========== SUBTLE BACKGROUND ========== */
         .bg-gradient {
             position: fixed;
             inset: 0;
@@ -103,7 +96,7 @@
             z-index: 0;
         }
 
-        /* ========== NAVBAR ========== */
+        /* NAVBAR */
         .navbar {
             position: fixed;
             top: 0;
@@ -232,7 +225,6 @@
             transition: all 0.3s;
         }
 
-        /* Mobile menu dropdown */
         .nav-links.mobile-open {
             display: flex !important;
             position: absolute;
@@ -261,7 +253,7 @@
             font-size: 0.95rem;
         }
 
-        /* ========== HERO ========== */
+        /* HERO */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -393,7 +385,6 @@
             background: var(--gold-dim);
         }
 
-        /* Hero Visual - GLOBE IMAGE */
         .hero-visual {
             position: relative;
             display: flex;
@@ -414,7 +405,6 @@
             50% { transform: translateY(-15px); }
         }
 
-        /* Hero Stats */
         .hero-stats {
             display: flex;
             gap: 40px;
@@ -442,7 +432,7 @@
             margin-top: 4px;
         }
 
-        /* ========== TRUST BAR ========== */
+        /* TRUST BAR */
         .trust-bar {
             padding: 48px 0;
             border-top: 1px solid var(--border);
@@ -481,7 +471,7 @@
 
         .trust-logos span:hover { opacity: 1; }
 
-        /* ========== SECTIONS COMMON ========== */
+        /* SECTIONS COMMON */
         section { padding: 100px 0; position: relative; z-index: 1; }
 
         .section-header {
@@ -514,7 +504,7 @@
             margin-right: auto;
         }
 
-        /* ========== SERVICES ========== */
+        /* SERVICES */
         .services { 
             background: url('services-bg.webp') center center / cover no-repeat;
             position: relative;
@@ -639,7 +629,7 @@
             line-height: 1.6;
         }
 
-        /* ========== WHY SECTION ========== */
+        /* WHY SECTION */
         .why-section {
             background: url('about-bridge.webp') center center / cover no-repeat;
             position: relative;
@@ -726,7 +716,6 @@
             color: var(--gray-500);
         }
 
-        /* Stats Cards */
         .why-visual {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -771,7 +760,7 @@
             margin-top: 8px;
         }
 
-        /* ========== PARTNER ========== */
+        /* PARTNER SECTION */
         .partner-section { background: transparent; }
 
         .partner-card {
@@ -864,7 +853,261 @@
             color: var(--gray-400);
         }
 
-        /* ========== PARTNER CTA ========== */
+        /* TERRITORY MAP SECTION */
+        .territory-section {
+            padding: 100px 0;
+            background: url('territory-bg.webp') center center / cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .territory-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, 
+                var(--navy-deep) 0%, 
+                rgba(10, 15, 26, 0.75) 15%,
+                rgba(10, 15, 26, 0.6) 50%,
+                rgba(10, 15, 26, 0.75) 85%,
+                var(--navy-deep) 100%
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .territory-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .territory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .territory-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .territory-content h2 .highlight {
+            color: var(--gold);
+        }
+
+        .territory-content > p {
+            color: var(--gray-400);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .territory-stats {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .territory-stat {
+            text-align: center;
+        }
+
+        .territory-stat-value {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .territory-stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+
+        .territory-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--navy-deep);
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .territory-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px var(--gold-glow);
+        }
+
+        .territory-cta svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .map-container {
+            position: relative;
+            background: var(--navy-deep);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        .us-map {
+            width: 100%;
+            height: auto;
+        }
+
+        .city-marker {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .city-marker:hover {
+            transform: scale(1.3);
+        }
+
+        .city-marker .marker-dot {
+            transition: all 0.3s ease;
+        }
+
+        .city-marker.available .marker-dot {
+            fill: var(--gold);
+            filter: drop-shadow(0 0 6px rgba(201, 162, 39, 0.6));
+        }
+
+        .city-marker.claimed .marker-dot {
+            fill: #22c55e;
+            filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.6));
+        }
+
+        .city-marker .marker-pulse {
+            fill: none;
+            stroke-width: 1;
+            opacity: 0;
+            animation: pulse-ring 2s infinite;
+        }
+
+        .city-marker.available .marker-pulse {
+            stroke: var(--gold);
+        }
+
+        .city-marker.claimed .marker-pulse {
+            stroke: #22c55e;
+        }
+
+        @keyframes pulse-ring {
+            0% { r: 4; opacity: 1; }
+            100% { r: 12; opacity: 0; }
+        }
+
+        .map-tooltip {
+            position: absolute;
+            background: var(--navy);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            padding: 12px 16px;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            z-index: 100;
+            white-space: nowrap;
+        }
+
+        .map-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .map-tooltip-city {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .map-tooltip-status {
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .map-tooltip-status.available {
+            color: var(--gold);
+        }
+
+        .map-tooltip-status.claimed {
+            color: #22c55e;
+        }
+
+        .map-tooltip-status::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .map-tooltip-status.available::before {
+            background: var(--gold);
+        }
+
+        .map-tooltip-status.claimed::before {
+            background: #22c55e;
+        }
+
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.available {
+            background: var(--gold);
+            box-shadow: 0 0 8px rgba(201, 162, 39, 0.5);
+        }
+
+        .legend-dot.claimed {
+            background: #22c55e;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+        }
+
+        /* PARTNER CTA */
         .partner-cta-section {
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
             border-top: 1px solid var(--border);
@@ -901,7 +1144,7 @@
             color: var(--navy-deep);
         }
 
-        /* ========== CONTACT ========== */
+        /* CONTACT */
         .contact-section {
             background: linear-gradient(180deg, transparent 0%, rgba(21, 34, 56, 0.3) 100%);
         }
@@ -968,7 +1211,6 @@
             font-weight: 500;
         }
 
-        /* Contact Form */
         .contact-form {
             background: var(--navy-mid);
             border: 1px solid var(--border);
@@ -1048,7 +1290,7 @@
             box-shadow: 0 10px 30px var(--gold-glow);
         }
 
-        /* ========== FOOTER ========== */
+        /* FOOTER */
         footer {
             padding: 40px 0;
             border-top: 1px solid var(--border);
@@ -1097,7 +1339,7 @@
             color: var(--gray-600);
         }
 
-        /* ========== ANIMATIONS ========== */
+        /* ANIMATIONS */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -1126,7 +1368,7 @@
         .stagger.visible > *:nth-child(5) { transition: all 0.4s ease 0.24s; }
         .stagger.visible > *:nth-child(6) { transition: all 0.4s ease 0.30s; }
 
-        /* ========== RESPONSIVE ========== */
+        /* RESPONSIVE */
         @media (max-width: 1024px) {
             .hero-grid { grid-template-columns: 1fr; text-align: center; }
             .hero-visual { margin-top: 40px; }
@@ -1138,6 +1380,9 @@
             .contact-grid { grid-template-columns: 1fr; }
             .partner-card { grid-template-columns: 1fr; text-align: center; }
             .partner-logo-area { max-width: 280px; margin: 0 auto; }
+            .territory-grid { grid-template-columns: 1fr; gap: 40px; }
+            .territory-content { text-align: center; }
+            .territory-stats { justify-content: center; }
         }
 
         @media (max-width: 768px) {
@@ -1152,20 +1397,12 @@
             .footer-content { flex-direction: column; gap: 24px; text-align: center; }
             .footer-links { flex-wrap: wrap; justify-content: center; }
             .trust-logos { gap: 24px; }
-            
-            /* Mobile nav-cta smaller */
-            .nav-cta {
-                padding: 8px 14px;
-                font-size: 0.75rem;
-            }
-            
-            /* Mobile font reductions */
+            .nav-cta { padding: 8px 14px; font-size: 0.75rem; }
             .hero h1 { font-size: 1.5rem; line-height: 1.2; }
             .hero-tagline { font-size: 0.8rem; }
             .hero-description { font-size: 0.85rem; }
             .hero-stat-value { font-size: 1.75rem; }
             .hero-stat-label { font-size: 0.8rem; }
-            .hero-stats { justify-content: center; }
             .section-title { font-size: 1.5rem; }
             .section-subtitle { font-size: 0.875rem; }
             .service-card h3 { font-size: 1rem; }
@@ -1174,10 +1411,10 @@
             .stat-value { font-size: 2rem; }
             .contact-info h2 { font-size: 1.5rem; }
             .partner-cta-content h2 { font-size: 1.4rem; }
-            .btn-primary, .btn-secondary { 
-                padding: 12px 24px; 
-                font-size: 0.9rem; 
-            }
+            .btn-primary, .btn-secondary { padding: 12px 24px; font-size: 0.9rem; }
+            .map-legend { flex-direction: column; align-items: center; gap: 12px; }
+            .territory-stats { gap: 20px; }
+            .territory-stat-value { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -1198,6 +1435,7 @@
                 <ul class="nav-links">
                     <li><a href="#services">Services</a></li>
                     <li><a href="#why">Why Us</a></li>
+                    <li><a href="#territories">Territories</a></li>
                     <li><a href="#partner">Partner</a></li>
                     <li><a href="partners.html">Become a Partner</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -1411,6 +1649,296 @@
         </div>
     </section>
 
+    <!-- Territory Map -->
+    <section class="territory-section" id="territories">
+        <div class="container">
+            <div class="territory-grid">
+                <div class="territory-content reveal">
+                    <h2>Claim Your <span class="highlight">Territory</span></h2>
+                    <p>We're building an exclusive network of sales partners across the US. Each city has only one partner — secure yours before it's taken.</p>
+                    
+                    <div class="territory-stats">
+                        <div class="territory-stat">
+                            <div class="territory-stat-value" id="available-count">48</div>
+                            <div class="territory-stat-label">Cities Available</div>
+                        </div>
+                        <div class="territory-stat">
+                            <div class="territory-stat-value" id="claimed-count">2</div>
+                            <div class="territory-stat-label">Already Claimed</div>
+                        </div>
+                    </div>
+                    
+                    <a href="partners.html#apply" class="territory-cta">
+                        Claim Your Territory
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="map-container reveal">
+                    <div class="map-tooltip" id="map-tooltip">
+                        <div class="map-tooltip-city"></div>
+                        <div class="map-tooltip-status"></div>
+                    </div>
+                    
+                    <svg class="us-map" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet">
+                        <!-- US mainland outline -->
+                        <path class="state" d="
+                            M 120,120 
+                            L 180,100 L 280,95 L 380,100 L 480,95 L 580,100 L 680,105 L 780,120 L 850,150
+                            L 870,200 L 880,280 L 870,360 L 850,420 L 800,460 L 750,480
+                            L 700,470 L 650,500 L 600,510 L 550,500 L 500,520 L 450,530 L 400,520
+                            L 350,540 L 300,530 L 250,550 L 200,530 L 150,520 L 100,480
+                            L 80,420 L 70,360 L 60,280 L 70,200 L 100,150 L 120,120
+                            Z
+                        " fill="var(--navy-mid)" stroke="var(--navy-light)" stroke-width="2"/>
+                        
+                        <!-- CLAIMED CITIES (Green) -->
+                        <g class="city-marker claimed" data-city="Atlanta, GA" data-status="claimed">
+                            <circle class="marker-pulse" cx="700" cy="400" r="4"/>
+                            <circle class="marker-dot" cx="700" cy="400" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker claimed" data-city="San Francisco, CA" data-status="claimed">
+                            <circle class="marker-pulse" cx="95" cy="280" r="4"/>
+                            <circle class="marker-dot" cx="95" cy="280" r="6"/>
+                        </g>
+                        
+                        <!-- AVAILABLE CITIES - Tier 1 (Major Tech Hubs) -->
+                        <g class="city-marker available" data-city="New York, NY" data-status="available">
+                            <circle class="marker-pulse" cx="820" cy="220" r="4"/>
+                            <circle class="marker-dot" cx="820" cy="220" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Austin, TX" data-status="available">
+                            <circle class="marker-pulse" cx="450" cy="480" r="4"/>
+                            <circle class="marker-dot" cx="450" cy="480" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Seattle, WA" data-status="available">
+                            <circle class="marker-pulse" cx="120" cy="120" r="4"/>
+                            <circle class="marker-dot" cx="120" cy="120" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Boston, MA" data-status="available">
+                            <circle class="marker-pulse" cx="850" cy="180" r="4"/>
+                            <circle class="marker-dot" cx="850" cy="180" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Washington, DC" data-status="available">
+                            <circle class="marker-pulse" cx="780" cy="270" r="4"/>
+                            <circle class="marker-dot" cx="780" cy="270" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Denver, CO" data-status="available">
+                            <circle class="marker-pulse" cx="300" cy="300" r="4"/>
+                            <circle class="marker-dot" cx="300" cy="300" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Los Angeles, CA" data-status="available">
+                            <circle class="marker-pulse" cx="115" cy="380" r="4"/>
+                            <circle class="marker-dot" cx="115" cy="380" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="San Diego, CA" data-status="available">
+                            <circle class="marker-pulse" cx="130" cy="410" r="4"/>
+                            <circle class="marker-dot" cx="130" cy="410" r="6"/>
+                        </g>
+                        
+                        <!-- AVAILABLE CITIES - Tier 2 (Growing Hubs) -->
+                        <g class="city-marker available" data-city="Miami, FL" data-status="available">
+                            <circle class="marker-pulse" cx="770" cy="510" r="4"/>
+                            <circle class="marker-dot" cx="770" cy="510" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Dallas, TX" data-status="available">
+                            <circle class="marker-pulse" cx="450" cy="440" r="4"/>
+                            <circle class="marker-dot" cx="450" cy="440" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Houston, TX" data-status="available">
+                            <circle class="marker-pulse" cx="480" cy="490" r="4"/>
+                            <circle class="marker-dot" cx="480" cy="490" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Phoenix, AZ" data-status="available">
+                            <circle class="marker-pulse" cx="200" cy="400" r="4"/>
+                            <circle class="marker-dot" cx="200" cy="400" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Raleigh, NC" data-status="available">
+                            <circle class="marker-pulse" cx="750" cy="340" r="4"/>
+                            <circle class="marker-dot" cx="750" cy="340" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Charlotte, NC" data-status="available">
+                            <circle class="marker-pulse" cx="720" cy="360" r="4"/>
+                            <circle class="marker-dot" cx="720" cy="360" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Nashville, TN" data-status="available">
+                            <circle class="marker-pulse" cx="640" cy="370" r="4"/>
+                            <circle class="marker-dot" cx="640" cy="370" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Salt Lake City, UT" data-status="available">
+                            <circle class="marker-pulse" cx="220" cy="280" r="4"/>
+                            <circle class="marker-dot" cx="220" cy="280" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Chicago, IL" data-status="available">
+                            <circle class="marker-pulse" cx="580" cy="250" r="4"/>
+                            <circle class="marker-dot" cx="580" cy="250" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Minneapolis, MN" data-status="available">
+                            <circle class="marker-pulse" cx="500" cy="180" r="4"/>
+                            <circle class="marker-dot" cx="500" cy="180" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Detroit, MI" data-status="available">
+                            <circle class="marker-pulse" cx="640" cy="230" r="4"/>
+                            <circle class="marker-dot" cx="640" cy="230" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Pittsburgh, PA" data-status="available">
+                            <circle class="marker-pulse" cx="720" cy="260" r="4"/>
+                            <circle class="marker-dot" cx="720" cy="260" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Philadelphia, PA" data-status="available">
+                            <circle class="marker-pulse" cx="790" cy="250" r="4"/>
+                            <circle class="marker-dot" cx="790" cy="250" r="6"/>
+                        </g>
+                        
+                        <!-- AVAILABLE CITIES - Tier 3 (Emerging) -->
+                        <g class="city-marker available" data-city="Portland, OR" data-status="available">
+                            <circle class="marker-pulse" cx="110" cy="170" r="4"/>
+                            <circle class="marker-dot" cx="110" cy="170" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Tampa, FL" data-status="available">
+                            <circle class="marker-pulse" cx="730" cy="490" r="4"/>
+                            <circle class="marker-dot" cx="730" cy="490" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Orlando, FL" data-status="available">
+                            <circle class="marker-pulse" cx="750" cy="480" r="4"/>
+                            <circle class="marker-dot" cx="750" cy="480" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Jacksonville, FL" data-status="available">
+                            <circle class="marker-pulse" cx="740" cy="450" r="4"/>
+                            <circle class="marker-dot" cx="740" cy="450" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Indianapolis, IN" data-status="available">
+                            <circle class="marker-pulse" cx="610" cy="290" r="4"/>
+                            <circle class="marker-dot" cx="610" cy="290" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Columbus, OH" data-status="available">
+                            <circle class="marker-pulse" cx="670" cy="280" r="4"/>
+                            <circle class="marker-dot" cx="670" cy="280" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Kansas City, MO" data-status="available">
+                            <circle class="marker-pulse" cx="480" cy="310" r="4"/>
+                            <circle class="marker-dot" cx="480" cy="310" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="St. Louis, MO" data-status="available">
+                            <circle class="marker-pulse" cx="540" cy="320" r="4"/>
+                            <circle class="marker-dot" cx="540" cy="320" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="San Antonio, TX" data-status="available">
+                            <circle class="marker-pulse" cx="420" cy="490" r="4"/>
+                            <circle class="marker-dot" cx="420" cy="490" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Las Vegas, NV" data-status="available">
+                            <circle class="marker-pulse" cx="170" cy="340" r="4"/>
+                            <circle class="marker-dot" cx="170" cy="340" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="San Jose, CA" data-status="available">
+                            <circle class="marker-pulse" cx="100" cy="310" r="4"/>
+                            <circle class="marker-dot" cx="100" cy="310" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Baltimore, MD" data-status="available">
+                            <circle class="marker-pulse" cx="770" cy="280" r="4"/>
+                            <circle class="marker-dot" cx="770" cy="280" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Birmingham, AL" data-status="available">
+                            <circle class="marker-pulse" cx="650" cy="400" r="4"/>
+                            <circle class="marker-dot" cx="650" cy="400" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="New Orleans, LA" data-status="available">
+                            <circle class="marker-pulse" cx="580" cy="480" r="4"/>
+                            <circle class="marker-dot" cx="580" cy="480" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Oklahoma City, OK" data-status="available">
+                            <circle class="marker-pulse" cx="420" cy="390" r="4"/>
+                            <circle class="marker-dot" cx="420" cy="390" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Boise, ID" data-status="available">
+                            <circle class="marker-pulse" cx="180" cy="200" r="4"/>
+                            <circle class="marker-dot" cx="180" cy="200" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Madison, WI" data-status="available">
+                            <circle class="marker-pulse" cx="550" cy="220" r="4"/>
+                            <circle class="marker-dot" cx="550" cy="220" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Boulder, CO" data-status="available">
+                            <circle class="marker-pulse" cx="310" cy="290" r="4"/>
+                            <circle class="marker-dot" cx="310" cy="290" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Charleston, SC" data-status="available">
+                            <circle class="marker-pulse" cx="740" cy="400" r="4"/>
+                            <circle class="marker-dot" cx="740" cy="400" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Huntsville, AL" data-status="available">
+                            <circle class="marker-pulse" cx="640" cy="380" r="4"/>
+                            <circle class="marker-dot" cx="640" cy="380" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Little Rock, AR" data-status="available">
+                            <circle class="marker-pulse" cx="530" cy="390" r="4"/>
+                            <circle class="marker-dot" cx="530" cy="390" r="6"/>
+                        </g>
+                        
+                        <g class="city-marker available" data-city="Hartford, CT" data-status="available">
+                            <circle class="marker-pulse" cx="830" cy="200" r="4"/>
+                            <circle class="marker-dot" cx="830" cy="200" r="6"/>
+                        </g>
+                    </svg>
+                    
+                    <div class="map-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot available"></span>
+                            <span>Available Territory</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot claimed"></span>
+                            <span>Partner Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Become a Partner CTA -->
     <section class="partner-cta-section">
         <div class="container">
@@ -1536,6 +2064,7 @@
                 <div class="footer-links">
                     <a href="#services">Services</a>
                     <a href="#why">Why Us</a>
+                    <a href="#territories">Territories</a>
                     <a href="#partner">Partner</a>
                     <a href="partners.html">Become a Partner</a>
                     <a href="#contact">Contact</a>
@@ -1603,22 +2132,60 @@
                 }
             });
         }
+
+        // Territory Map Interactions
+        (function() {
+            const tooltip = document.getElementById('map-tooltip');
+            const markers = document.querySelectorAll('.city-marker');
+            
+            // Update counts
+            const availableCount = document.querySelectorAll('.city-marker.available').length;
+            const claimedCount = document.querySelectorAll('.city-marker.claimed').length;
+            document.getElementById('available-count').textContent = availableCount;
+            document.getElementById('claimed-count').textContent = claimedCount;
+            
+            markers.forEach(marker => {
+                marker.addEventListener('mouseenter', (e) => {
+                    const city = marker.dataset.city;
+                    const status = marker.dataset.status;
+                    
+                    tooltip.querySelector('.map-tooltip-city').textContent = city;
+                    tooltip.querySelector('.map-tooltip-status').textContent = 
+                        status === 'claimed' ? 'Partner Active' : 'Available — Claim Now!';
+                    tooltip.querySelector('.map-tooltip-status').className = 'map-tooltip-status ' + status;
+                    
+                    // Position tooltip
+                    const rect = marker.getBoundingClientRect();
+                    const containerRect = document.querySelector('.map-container').getBoundingClientRect();
+                    
+                    tooltip.style.left = (rect.left - containerRect.left + rect.width/2 - tooltip.offsetWidth/2) + 'px';
+                    tooltip.style.top = (rect.top - containerRect.top - tooltip.offsetHeight - 10) + 'px';
+                    
+                    tooltip.classList.add('visible');
+                });
+                
+                marker.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('visible');
+                });
+                
+                // Click to go to apply form (only for available)
+                marker.addEventListener('click', () => {
+                    if (marker.dataset.status === 'available') {
+                        window.location.href = 'partners.html#apply';
+                    }
+                });
+            });
+        })();
     </script>
 
-    <!-- ============================================
-         NOVA CHATBOT - CLEAN VERSION
-         ============================================ -->
+    <!-- NOVA CHATBOT -->
     <style>
-    /* NOVA Button - Animated Entry */
     #nova-btn{position:fixed;bottom:24px;right:24px;width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border:2px solid var(--gold);cursor:pointer;z-index:9998;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(201,162,39,0.25);transition:all .3s ease;transform:translateX(100px);opacity:0}
     #nova-btn.visible{transform:translateX(0);opacity:1;animation:novaBounce 0.6s cubic-bezier(0.68,-0.55,0.265,1.55)}
-    #nova-btn.visible.attention{animation:novaAttention 1s ease-in-out}
     @keyframes novaBounce{0%{transform:translateX(100px);opacity:0}60%{transform:translateX(-10px);opacity:1}100%{transform:translateX(0)}}
-    @keyframes novaAttention{0%,100%{transform:scale(1) rotate(0deg)}25%{transform:scale(1.1) rotate(-5deg)}50%{transform:scale(1.1) rotate(5deg)}75%{transform:scale(1.1) rotate(-3deg)}}
     #nova-btn:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(201,162,39,0.35)}
     #nova-btn.hidden{transform:scale(0);opacity:0;pointer-events:none}
     #nova-btn svg{width:28px;height:28px;stroke:var(--gold);stroke-width:1.5;fill:none}
-    /* NOVA Banner Flutuante */
     #nova-banner{position:fixed;bottom:90px;right:24px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border:1px solid rgba(201,162,39,0.3);border-radius:16px;padding:16px 20px;z-index:9997;opacity:0;transform:translateY(20px);transition:all .4s cubic-bezier(0.4,0,0.2,1);pointer-events:none;max-width:280px;box-shadow:0 10px 40px rgba(0,0,0,0.3)}
     #nova-banner.visible{opacity:1;transform:translateY(0);pointer-events:auto}
     #nova-banner::after{content:'';position:absolute;bottom:-8px;right:30px;border:8px solid transparent;border-top-color:var(--navy-mid)}
@@ -1675,24 +2242,9 @@
     .nova-send:not(:disabled):hover{transform:scale(1.05)}
     .nova-send svg{width:18px;height:18px;fill:var(--navy-deep)}
     .nova-foot{text-align:center;padding:10px;font-size:0.7rem;color:var(--gray-600)}
-    @media(max-width:480px){#nova-chat{width:calc(100%-16px);height:70vh;bottom:8px;right:8px;left:8px}}
-    .nova-icon{width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:6px;stroke:var(--gold);flex-shrink:0}
-    .nova-icon-success{stroke:#22c55e}
-    .nova-proposal{background:var(--navy-deep);border:1px solid rgba(201,162,39,0.3);border-radius:12px;padding:16px;margin-top:12px}
-    .nova-proposal h4{color:var(--gold);font-size:0.9rem;margin-bottom:12px}
-    .nova-proposal input,.nova-proposal select,.nova-proposal textarea{width:100%;padding:10px 12px;margin-bottom:10px;background:var(--navy-mid);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:0.85rem;font-family:inherit}
-    .nova-proposal input:focus,.nova-proposal select:focus,.nova-proposal textarea:focus{border-color:var(--gold);outline:none}
-    .nova-proposal input::placeholder,.nova-proposal textarea::placeholder{color:var(--gray-600)}
-    .nova-proposal select{cursor:pointer}
-    .nova-proposal textarea{min-height:70px;resize:vertical}
-    .nova-proposal-btns{display:flex;gap:8px;margin-top:8px}
-    .nova-proposal-submit{flex:1;padding:12px;background:var(--gold);border:none;border-radius:8px;color:var(--navy-deep);font-weight:600;cursor:pointer;transition:all .2s}
-    .nova-proposal-submit:hover{transform:translateY(-1px)}
-    .nova-proposal-submit:disabled{opacity:0.5;cursor:not-allowed}
-    .nova-proposal-cancel{padding:12px 16px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--gray-500);cursor:pointer}
+    @media(max-width:480px){#nova-chat{width:calc(100%-16px);height:70vh;bottom:8px;right:8px;left:8px}#nova-banner{right:8px;left:8px;max-width:none}}
     </style>
 
-    <!-- NOVA Banner Flutuante -->
     <div id="nova-banner">
         <button class="nova-banner-close" onclick="hideNovaBanner()">×</button>
         <div class="nova-banner-header">
@@ -1746,27 +2298,11 @@
         var isLoading = false;
         var bannerDismissed = false;
         
-        // Animação de entrada após 3 segundos
-        setTimeout(function(){
-            document.getElementById('nova-btn').classList.add('visible');
-        }, 3000);
+        setTimeout(function(){ document.getElementById('nova-btn').classList.add('visible'); }, 3000);
+        setTimeout(function(){ if(!bannerDismissed && !isOpen){ document.getElementById('nova-banner').classList.add('visible'); } }, 5000);
+        setTimeout(function(){ if(!isOpen) hideNovaBanner(); }, 15000);
         
-        // Mostrar banner após 5 segundos
-        setTimeout(function(){
-            if(!bannerDismissed && !isOpen){
-                document.getElementById('nova-banner').classList.add('visible');
-            }
-        }, 5000);
-        
-        // Esconder banner após 15 segundos
-        setTimeout(function(){
-            if(!isOpen) hideNovaBanner();
-        }, 15000);
-        
-        window.hideNovaBanner = function(){
-            bannerDismissed = true;
-            document.getElementById('nova-banner').classList.remove('visible');
-        };
+        window.hideNovaBanner = function(){ bannerDismissed = true; document.getElementById('nova-banner').classList.remove('visible'); };
         
         window.novaToggle = function(){
             isOpen = !isOpen;
@@ -1782,27 +2318,11 @@
             }
         };
         
-        function escapeHtml(text){
-            var div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
+        function escapeHtml(text){ var div = document.createElement('div'); div.textContent = text; return div.innerHTML; }
         
         function formatMessage(text){
-            var icons = {
-                '📧': '<svg class="nova-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>',
-                '📞': '<svg class="nova-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>',
-                '✅': '<svg class="nova-icon nova-icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>',
-                '🚀': '<svg class="nova-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/></svg>',
-                '💡': '<svg class="nova-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z"/></svg>'
-            };
-            var result = escapeHtml(text);
-            for (var emoji in icons) { result = result.split(emoji).join(icons[emoji]); }
-            return result
+            return escapeHtml(text)
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                .replace(/^### (.*?)$/gm, '<div style="color:#C9A227;font-weight:600;margin:10px 0 6px;">$1</div>')
-                .replace(/^## (.*?)$/gm, '<div style="color:#C9A227;font-weight:600;margin:12px 0 8px;">$1</div>')
-                .replace(/^[•\-] (.*?)$/gm, '<div style="display:flex;gap:8px;margin:4px 0;"><span style="color:#C9A227;">•</span><span>$1</span></div>')
                 .replace(/\n\n/g, '<div style="height:8px;"></div>')
                 .replace(/\n/g, '<br>');
         }
@@ -1860,90 +2380,7 @@
             document.getElementById('nova-status').textContent = 'Online';
         }
         
-        function showProposalForm(){
-            var c = document.getElementById('nova-body');
-            var f = document.createElement('div');
-            f.id = 'nova-proposal-form';
-            f.className = 'nova-proposal';
-            f.innerHTML = 
-                '<h4>Generate Your Proposal</h4>' +
-                '<input type="text" id="pf-name" placeholder="Your name *">' +
-                '<input type="text" id="pf-company" placeholder="Company name *">' +
-                '<input type="email" id="pf-email" placeholder="Email address *">' +
-                '<select id="pf-type">' +
-                    '<option value="">Select project type *</option>' +
-                    '<option value="AI/ML Solutions">AI/ML Solutions</option>' +
-                    '<option value="Custom Software">Custom Software Development</option>' +
-                    '<option value="IoT Solutions">IoT & Embedded Systems</option>' +
-                    '<option value="R&D & Innovation">R&D & Innovation</option>' +
-                    '<option value="Team Extension">Team Extension</option>' +
-                    '<option value="MVP & Prototypes">MVP & Prototypes</option>' +
-                    '<option value="Other">Other</option>' +
-                '</select>' +
-                '<textarea id="pf-desc" placeholder="Briefly describe your project..."></textarea>' +
-                '<select id="pf-budget">' +
-                    '<option value="">Estimated budget (optional)</option>' +
-                    '<option value="$25K - $50K">$25,000 - $50,000</option>' +
-                    '<option value="$50K - $100K">$50,000 - $100,000</option>' +
-                    '<option value="$100K - $200K">$100,000 - $200,000</option>' +
-                    '<option value="$200K+">$200,000+</option>' +
-                    '<option value="Not sure">Not sure yet</option>' +
-                '</select>' +
-                '<div class="nova-proposal-btns">' +
-                    '<button class="nova-proposal-submit" id="pf-submit" onclick="novaSubmitProposal()">Generate & Send</button>' +
-                    '<button class="nova-proposal-cancel" onclick="novaCancelProposal()">Cancel</button>' +
-                '</div>';
-            c.appendChild(f);
-            c.scrollTop = c.scrollHeight;
-        }
-        
-        window.novaSubmitProposal = function(){
-            var name = document.getElementById('pf-name').value.trim();
-            var company = document.getElementById('pf-company').value.trim();
-            var email = document.getElementById('pf-email').value.trim();
-            var type = document.getElementById('pf-type').value;
-            var desc = document.getElementById('pf-desc').value.trim();
-            var budget = document.getElementById('pf-budget').value;
-            if(!name || !company || !email || !type){ alert('Please fill in all required fields'); return; }
-            var btn = document.getElementById('pf-submit');
-            btn.disabled = true;
-            btn.textContent = 'Generating...';
-            fetch(API_BASE + '/proposal', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ contact_name: name, company: company, email: email, project_type: type, project_description: desc, budget_range: budget })
-            })
-            .then(function(res){ return res.json(); })
-            .then(function(data){
-                document.getElementById('nova-proposal-form').remove();
-                if(data.success){
-                    addBot("✅ Great news, " + name + "! I've generated a customized proposal and sent it to " + email + ".\n\nPlease check your inbox. Our team will follow up within 24 hours.", ['Learn More', 'Contact Team']);
-                } else {
-                    addBot("I apologize, but there was an issue: " + (data.error || 'Unknown error') + "\n\nPlease contact us directly at contact@imobiallholdings.com", ['Try Again', 'Contact Team']);
-                }
-            })
-            .catch(function(err){
-                document.getElementById('nova-proposal-form').remove();
-                addBot("I couldn't connect to our system. Please contact us at contact@imobiallholdings.com", ['Contact Team']);
-            });
-        };
-        
-        window.novaCancelProposal = function(){
-            var form = document.getElementById('nova-proposal-form');
-            if(form) form.remove();
-            isLoading = false;
-            addBot("No problem! Let me know if you have any other questions.", ['Our Services', 'Pricing Info']);
-        };
-        
         function callAPI(userMessage){
-            var msgLower = userMessage.toLowerCase();
-            if(msgLower.includes('proposal') || msgLower.includes('quote')){
-                hideTyping();
-                isLoading = false;
-                addBot("I'd be happy to generate a customized proposal for you! Let me collect a few details.", null);
-                setTimeout(showProposalForm, 500);
-                return;
-            }
             fetch(API_BASE + '/chat', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -1954,19 +2391,15 @@
                 hideTyping();
                 isLoading = false;
                 if(data.error){
-                    addBot("I'm having trouble connecting. You can reach us at contact@imobiallholdings.com or call +1 407 205 9042.", ['Contact Info', 'Try Again']);
+                    addBot("I'm having trouble connecting. You can reach us at contact@imobiallholdings.com", ['Contact Info']);
                 } else {
-                    var response = data.response;
-                    var qr = null;
-                    if(response.toLowerCase().includes('proposal')){ qr = ['Get a Proposal', 'More Questions']; }
-                    else if(response.toLowerCase().includes('service')){ qr = ['Pricing Info', 'Get a Proposal']; }
-                    addBot(response, qr);
+                    addBot(data.response, ['More Questions']);
                 }
             })
             .catch(function(err){
                 hideTyping();
                 isLoading = false;
-                addBot("Connection issue. Please try again or email contact@imobiallholdings.com", ['Try Again', 'Contact Info']);
+                addBot("Connection issue. Please try again or email contact@imobiallholdings.com", ['Try Again']);
             });
         }
         
