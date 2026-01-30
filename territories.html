@@ -4,49 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Territory Map | IMOBI Holdings</title>
-    <meta name="description" content="Explore available territories for IMOBI Holdings sales partners. Claim your exclusive city and start earning commissions.">
-    
-    <!-- Canonical -->
-    <link rel="canonical" href="https://www.imobiallholdings.com/territories.html">
+    <meta name="description" content="Claim your exclusive sales territory with IMOBI Holdings. 47 cities available across the United States.">
     
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ8ED4BHQN"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-YQ8ED4BHQN');
-    </script>
-
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
     <style>
         :root {
             --navy-deep: #0a0f1a;
             --navy: #1B365D;
             --navy-mid: #152238;
-            --navy-light: #1e3a5f;
             --gold: #C9A227;
-            --gold-light: #e3c564;
-            --gold-glow: rgba(201, 162, 39, 0.25);
-            --gold-dim: rgba(201, 162, 39, 0.1);
+            --gold-dim: rgba(201, 162, 39, 0.15);
+            --gold-glow: rgba(201, 162, 39, 0.4);
             --green: #22c55e;
-            --green-glow: rgba(34, 197, 94, 0.25);
+            --green-dim: rgba(34, 197, 94, 0.15);
             --white: #ffffff;
             --gray-400: #9ca3af;
             --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --border: rgba(255, 255, 255, 0.08);
-            --font-display: 'Syne', sans-serif;
+            --border: rgba(255,255,255,0.08);
             --font-body: 'Inter', sans-serif;
+            --font-display: 'Syne', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -64,17 +51,11 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
-            padding: 16px 0;
+            z-index: 1000;
+            padding: 16px 24px;
             background: rgba(10, 15, 26, 0.95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-        }
-
-        .navbar .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -88,8 +69,8 @@
         }
 
         .logo-icon {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 10px;
         }
 
@@ -102,67 +83,48 @@
         .logo-text-main {
             font-family: var(--font-display);
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--white);
         }
 
         .logo-text-sub {
             font-family: var(--font-display);
             font-weight: 600;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--gold);
         }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .nav-links a {
+        .nav-back {
             color: var(--gray-400);
             text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             transition: color 0.2s;
         }
 
-        .nav-links a:hover { color: var(--white); }
-
-        .nav-cta {
-            background: var(--gold);
-            color: var(--navy-deep);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--gold-glow);
+        .nav-back:hover {
+            color: var(--gold);
         }
 
         /* Main Layout */
-        .page-layout {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            min-height: 100vh;
+        .main-container {
+            display: flex;
             padding-top: 70px;
+            min-height: 100vh;
         }
 
         /* Sidebar */
         .sidebar {
+            width: 320px;
             background: var(--navy-mid);
             border-right: 1px solid var(--border);
             padding: 24px;
+            display: flex;
+            flex-direction: column;
             overflow-y: auto;
             max-height: calc(100vh - 70px);
-            position: sticky;
-            top: 70px;
         }
 
         .sidebar-header {
@@ -176,25 +138,25 @@
             margin-bottom: 8px;
         }
 
-        .sidebar-header h1 span {
+        .sidebar-header h1 .highlight {
             color: var(--gold);
         }
 
         .sidebar-header p {
-            font-size: 0.9rem;
             color: var(--gray-400);
+            font-size: 0.9rem;
             line-height: 1.6;
         }
 
         /* Stats */
         .stats-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             gap: 12px;
             margin-bottom: 24px;
         }
 
         .stat-box {
+            flex: 1;
             background: var(--navy-deep);
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -202,8 +164,13 @@
             text-align: center;
         }
 
-        .stat-box.available { border-color: rgba(201, 162, 39, 0.3); }
-        .stat-box.claimed { border-color: rgba(34, 197, 94, 0.3); }
+        .stat-box.available {
+            border-color: rgba(201, 162, 39, 0.3);
+        }
+
+        .stat-box.claimed {
+            border-color: rgba(34, 197, 94, 0.3);
+        }
 
         .stat-number {
             font-family: var(--font-display);
@@ -211,8 +178,13 @@
             font-weight: 700;
         }
 
-        .stat-box.available .stat-number { color: var(--gold); }
-        .stat-box.claimed .stat-number { color: var(--green); }
+        .stat-box.available .stat-number {
+            color: var(--gold);
+        }
+
+        .stat-box.claimed .stat-number {
+            color: var(--green);
+        }
 
         .stat-label {
             font-size: 0.75rem;
@@ -220,20 +192,271 @@
             margin-top: 4px;
         }
 
-        /* Legend */
-        .legend {
-            margin-bottom: 24px;
-            padding: 16px;
+        /* Filter */
+        .filter-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .filter-btn {
+            flex: 1;
+            padding: 10px;
             background: var(--navy-deep);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--gray-400);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--gold);
+            color: var(--white);
+        }
+
+        .filter-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy-deep);
+        }
+
+        /* City List */
+        .city-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .city-list h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .city-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: var(--navy-deep);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .city-item:hover {
+            border-color: var(--gold);
+            transform: translateX(4px);
+        }
+
+        .city-item.claimed {
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        .city-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .city-dot.available {
+            background: var(--gold);
+            box-shadow: 0 0 8px var(--gold-glow);
+        }
+
+        .city-dot.claimed {
+            background: var(--green);
+        }
+
+        .city-info {
+            flex: 1;
+        }
+
+        .city-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .city-status {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        .city-item.claimed .city-status {
+            color: var(--green);
+        }
+
+        /* CTA */
+        .sidebar-cta {
+            display: block;
+            background: var(--gold);
+            color: var(--navy-deep);
+            text-align: center;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .sidebar-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--gold-glow);
+        }
+
+        /* Map Container */
+        .map-container {
+            flex: 1;
+            position: relative;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            background: var(--navy-deep);
+        }
+
+        /* Custom Leaflet Styles */
+        .leaflet-container {
+            background: var(--navy-deep);
+            font-family: var(--font-body);
+        }
+
+        .leaflet-popup-content-wrapper {
+            background: var(--navy-mid);
+            color: var(--white);
             border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .leaflet-popup-content {
+            margin: 16px;
+        }
+
+        .leaflet-popup-tip {
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+        }
+
+        .leaflet-control-zoom {
+            border: none !important;
+        }
+
+        .leaflet-control-zoom a {
+            background: var(--navy-mid) !important;
+            color: var(--white) !important;
+            border: 1px solid var(--border) !important;
+        }
+
+        .leaflet-control-zoom a:hover {
+            background: var(--navy) !important;
+            color: var(--gold) !important;
+        }
+
+        /* Custom Markers */
+        .custom-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .marker-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid var(--white);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .marker-dot:hover {
+            transform: scale(1.3);
+        }
+
+        .marker-dot.available {
+            background: var(--gold);
+            box-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        .marker-dot.claimed {
+            background: var(--green);
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
+        }
+
+        /* Popup Content */
+        .popup-content {
+            text-align: center;
+            min-width: 160px;
+        }
+
+        .popup-city {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .popup-status {
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .popup-status.available {
+            background: var(--gold-dim);
+            color: var(--gold);
+        }
+
+        .popup-status.claimed {
+            background: var(--green-dim);
+            color: var(--green);
+        }
+
+        .popup-cta {
+            display: block;
+            background: var(--gold);
+            color: var(--navy-deep);
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .popup-cta:hover {
+            transform: scale(1.02);
+        }
+
+        /* Legend */
+        .map-legend {
+            position: absolute;
+            bottom: 30px;
+            left: 20px;
+            background: var(--navy-mid);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            z-index: 500;
         }
 
         .legend-title {
             font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--gray-500);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
             margin-bottom: 12px;
         }
 
@@ -241,8 +464,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 8px 0;
             font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .legend-item:last-child {
+            margin-bottom: 0;
         }
 
         .legend-dot {
@@ -253,287 +480,37 @@
 
         .legend-dot.available {
             background: var(--gold);
-            box-shadow: 0 0 10px var(--gold-glow);
         }
 
         .legend-dot.claimed {
             background: var(--green);
-            box-shadow: 0 0 10px var(--green-glow);
-        }
-
-        /* City List */
-        .city-list-section {
-            margin-bottom: 24px;
-        }
-
-        .city-list-title {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--gray-500);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .city-list-toggle {
-            background: none;
-            border: none;
-            color: var(--gold);
-            font-size: 0.75rem;
-            cursor: pointer;
-        }
-
-        .city-list {
-            max-height: 300px;
-            overflow-y: auto;
-            background: var(--navy-deep);
-            border-radius: 12px;
-            padding: 8px;
-        }
-
-        .city-list::-webkit-scrollbar {
-            width: 4px;
-        }
-
-        .city-list::-webkit-scrollbar-thumb {
-            background: var(--navy);
-            border-radius: 2px;
-        }
-
-        .city-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.85rem;
-        }
-
-        .city-item:hover {
-            background: var(--navy-mid);
-        }
-
-        .city-item.active {
-            background: var(--navy);
-            border: 1px solid var(--gold);
-        }
-
-        .city-item .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .city-item.available .dot { background: var(--gold); }
-        .city-item.claimed .dot { background: var(--green); }
-
-        .city-item .city-name {
-            flex: 1;
-        }
-
-        .city-item.claimed .partner-name {
-            font-size: 0.75rem;
-            color: var(--gray-500);
-        }
-
-        /* CTA Button */
-        .sidebar-cta {
-            display: block;
-            width: 100%;
-            background: var(--gold);
-            color: var(--navy-deep);
-            padding: 14px;
-            border-radius: 10px;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px var(--gold-glow);
-        }
-
-        /* Map Area */
-        .map-area {
-            padding: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(ellipse at center, rgba(27, 54, 93, 0.3) 0%, transparent 70%);
-        }
-
-        .map-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 1100px;
-        }
-
-        /* Map Image */
-        .us-map-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 16px;
-        }
-
-        #markers-container {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        /* City Markers on Map */
-        .map-marker {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            transform: translate(-50%, -50%);
-            cursor: pointer;
-            z-index: 10;
-            pointer-events: auto;
-        }
-
-        .map-marker .marker-dot {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .map-marker .marker-pulse {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            animation: marker-pulse 2s infinite;
-        }
-
-        .map-marker.available .marker-dot {
-            background: var(--gold);
-            box-shadow: 0 0 8px var(--gold-glow);
-        }
-
-        .map-marker.available .marker-pulse {
-            background: var(--gold);
-        }
-
-        .map-marker.claimed .marker-dot {
-            background: var(--green);
-            box-shadow: 0 0 8px var(--green-glow);
-        }
-
-        .map-marker.claimed .marker-pulse {
-            background: var(--green);
-        }
-
-        .map-marker:hover .marker-dot {
-            transform: translate(-50%, -50%) scale(1.5);
-        }
-
-        @keyframes marker-pulse {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
-        }
-
-        /* Tooltip */
-        .map-tooltip {
-            position: fixed;
-            background: var(--navy);
-            border: 1px solid var(--gold);
-            border-radius: 10px;
-            padding: 12px 16px;
-            pointer-events: none;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.2s ease;
-            z-index: 1000;
-            min-width: 160px;
-        }
-
-        .map-tooltip.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .tooltip-city {
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 4px;
-        }
-
-        .tooltip-status {
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .tooltip-status.available { color: var(--gold); }
-        .tooltip-status.claimed { color: var(--green); }
-
-        .tooltip-status::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-        }
-
-        .tooltip-status.available::before { background: var(--gold); }
-        .tooltip-status.claimed::before { background: var(--green); }
-
-        .tooltip-partner {
-            font-size: 0.75rem;
-            color: var(--gray-500);
-            margin-top: 4px;
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .page-layout {
-                grid-template-columns: 1fr;
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
             }
 
             .sidebar {
-                position: relative;
-                top: 0;
+                width: 100%;
                 max-height: none;
                 border-right: none;
                 border-bottom: 1px solid var(--border);
             }
 
-            .map-area {
-                min-height: 60vh;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            
-            .sidebar {
-                padding: 16px;
-            }
-
-            .stats-row {
-                grid-template-columns: 1fr 1fr;
-            }
-
             .city-list {
                 max-height: 200px;
+            }
+
+            .map-container {
+                height: 60vh;
+            }
+
+            .map-legend {
+                bottom: 20px;
+                left: 10px;
+                padding: 12px;
             }
         }
     </style>
@@ -541,36 +518,28 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="logo.png" alt="IMOBI" class="logo-icon">
-                <div class="logo-text">
-                    <span class="logo-text-main">IMOBI</span>
-                    <span class="logo-text-sub">Holdings</span>
-                </div>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html">← Back to Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-            <a href="partners.html#apply" class="nav-cta">Apply Now</a>
-        </div>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="IMOBI" class="logo-icon">
+            <div class="logo-text">
+                <span class="logo-text-main">IMOBI</span>
+                <span class="logo-text-sub">Holdings</span>
+            </div>
+        </a>
+        <a href="index.html" class="nav-back">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Home
+        </a>
     </nav>
 
-    <!-- Tooltip -->
-    <div class="map-tooltip" id="map-tooltip">
-        <div class="tooltip-city"></div>
-        <div class="tooltip-status"></div>
-        <div class="tooltip-partner"></div>
-    </div>
-
-    <div class="page-layout">
+    <!-- Main Content -->
+    <div class="main-container">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h1>Claim Your <span>Territory</span></h1>
-                <p>Each city has only one partner. Click on any available city to apply.</p>
+                <h1>Claim Your <span class="highlight">Territory</span></h1>
+                <p>Select an available city to become the exclusive IMOBI sales partner in that market.</p>
             </div>
 
             <div class="stats-row">
@@ -584,233 +553,205 @@
                 </div>
             </div>
 
-            <div class="legend">
-                <div class="legend-title">Legend</div>
-                <div class="legend-item">
-                    <span class="legend-dot available"></span>
-                    <span>Available Territory</span>
-                </div>
-                <div class="legend-item">
-                    <span class="legend-dot claimed"></span>
-                    <span>Partner Active</span>
-                </div>
+            <div class="filter-row">
+                <button class="filter-btn active" data-filter="all">All Cities</button>
+                <button class="filter-btn" data-filter="available">Available</button>
+                <button class="filter-btn" data-filter="claimed">Claimed</button>
             </div>
 
-            <div class="city-list-section">
-                <div class="city-list-title">
-                    All Territories
-                    <button class="city-list-toggle" id="toggle-filter">Show Available Only</button>
-                </div>
-                <div class="city-list" id="city-list">
-                    <!-- Filled by JavaScript -->
-                </div>
+            <div class="city-list" id="city-list">
+                <h3>All Territories</h3>
+                <!-- Cities populated by JS -->
             </div>
 
             <a href="partners.html#apply" class="sidebar-cta">Apply for a Territory</a>
         </aside>
 
-        <!-- Map Area -->
-        <main class="map-area">
-            <div class="map-wrapper" id="map-wrapper">
-                <!-- US Map Image -->
-                <img src="territory-map.webp" alt="US Territory Map" class="us-map-image">
-
-                <!-- Map Markers positioned over image -->
-                <div id="markers-container"></div>
+        <!-- Map -->
+        <div class="map-container">
+            <div id="map"></div>
+            
+            <div class="map-legend">
+                <div class="legend-title">Legend</div>
+                <div class="legend-item">
+                    <div class="legend-dot available"></div>
+                    <span>Available Territory</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot claimed"></div>
+                    <span>Already Claimed</span>
+                </div>
             </div>
-        </main>
+        </div>
     </div>
 
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
     <script>
-        // City Data with coordinates calibrated for territory-map.webp (DALL-E image)
-        // Map boundaries: X ~13%-88%, Y ~13%-78%
+        // City Data with REAL GPS Coordinates
         const cities = [
-            // CLAIMED (green markers)
-            { name: "Phoenix, AZ", status: "claimed", x: 25, y: 52 },      // Arizona
-            { name: "Atlanta, GA", status: "claimed", x: 70, y: 50 },      // Georgia
+            // CLAIMED (2)
+            { name: "Phoenix, AZ", status: "claimed", lat: 33.4484, lng: -112.0740 },
+            { name: "Atlanta, GA", status: "claimed", lat: 33.7490, lng: -84.3880 },
             
             // WEST COAST
-            { name: "Seattle, WA", status: "available", x: 17, y: 18 },    // Washington
-            { name: "Portland, OR", status: "available", x: 16, y: 24 },   // Oregon
-            { name: "San Francisco, CA", status: "available", x: 14, y: 38 },
-            { name: "San Jose, CA", status: "available", x: 14, y: 41 },
-            { name: "Los Angeles, CA", status: "available", x: 17, y: 50 },
-            { name: "San Diego, CA", status: "available", x: 19, y: 55 },
-            { name: "Las Vegas, NV", status: "available", x: 22, y: 44 },  // Nevada
-            { name: "Salt Lake City, UT", status: "available", x: 27, y: 34 }, // Utah
-            { name: "Boise, ID", status: "available", x: 23, y: 26 },      // Idaho
-            { name: "Denver, CO", status: "available", x: 35, y: 40 },     // Colorado
-            { name: "Boulder, CO", status: "available", x: 34, y: 38 },
-            { name: "Albuquerque, NM", status: "available", x: 30, y: 50 }, // New Mexico
-            { name: "Tucson, AZ", status: "available", x: 27, y: 56 },
+            { name: "Seattle, WA", status: "available", lat: 47.6062, lng: -122.3321 },
+            { name: "Portland, OR", status: "available", lat: 45.5152, lng: -122.6784 },
+            { name: "San Francisco, CA", status: "available", lat: 37.7749, lng: -122.4194 },
+            { name: "San Jose, CA", status: "available", lat: 37.3382, lng: -121.8863 },
+            { name: "Los Angeles, CA", status: "available", lat: 34.0522, lng: -118.2437 },
+            { name: "San Diego, CA", status: "available", lat: 32.7157, lng: -117.1611 },
+            { name: "Las Vegas, NV", status: "available", lat: 36.1699, lng: -115.1398 },
+            { name: "Salt Lake City, UT", status: "available", lat: 40.7608, lng: -111.8910 },
+            { name: "Boise, ID", status: "available", lat: 43.6150, lng: -116.2023 },
+            { name: "Denver, CO", status: "available", lat: 39.7392, lng: -104.9903 },
+            { name: "Boulder, CO", status: "available", lat: 40.0150, lng: -105.2705 },
+            { name: "Albuquerque, NM", status: "available", lat: 35.0844, lng: -106.6504 },
+            { name: "Tucson, AZ", status: "available", lat: 32.2226, lng: -110.9747 },
             
             // TEXAS & CENTRAL
-            { name: "Dallas, TX", status: "available", x: 44, y: 54 },     // Texas
-            { name: "Austin, TX", status: "available", x: 42, y: 60 },
-            { name: "San Antonio, TX", status: "available", x: 40, y: 64 },
-            { name: "Houston, TX", status: "available", x: 48, y: 62 },
-            { name: "Oklahoma City, OK", status: "available", x: 42, y: 46 }, // Oklahoma
-            { name: "Kansas City, MO", status: "available", x: 50, y: 40 }, // Missouri
-            { name: "St. Louis, MO", status: "available", x: 56, y: 42 },
-            { name: "Minneapolis, MN", status: "available", x: 52, y: 22 }, // Minnesota
-            { name: "Madison, WI", status: "available", x: 58, y: 28 },    // Wisconsin
-            { name: "Chicago, IL", status: "available", x: 60, y: 32 },    // Illinois
-            { name: "Indianapolis, IN", status: "available", x: 64, y: 38 }, // Indiana
-            { name: "Detroit, MI", status: "available", x: 68, y: 28 },    // Michigan
-            { name: "Columbus, OH", status: "available", x: 70, y: 36 },   // Ohio
-            { name: "Cincinnati, OH", status: "available", x: 68, y: 40 },
-            { name: "Little Rock, AR", status: "available", x: 52, y: 52 }, // Arkansas
-            { name: "New Orleans, LA", status: "available", x: 58, y: 64 }, // Louisiana
+            { name: "Dallas, TX", status: "available", lat: 32.7767, lng: -96.7970 },
+            { name: "Austin, TX", status: "available", lat: 30.2672, lng: -97.7431 },
+            { name: "San Antonio, TX", status: "available", lat: 29.4241, lng: -98.4936 },
+            { name: "Houston, TX", status: "available", lat: 29.7604, lng: -95.3698 },
+            { name: "Oklahoma City, OK", status: "available", lat: 35.4676, lng: -97.5164 },
+            { name: "Kansas City, MO", status: "available", lat: 39.0997, lng: -94.5786 },
+            { name: "St. Louis, MO", status: "available", lat: 38.6270, lng: -90.1994 },
+            { name: "Minneapolis, MN", status: "available", lat: 44.9778, lng: -93.2650 },
+            { name: "Madison, WI", status: "available", lat: 43.0731, lng: -89.4012 },
+            { name: "Chicago, IL", status: "available", lat: 41.8781, lng: -87.6298 },
+            { name: "Indianapolis, IN", status: "available", lat: 39.7684, lng: -86.1581 },
+            { name: "Detroit, MI", status: "available", lat: 42.3314, lng: -83.0458 },
+            { name: "Columbus, OH", status: "available", lat: 39.9612, lng: -82.9988 },
+            { name: "Cincinnati, OH", status: "available", lat: 39.1031, lng: -84.5120 },
+            { name: "Little Rock, AR", status: "available", lat: 34.7465, lng: -92.2896 },
+            { name: "New Orleans, LA", status: "available", lat: 29.9511, lng: -90.0715 },
             
             // SOUTHEAST
-            { name: "Nashville, TN", status: "available", x: 64, y: 46 },  // Tennessee
-            { name: "Birmingham, AL", status: "available", x: 64, y: 52 }, // Alabama
-            { name: "Huntsville, AL", status: "available", x: 66, y: 48 },
-            { name: "Charlotte, NC", status: "available", x: 76, y: 44 },  // North Carolina
-            { name: "Raleigh, NC", status: "available", x: 79, y: 42 },
-            { name: "Charleston, SC", status: "available", x: 77, y: 52 }, // South Carolina
-            { name: "Jacksonville, FL", status: "available", x: 75, y: 60 }, // Florida
-            { name: "Orlando, FL", status: "available", x: 76, y: 66 },
-            { name: "Tampa, FL", status: "available", x: 73, y: 68 },
-            { name: "Miami, FL", status: "available", x: 78, y: 76 },
+            { name: "Nashville, TN", status: "available", lat: 36.1627, lng: -86.7816 },
+            { name: "Birmingham, AL", status: "available", lat: 33.5207, lng: -86.8025 },
+            { name: "Huntsville, AL", status: "available", lat: 34.7304, lng: -86.5861 },
+            { name: "Charlotte, NC", status: "available", lat: 35.2271, lng: -80.8431 },
+            { name: "Raleigh, NC", status: "available", lat: 35.7796, lng: -78.6382 },
+            { name: "Charleston, SC", status: "available", lat: 32.7765, lng: -79.9311 },
+            { name: "Jacksonville, FL", status: "available", lat: 30.3322, lng: -81.6557 },
+            { name: "Orlando, FL", status: "available", lat: 28.5383, lng: -81.3792 },
+            { name: "Tampa, FL", status: "available", lat: 27.9506, lng: -82.4572 },
+            { name: "Miami, FL", status: "available", lat: 25.7617, lng: -80.1918 },
             
             // NORTHEAST
-            { name: "Pittsburgh, PA", status: "available", x: 76, y: 34 }, // Pennsylvania
-            { name: "Richmond, VA", status: "available", x: 80, y: 42 },   // Virginia
-            { name: "Washington, DC", status: "available", x: 82, y: 40 },
-            { name: "Baltimore, MD", status: "available", x: 83, y: 38 },  // Maryland
-            { name: "Philadelphia, PA", status: "available", x: 84, y: 34 },
-            { name: "New York, NY", status: "available", x: 86, y: 30 },   // New York
-            { name: "Hartford, CT", status: "available", x: 87, y: 26 },   // Connecticut
-            { name: "Boston, MA", status: "available", x: 89, y: 24 }      // Massachusetts
+            { name: "Pittsburgh, PA", status: "available", lat: 40.4406, lng: -79.9959 },
+            { name: "Richmond, VA", status: "available", lat: 37.5407, lng: -77.4360 },
+            { name: "Washington, DC", status: "available", lat: 38.9072, lng: -77.0369 },
+            { name: "Baltimore, MD", status: "available", lat: 39.2904, lng: -76.6122 },
+            { name: "Philadelphia, PA", status: "available", lat: 39.9526, lng: -75.1652 },
+            { name: "New York, NY", status: "available", lat: 40.7128, lng: -74.0060 },
+            { name: "Hartford, CT", status: "available", lat: 41.7658, lng: -72.6734 },
+            { name: "Boston, MA", status: "available", lat: 42.3601, lng: -71.0589 }
         ];
 
-        // DOM Elements
-        const markersContainer = document.getElementById('markers-container');
-        const cityList = document.getElementById('city-list');
-        const tooltip = document.getElementById('map-tooltip');
-        const toggleFilter = document.getElementById('toggle-filter');
+        // Initialize Map
+        const map = L.map('map', {
+            center: [39.5, -98.35],
+            zoom: 4,
+            minZoom: 3,
+            maxZoom: 10,
+            zoomControl: true
+        });
 
-        let showOnlyAvailable = false;
+        // Dark tile layer (CartoDB Dark)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Custom Icon Factory
+        function createMarkerIcon(status) {
+            return L.divIcon({
+                className: 'custom-marker',
+                html: `<div class="marker-dot ${status}"></div>`,
+                iconSize: [20, 20],
+                iconAnchor: [10, 10],
+                popupAnchor: [0, -10]
+            });
+        }
 
         // Create markers
-        function createMarkers() {
-            markersContainer.innerHTML = '';
-            
-            cities.forEach((city, index) => {
-                const marker = document.createElement('div');
-                marker.className = `map-marker ${city.status}`;
-                marker.style.left = `${city.x}%`;
-                marker.style.top = `${city.y}%`;
-                marker.dataset.index = index;
-                marker.innerHTML = `
-                    <span class="marker-pulse"></span>
-                    <span class="marker-dot"></span>
-                `;
-                
-                marker.addEventListener('mouseenter', (e) => showTooltip(e, city));
-                marker.addEventListener('mouseleave', hideTooltip);
-                marker.addEventListener('click', () => handleMarkerClick(city));
-                
-                markersContainer.appendChild(marker);
+        const markers = [];
+        cities.forEach(city => {
+            const marker = L.marker([city.lat, city.lng], {
+                icon: createMarkerIcon(city.status)
+            });
+
+            const popupContent = `
+                <div class="popup-content">
+                    <div class="popup-city">${city.name}</div>
+                    <div class="popup-status ${city.status}">
+                        ${city.status === 'available' ? '● Available' : '● Partner Active'}
+                    </div>
+                    ${city.status === 'available' ? 
+                        `<a href="partners.html#apply" class="popup-cta">Claim This Territory</a>` : 
+                        ''}
+                </div>
+            `;
+
+            marker.bindPopup(popupContent);
+            marker.cityData = city;
+            marker.addTo(map);
+            markers.push(marker);
+        });
+
+        // Populate City List
+        const cityList = document.getElementById('city-list');
+        
+        function renderCityList(filter = 'all') {
+            const filteredCities = cities.filter(city => {
+                if (filter === 'all') return true;
+                return city.status === filter;
+            });
+
+            const listHTML = filteredCities.map(city => `
+                <div class="city-item ${city.status}" data-city="${city.name}">
+                    <div class="city-dot ${city.status}"></div>
+                    <div class="city-info">
+                        <div class="city-name">${city.name}</div>
+                        <div class="city-status">${city.status === 'available' ? 'Available' : 'Partner Active'}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            cityList.innerHTML = `<h3>${filter === 'all' ? 'All' : filter.charAt(0).toUpperCase() + filter.slice(1)} Territories (${filteredCities.length})</h3>` + listHTML;
+
+            // Add click handlers
+            document.querySelectorAll('.city-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const cityName = item.dataset.city;
+                    const city = cities.find(c => c.name === cityName);
+                    if (city) {
+                        map.setView([city.lat, city.lng], 8);
+                        const marker = markers.find(m => m.cityData.name === cityName);
+                        if (marker) marker.openPopup();
+                    }
+                });
             });
         }
 
-        // Create city list
-        function createCityList() {
-            cityList.innerHTML = '';
-            
-            const filteredCities = showOnlyAvailable 
-                ? cities.filter(c => c.status === 'available')
-                : cities;
-            
-            // Sort: claimed first, then alphabetical
-            const sortedCities = [...filteredCities].sort((a, b) => {
-                if (a.status !== b.status) {
-                    return a.status === 'claimed' ? -1 : 1;
-                }
-                return a.name.localeCompare(b.name);
+        renderCityList();
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderCityList(btn.dataset.filter);
             });
-            
-            sortedCities.forEach((city, index) => {
-                const item = document.createElement('div');
-                item.className = `city-item ${city.status}`;
-                item.innerHTML = `
-                    <span class="dot"></span>
-                    <span class="city-name">${city.name}</span>
-                `;
-                
-                item.addEventListener('click', () => handleCityClick(city));
-                cityList.appendChild(item);
-            });
-        }
-
-        // Tooltip functions
-        function showTooltip(e, city) {
-            const tooltipCity = tooltip.querySelector('.tooltip-city');
-            const tooltipStatus = tooltip.querySelector('.tooltip-status');
-            const tooltipPartner = tooltip.querySelector('.tooltip-partner');
-            
-            tooltipCity.textContent = city.name;
-            tooltipStatus.textContent = city.status === 'claimed' ? 'Partner Active' : 'Available — Click to Apply';
-            tooltipStatus.className = `tooltip-status ${city.status}`;
-            tooltipPartner.style.display = 'none';
-            
-            const rect = e.target.getBoundingClientRect();
-            tooltip.style.left = `${rect.left + rect.width / 2}px`;
-            tooltip.style.top = `${rect.top - 10}px`;
-            tooltip.style.transform = 'translate(-50%, -100%)';
-            tooltip.classList.add('visible');
-        }
-
-        function hideTooltip() {
-            tooltip.classList.remove('visible');
-        }
-
-        // Click handlers
-        function handleMarkerClick(city) {
-            if (city.status === 'available') {
-                window.location.href = `partners.html#apply?city=${encodeURIComponent(city.name)}`;
-            }
-        }
-
-        function handleCityClick(city) {
-            // Highlight marker on map
-            const markers = document.querySelectorAll('.map-marker');
-            const cityIndex = cities.findIndex(c => c.name === city.name);
-            
-            markers.forEach((m, i) => {
-                m.style.transform = i === cityIndex 
-                    ? 'translate(-50%, -50%) scale(1.5)' 
-                    : 'translate(-50%, -50%)';
-            });
-            
-            if (city.status === 'available') {
-                setTimeout(() => {
-                    window.location.href = `partners.html#apply?city=${encodeURIComponent(city.name)}`;
-                }, 300);
-            }
-        }
-
-        // Toggle filter
-        toggleFilter.addEventListener('click', () => {
-            showOnlyAvailable = !showOnlyAvailable;
-            toggleFilter.textContent = showOnlyAvailable ? 'Show All' : 'Show Available Only';
-            createCityList();
         });
 
         // Update counts
-        function updateCounts() {
-            const available = cities.filter(c => c.status === 'available').length;
-            const claimed = cities.filter(c => c.status === 'claimed').length;
-            document.getElementById('available-count').textContent = available;
-            document.getElementById('claimed-count').textContent = claimed;
-        }
-
-        // Initialize
-        createMarkers();
-        createCityList();
-        updateCounts();
+        document.getElementById('available-count').textContent = cities.filter(c => c.status === 'available').length;
+        document.getElementById('claimed-count').textContent = cities.filter(c => c.status === 'claimed').length;
     </script>
 </body>
 </html>
