@@ -954,10 +954,8 @@
 
         .map-container {
             position: relative;
-            background: var(--navy-deep);
             border: 1px solid var(--border);
             border-radius: 20px;
-            padding: 24px;
             overflow: hidden;
         }
 
@@ -969,54 +967,83 @@
             right: 0;
             height: 3px;
             background: linear-gradient(90deg, var(--gold), transparent);
+            z-index: 10;
         }
 
-        .us-map {
+        .map-image-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .map-image {
             width: 100%;
             height: auto;
+            display: block;
+        }
+
+        .map-markers {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
         }
 
         .city-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            transform: translate(-50%, -50%);
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .city-marker:hover {
-            transform: scale(1.3);
+            pointer-events: auto;
+            z-index: 5;
         }
 
         .city-marker .marker-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
             transition: all 0.3s ease;
         }
 
-        .city-marker.available .marker-dot {
-            fill: var(--gold);
-            filter: drop-shadow(0 0 6px rgba(201, 162, 39, 0.6));
-        }
-
-        .city-marker.claimed .marker-dot {
-            fill: #22c55e;
-            filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.6));
-        }
-
         .city-marker .marker-pulse {
-            fill: none;
-            stroke-width: 1;
-            opacity: 0;
-            animation: pulse-ring 2s infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse-marker 2s infinite;
+        }
+
+        .city-marker.available .marker-dot {
+            background: var(--gold);
+            box-shadow: 0 0 10px rgba(201, 162, 39, 0.8), 0 0 20px rgba(201, 162, 39, 0.4);
         }
 
         .city-marker.available .marker-pulse {
-            stroke: var(--gold);
+            background: var(--gold);
+        }
+
+        .city-marker.claimed .marker-dot {
+            background: #22c55e;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.8), 0 0 20px rgba(34, 197, 94, 0.4);
         }
 
         .city-marker.claimed .marker-pulse {
-            stroke: #22c55e;
+            background: #22c55e;
         }
 
-        @keyframes pulse-ring {
-            0% { r: 4; opacity: 1; }
-            100% { r: 12; opacity: 0; }
+        .city-marker:hover .marker-dot {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+
+        @keyframes pulse-marker {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
         }
 
         .map-tooltip {
@@ -1682,247 +1709,68 @@
                         <div class="map-tooltip-status"></div>
                     </div>
                     
-                    <svg class="us-map" viewBox="0 0 960 600" preserveAspectRatio="xMidYMid meet">
-                        <!-- US mainland outline -->
-                        <path class="state" d="
-                            M 120,120 
-                            L 180,100 L 280,95 L 380,100 L 480,95 L 580,100 L 680,105 L 780,120 L 850,150
-                            L 870,200 L 880,280 L 870,360 L 850,420 L 800,460 L 750,480
-                            L 700,470 L 650,500 L 600,510 L 550,500 L 500,520 L 450,530 L 400,520
-                            L 350,540 L 300,530 L 250,550 L 200,530 L 150,520 L 100,480
-                            L 80,420 L 70,360 L 60,280 L 70,200 L 100,150 L 120,120
-                            Z
-                        " fill="var(--navy-mid)" stroke="var(--navy-light)" stroke-width="2"/>
+                    <div class="map-image-wrapper">
+                        <img src="territory-bg.webp" alt="US Territory Map" class="map-image">
                         
-                        <!-- CLAIMED CITIES (Green) -->
-                        <g class="city-marker claimed" data-city="Atlanta, GA" data-status="claimed">
-                            <circle class="marker-pulse" cx="700" cy="400" r="4"/>
-                            <circle class="marker-dot" cx="700" cy="400" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker claimed" data-city="San Francisco, CA" data-status="claimed">
-                            <circle class="marker-pulse" cx="95" cy="280" r="4"/>
-                            <circle class="marker-dot" cx="95" cy="280" r="6"/>
-                        </g>
-                        
-                        <!-- AVAILABLE CITIES - Tier 1 (Major Tech Hubs) -->
-                        <g class="city-marker available" data-city="New York, NY" data-status="available">
-                            <circle class="marker-pulse" cx="820" cy="220" r="4"/>
-                            <circle class="marker-dot" cx="820" cy="220" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Austin, TX" data-status="available">
-                            <circle class="marker-pulse" cx="450" cy="480" r="4"/>
-                            <circle class="marker-dot" cx="450" cy="480" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Seattle, WA" data-status="available">
-                            <circle class="marker-pulse" cx="120" cy="120" r="4"/>
-                            <circle class="marker-dot" cx="120" cy="120" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Boston, MA" data-status="available">
-                            <circle class="marker-pulse" cx="850" cy="180" r="4"/>
-                            <circle class="marker-dot" cx="850" cy="180" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Washington, DC" data-status="available">
-                            <circle class="marker-pulse" cx="780" cy="270" r="4"/>
-                            <circle class="marker-dot" cx="780" cy="270" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Denver, CO" data-status="available">
-                            <circle class="marker-pulse" cx="300" cy="300" r="4"/>
-                            <circle class="marker-dot" cx="300" cy="300" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Los Angeles, CA" data-status="available">
-                            <circle class="marker-pulse" cx="115" cy="380" r="4"/>
-                            <circle class="marker-dot" cx="115" cy="380" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="San Diego, CA" data-status="available">
-                            <circle class="marker-pulse" cx="130" cy="410" r="4"/>
-                            <circle class="marker-dot" cx="130" cy="410" r="6"/>
-                        </g>
-                        
-                        <!-- AVAILABLE CITIES - Tier 2 (Growing Hubs) -->
-                        <g class="city-marker available" data-city="Miami, FL" data-status="available">
-                            <circle class="marker-pulse" cx="770" cy="510" r="4"/>
-                            <circle class="marker-dot" cx="770" cy="510" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Dallas, TX" data-status="available">
-                            <circle class="marker-pulse" cx="450" cy="440" r="4"/>
-                            <circle class="marker-dot" cx="450" cy="440" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Houston, TX" data-status="available">
-                            <circle class="marker-pulse" cx="480" cy="490" r="4"/>
-                            <circle class="marker-dot" cx="480" cy="490" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Phoenix, AZ" data-status="available">
-                            <circle class="marker-pulse" cx="200" cy="400" r="4"/>
-                            <circle class="marker-dot" cx="200" cy="400" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Raleigh, NC" data-status="available">
-                            <circle class="marker-pulse" cx="750" cy="340" r="4"/>
-                            <circle class="marker-dot" cx="750" cy="340" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Charlotte, NC" data-status="available">
-                            <circle class="marker-pulse" cx="720" cy="360" r="4"/>
-                            <circle class="marker-dot" cx="720" cy="360" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Nashville, TN" data-status="available">
-                            <circle class="marker-pulse" cx="640" cy="370" r="4"/>
-                            <circle class="marker-dot" cx="640" cy="370" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Salt Lake City, UT" data-status="available">
-                            <circle class="marker-pulse" cx="220" cy="280" r="4"/>
-                            <circle class="marker-dot" cx="220" cy="280" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Chicago, IL" data-status="available">
-                            <circle class="marker-pulse" cx="580" cy="250" r="4"/>
-                            <circle class="marker-dot" cx="580" cy="250" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Minneapolis, MN" data-status="available">
-                            <circle class="marker-pulse" cx="500" cy="180" r="4"/>
-                            <circle class="marker-dot" cx="500" cy="180" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Detroit, MI" data-status="available">
-                            <circle class="marker-pulse" cx="640" cy="230" r="4"/>
-                            <circle class="marker-dot" cx="640" cy="230" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Pittsburgh, PA" data-status="available">
-                            <circle class="marker-pulse" cx="720" cy="260" r="4"/>
-                            <circle class="marker-dot" cx="720" cy="260" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Philadelphia, PA" data-status="available">
-                            <circle class="marker-pulse" cx="790" cy="250" r="4"/>
-                            <circle class="marker-dot" cx="790" cy="250" r="6"/>
-                        </g>
-                        
-                        <!-- AVAILABLE CITIES - Tier 3 (Emerging) -->
-                        <g class="city-marker available" data-city="Portland, OR" data-status="available">
-                            <circle class="marker-pulse" cx="110" cy="170" r="4"/>
-                            <circle class="marker-dot" cx="110" cy="170" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Tampa, FL" data-status="available">
-                            <circle class="marker-pulse" cx="730" cy="490" r="4"/>
-                            <circle class="marker-dot" cx="730" cy="490" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Orlando, FL" data-status="available">
-                            <circle class="marker-pulse" cx="750" cy="480" r="4"/>
-                            <circle class="marker-dot" cx="750" cy="480" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Jacksonville, FL" data-status="available">
-                            <circle class="marker-pulse" cx="740" cy="450" r="4"/>
-                            <circle class="marker-dot" cx="740" cy="450" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Indianapolis, IN" data-status="available">
-                            <circle class="marker-pulse" cx="610" cy="290" r="4"/>
-                            <circle class="marker-dot" cx="610" cy="290" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Columbus, OH" data-status="available">
-                            <circle class="marker-pulse" cx="670" cy="280" r="4"/>
-                            <circle class="marker-dot" cx="670" cy="280" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Kansas City, MO" data-status="available">
-                            <circle class="marker-pulse" cx="480" cy="310" r="4"/>
-                            <circle class="marker-dot" cx="480" cy="310" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="St. Louis, MO" data-status="available">
-                            <circle class="marker-pulse" cx="540" cy="320" r="4"/>
-                            <circle class="marker-dot" cx="540" cy="320" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="San Antonio, TX" data-status="available">
-                            <circle class="marker-pulse" cx="420" cy="490" r="4"/>
-                            <circle class="marker-dot" cx="420" cy="490" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Las Vegas, NV" data-status="available">
-                            <circle class="marker-pulse" cx="170" cy="340" r="4"/>
-                            <circle class="marker-dot" cx="170" cy="340" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="San Jose, CA" data-status="available">
-                            <circle class="marker-pulse" cx="100" cy="310" r="4"/>
-                            <circle class="marker-dot" cx="100" cy="310" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Baltimore, MD" data-status="available">
-                            <circle class="marker-pulse" cx="770" cy="280" r="4"/>
-                            <circle class="marker-dot" cx="770" cy="280" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Birmingham, AL" data-status="available">
-                            <circle class="marker-pulse" cx="650" cy="400" r="4"/>
-                            <circle class="marker-dot" cx="650" cy="400" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="New Orleans, LA" data-status="available">
-                            <circle class="marker-pulse" cx="580" cy="480" r="4"/>
-                            <circle class="marker-dot" cx="580" cy="480" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Oklahoma City, OK" data-status="available">
-                            <circle class="marker-pulse" cx="420" cy="390" r="4"/>
-                            <circle class="marker-dot" cx="420" cy="390" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Boise, ID" data-status="available">
-                            <circle class="marker-pulse" cx="180" cy="200" r="4"/>
-                            <circle class="marker-dot" cx="180" cy="200" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Madison, WI" data-status="available">
-                            <circle class="marker-pulse" cx="550" cy="220" r="4"/>
-                            <circle class="marker-dot" cx="550" cy="220" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Boulder, CO" data-status="available">
-                            <circle class="marker-pulse" cx="310" cy="290" r="4"/>
-                            <circle class="marker-dot" cx="310" cy="290" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Charleston, SC" data-status="available">
-                            <circle class="marker-pulse" cx="740" cy="400" r="4"/>
-                            <circle class="marker-dot" cx="740" cy="400" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Huntsville, AL" data-status="available">
-                            <circle class="marker-pulse" cx="640" cy="380" r="4"/>
-                            <circle class="marker-dot" cx="640" cy="380" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Little Rock, AR" data-status="available">
-                            <circle class="marker-pulse" cx="530" cy="390" r="4"/>
-                            <circle class="marker-dot" cx="530" cy="390" r="6"/>
-                        </g>
-                        
-                        <g class="city-marker available" data-city="Hartford, CT" data-status="available">
-                            <circle class="marker-pulse" cx="830" cy="200" r="4"/>
-                            <circle class="marker-dot" cx="830" cy="200" r="6"/>
-                        </g>
-                    </svg>
+                        <div class="map-markers">
+                            <!-- CLAIMED CITIES (Green) - Phoenix & Atlanta -->
+                            <div class="city-marker claimed" data-city="Phoenix, AZ" data-status="claimed" style="left: 22%; top: 62%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker claimed" data-city="Atlanta, GA" data-status="claimed" style="left: 73%; top: 58%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- TIER 1 - Major Tech Hubs -->
+                            <div class="city-marker available" data-city="San Francisco, CA" data-status="available" style="left: 10%; top: 42%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="New York, NY" data-status="available" style="left: 87%; top: 32%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Austin, TX" data-status="available" style="left: 45%; top: 72%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Seattle, WA" data-status="available" style="left: 12%; top: 18%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Boston, MA" data-status="available" style="left: 91%; top: 26%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Washington, DC" data-status="available" style="left: 83%; top: 40%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Denver, CO" data-status="available" style="left: 32%; top: 45%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Los Angeles, CA" data-status="available" style="left: 12%; top: 55%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="San Diego, CA" data-status="available" style="left: 14%; top: 62%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- TIER 2 - Growing Hubs -->
+                            <div class="city-marker available" data-city="Miami, FL" data-status="available" style="left: 82%; top: 82%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Dallas, TX" data-status="available" style="left: 45%; top: 62%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Houston, TX" data-status="available" style="left: 48%; top: 72%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Raleigh, NC" data-status="available" style="left: 80%; top: 48%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Charlotte, NC" data-status="available" style="left: 77%; top: 52%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Nashville, TN" data-status="available" style="left: 67%; top: 52%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Salt Lake City, UT" data-status="available" style="left: 24%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Chicago, IL" data-status="available" style="left: 62%; top: 35%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Minneapolis, MN" data-status="available" style="left: 52%; top: 25%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Detroit, MI" data-status="available" style="left: 68%; top: 32%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Pittsburgh, PA" data-status="available" style="left: 77%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Philadelphia, PA" data-status="available" style="left: 85%; top: 36%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            
+                            <!-- TIER 3 - Emerging -->
+                            <div class="city-marker available" data-city="Portland, OR" data-status="available" style="left: 11%; top: 24%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Tampa, FL" data-status="available" style="left: 77%; top: 76%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Orlando, FL" data-status="available" style="left: 79%; top: 74%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Jacksonville, FL" data-status="available" style="left: 78%; top: 68%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Indianapolis, IN" data-status="available" style="left: 64%; top: 42%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Columbus, OH" data-status="available" style="left: 71%; top: 40%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Cincinnati, OH" data-status="available" style="left: 68%; top: 44%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Kansas City, MO" data-status="available" style="left: 50%; top: 45%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="St. Louis, MO" data-status="available" style="left: 57%; top: 46%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="San Antonio, TX" data-status="available" style="left: 42%; top: 75%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Las Vegas, NV" data-status="available" style="left: 18%; top: 50%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="San Jose, CA" data-status="available" style="left: 10%; top: 46%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Baltimore, MD" data-status="available" style="left: 82%; top: 38%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Richmond, VA" data-status="available" style="left: 80%; top: 44%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Birmingham, AL" data-status="available" style="left: 66%; top: 58%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="New Orleans, LA" data-status="available" style="left: 58%; top: 72%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Oklahoma City, OK" data-status="available" style="left: 43%; top: 55%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Albuquerque, NM" data-status="available" style="left: 28%; top: 58%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Tucson, AZ" data-status="available" style="left: 23%; top: 68%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Boise, ID" data-status="available" style="left: 18%; top: 28%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Madison, WI" data-status="available" style="left: 58%; top: 30%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Boulder, CO" data-status="available" style="left: 33%; top: 43%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Charleston, SC" data-status="available" style="left: 78%; top: 58%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Huntsville, AL" data-status="available" style="left: 67%; top: 55%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Little Rock, AR" data-status="available" style="left: 54%; top: 56%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                            <div class="city-marker available" data-city="Hartford, CT" data-status="available" style="left: 88%; top: 28%"><span class="marker-pulse"></span><span class="marker-dot"></span></div>
+                        </div>
+                    </div>
                     
                     <div class="map-legend">
                         <div class="legend-item">
