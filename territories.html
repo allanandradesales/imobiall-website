@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Territory Map | IMOBI Holdings</title>
+    <meta name="description" content="Explore available territories for IMOBI Holdings sales partners. Claim your exclusive city and start earning commissions.">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.imobiallholdings.com/territories.html">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YQ8ED4BHQN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YQ8ED4BHQN');
+    </script>
+
+    <style>
+        :root {
+            --navy-deep: #0a0f1a;
+            --navy: #1B365D;
+            --navy-mid: #152238;
+            --navy-light: #1e3a5f;
+            --gold: #C9A227;
+            --gold-light: #e3c564;
+            --gold-glow: rgba(201, 162, 39, 0.25);
+            --gold-dim: rgba(201, 162, 39, 0.1);
+            --green: #22c55e;
+            --green-glow: rgba(34, 197, 94, 0.25);
+            --white: #ffffff;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--navy-deep);
+            color: var(--white);
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            background: rgba(10, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+        }
+
+        .logo-text {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .logo-text-main {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--white);
+        }
+
+        .logo-text-sub {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--navy-deep);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--gold-glow);
+        }
+
+        /* Main Layout */
+        .page-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            min-height: 100vh;
+            padding-top: 70px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--navy-mid);
+            border-right: 1px solid var(--border);
+            padding: 24px;
+            overflow-y: auto;
+            max-height: calc(100vh - 70px);
+            position: sticky;
+            top: 70px;
+        }
+
+        .sidebar-header {
+            margin-bottom: 24px;
+        }
+
+        .sidebar-header h1 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .sidebar-header h1 span {
+            color: var(--gold);
+        }
+
+        .sidebar-header p {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            line-height: 1.6;
+        }
+
+        /* Stats */
+        .stats-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .stat-box {
+            background: var(--navy-deep);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .stat-box.available { border-color: rgba(201, 162, 39, 0.3); }
+        .stat-box.claimed { border-color: rgba(34, 197, 94, 0.3); }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-box.available .stat-number { color: var(--gold); }
+        .stat-box.claimed .stat-number { color: var(--green); }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+
+        /* Legend */
+        .legend {
+            margin-bottom: 24px;
+            padding: 16px;
+            background: var(--navy-deep);
+            border-radius: 12px;
+        }
+
+        .legend-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.available {
+            background: var(--gold);
+            box-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        .legend-dot.claimed {
+            background: var(--green);
+            box-shadow: 0 0 10px var(--green-glow);
+        }
+
+        /* City List */
+        .city-list-section {
+            margin-bottom: 24px;
+        }
+
+        .city-list-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .city-list-toggle {
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .city-list {
+            max-height: 300px;
+            overflow-y: auto;
+            background: var(--navy-deep);
+            border-radius: 12px;
+            padding: 8px;
+        }
+
+        .city-list::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .city-list::-webkit-scrollbar-thumb {
+            background: var(--navy);
+            border-radius: 2px;
+        }
+
+        .city-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .city-item:hover {
+            background: var(--navy-mid);
+        }
+
+        .city-item.active {
+            background: var(--navy);
+            border: 1px solid var(--gold);
+        }
+
+        .city-item .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .city-item.available .dot { background: var(--gold); }
+        .city-item.claimed .dot { background: var(--green); }
+
+        .city-item .city-name {
+            flex: 1;
+        }
+
+        .city-item.claimed .partner-name {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        /* CTA Button */
+        .sidebar-cta {
+            display: block;
+            width: 100%;
+            background: var(--gold);
+            color: var(--navy-deep);
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--gold-glow);
+        }
+
+        /* Map Area */
+        .map-area {
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at center, rgba(27, 54, 93, 0.3) 0%, transparent 70%);
+        }
+
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        /* SVG Map */
+        .us-map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+        }
+
+        #markers-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        /* City Markers on Map */
+        .map-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 10;
+            pointer-events: auto;
+        }
+
+        .map-marker .marker-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .map-marker .marker-pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: marker-pulse 2s infinite;
+        }
+
+        .map-marker.available .marker-dot {
+            background: var(--gold);
+            box-shadow: 0 0 8px var(--gold-glow);
+        }
+
+        .map-marker.available .marker-pulse {
+            background: var(--gold);
+        }
+
+        .map-marker.claimed .marker-dot {
+            background: var(--green);
+            box-shadow: 0 0 8px var(--green-glow);
+        }
+
+        .map-marker.claimed .marker-pulse {
+            background: var(--green);
+        }
+
+        .map-marker:hover .marker-dot {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+
+        @keyframes marker-pulse {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+        }
+
+        /* Tooltip */
+        .map-tooltip {
+            position: fixed;
+            background: var(--navy);
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 12px 16px;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            z-index: 1000;
+            min-width: 160px;
+        }
+
+        .map-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tooltip-city {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .tooltip-status {
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tooltip-status.available { color: var(--gold); }
+        .tooltip-status.claimed { color: var(--green); }
+
+        .tooltip-status::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .tooltip-status.available::before { background: var(--gold); }
+        .tooltip-status.claimed::before { background: var(--green); }
+
+        .tooltip-partner {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-top: 4px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+                max-height: none;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .map-area {
+                min-height: 60vh;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            
+            .sidebar {
+                padding: 16px;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .city-list {
+                max-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="IMOBI" class="logo-icon">
+                <div class="logo-text">
+                    <span class="logo-text-main">IMOBI</span>
+                    <span class="logo-text-sub">Holdings</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <a href="partners.html#apply" class="nav-cta">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- Tooltip -->
+    <div class="map-tooltip" id="map-tooltip">
+        <div class="tooltip-city"></div>
+        <div class="tooltip-status"></div>
+        <div class="tooltip-partner"></div>
+    </div>
+
+    <div class="page-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>Claim Your <span>Territory</span></h1>
+                <p>Each city has only one partner. Click on any available city to apply.</p>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-box available">
+                    <div class="stat-number" id="available-count">47</div>
+                    <div class="stat-label">Available</div>
+                </div>
+                <div class="stat-box claimed">
+                    <div class="stat-number" id="claimed-count">2</div>
+                    <div class="stat-label">Claimed</div>
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-title">Legend</div>
+                <div class="legend-item">
+                    <span class="legend-dot available"></span>
+                    <span>Available Territory</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-dot claimed"></span>
+                    <span>Partner Active</span>
+                </div>
+            </div>
+
+            <div class="city-list-section">
+                <div class="city-list-title">
+                    All Territories
+                    <button class="city-list-toggle" id="toggle-filter">Show Available Only</button>
+                </div>
+                <div class="city-list" id="city-list">
+                    <!-- Filled by JavaScript -->
+                </div>
+            </div>
+
+            <a href="partners.html#apply" class="sidebar-cta">Apply for a Territory</a>
+        </aside>
+
+        <!-- Map Area -->
+        <main class="map-area">
+            <div class="map-wrapper" id="map-wrapper">
+                <!-- US Map Image -->
+                <img src="territory-bg.webp" alt="US Territory Map" class="us-map-image">
+
+                <!-- Map Markers will be positioned here by JS -->
+                <div id="markers-container"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // City Data with coordinates calibrated for territory-bg.webp
+        // Image has USA map centered with padding around it
+        // Map area: X ~15-85%, Y ~15-75%
+        const cities = [
+            // CLAIMED (green markers)
+            { name: "Phoenix, AZ", status: "claimed", x: 26, y: 54 },
+            { name: "Atlanta, GA", status: "claimed", x: 68, y: 52 },
+            
+            // WEST COAST
+            { name: "Seattle, WA", status: "available", x: 18, y: 20 },
+            { name: "Portland, OR", status: "available", x: 17, y: 25 },
+            { name: "San Francisco, CA", status: "available", x: 15, y: 40 },
+            { name: "San Jose, CA", status: "available", x: 15.5, y: 42 },
+            { name: "Los Angeles, CA", status: "available", x: 18, y: 50 },
+            { name: "San Diego, CA", status: "available", x: 19, y: 54 },
+            { name: "Las Vegas, NV", status: "available", x: 22, y: 45 },
+            { name: "Salt Lake City, UT", status: "available", x: 27, y: 36 },
+            { name: "Boise, ID", status: "available", x: 23, y: 27 },
+            { name: "Denver, CO", status: "available", x: 34, y: 40 },
+            { name: "Boulder, CO", status: "available", x: 34, y: 38 },
+            { name: "Albuquerque, NM", status: "available", x: 30, y: 50 },
+            { name: "Tucson, AZ", status: "available", x: 27, y: 56 },
+            
+            // TEXAS & CENTRAL
+            { name: "Dallas, TX", status: "available", x: 44, y: 54 },
+            { name: "Austin, TX", status: "available", x: 43, y: 58 },
+            { name: "San Antonio, TX", status: "available", x: 41, y: 60 },
+            { name: "Houston, TX", status: "available", x: 47, y: 60 },
+            { name: "Oklahoma City, OK", status: "available", x: 43, y: 48 },
+            { name: "Kansas City, MO", status: "available", x: 50, y: 42 },
+            { name: "St. Louis, MO", status: "available", x: 55, y: 44 },
+            { name: "Minneapolis, MN", status: "available", x: 52, y: 26 },
+            { name: "Madison, WI", status: "available", x: 56, y: 30 },
+            { name: "Chicago, IL", status: "available", x: 58, y: 34 },
+            { name: "Indianapolis, IN", status: "available", x: 61, y: 40 },
+            { name: "Detroit, MI", status: "available", x: 65, y: 32 },
+            { name: "Columbus, OH", status: "available", x: 66, y: 40 },
+            { name: "Cincinnati, OH", status: "available", x: 64, y: 42 },
+            { name: "Little Rock, AR", status: "available", x: 51, y: 52 },
+            { name: "New Orleans, LA", status: "available", x: 55, y: 62 },
+            
+            // SOUTHEAST
+            { name: "Nashville, TN", status: "available", x: 62, y: 48 },
+            { name: "Birmingham, AL", status: "available", x: 62, y: 52 },
+            { name: "Huntsville, AL", status: "available", x: 63, y: 50 },
+            { name: "Charlotte, NC", status: "available", x: 72, y: 48 },
+            { name: "Raleigh, NC", status: "available", x: 75, y: 46 },
+            { name: "Charleston, SC", status: "available", x: 74, y: 54 },
+            { name: "Jacksonville, FL", status: "available", x: 74, y: 60 },
+            { name: "Orlando, FL", status: "available", x: 74, y: 65 },
+            { name: "Tampa, FL", status: "available", x: 72, y: 66 },
+            { name: "Miami, FL", status: "available", x: 76, y: 74 },
+            
+            // NORTHEAST
+            { name: "Pittsburgh, PA", status: "available", x: 72, y: 38 },
+            { name: "Richmond, VA", status: "available", x: 76, y: 44 },
+            { name: "Washington, DC", status: "available", x: 77, y: 42 },
+            { name: "Baltimore, MD", status: "available", x: 78, y: 40 },
+            { name: "Philadelphia, PA", status: "available", x: 79, y: 38 },
+            { name: "New York, NY", status: "available", x: 81, y: 35 },
+            { name: "Hartford, CT", status: "available", x: 82, y: 32 },
+            { name: "Boston, MA", status: "available", x: 84, y: 30 }
+        ];
+
+        // DOM Elements
+        const markersContainer = document.getElementById('markers-container');
+        const cityList = document.getElementById('city-list');
+        const tooltip = document.getElementById('map-tooltip');
+        const toggleFilter = document.getElementById('toggle-filter');
+
+        let showOnlyAvailable = false;
+
+        // Create markers
+        function createMarkers() {
+            markersContainer.innerHTML = '';
+            
+            cities.forEach((city, index) => {
+                const marker = document.createElement('div');
+                marker.className = `map-marker ${city.status}`;
+                marker.style.left = `${city.x}%`;
+                marker.style.top = `${city.y}%`;
+                marker.dataset.index = index;
+                marker.innerHTML = `
+                    <span class="marker-pulse"></span>
+                    <span class="marker-dot"></span>
+                `;
+                
+                marker.addEventListener('mouseenter', (e) => showTooltip(e, city));
+                marker.addEventListener('mouseleave', hideTooltip);
+                marker.addEventListener('click', () => handleMarkerClick(city));
+                
+                markersContainer.appendChild(marker);
+            });
+        }
+
+        // Create city list
+        function createCityList() {
+            cityList.innerHTML = '';
+            
+            const filteredCities = showOnlyAvailable 
+                ? cities.filter(c => c.status === 'available')
+                : cities;
+            
+            // Sort: claimed first, then alphabetical
+            const sortedCities = [...filteredCities].sort((a, b) => {
+                if (a.status !== b.status) {
+                    return a.status === 'claimed' ? -1 : 1;
+                }
+                return a.name.localeCompare(b.name);
+            });
+            
+            sortedCities.forEach((city, index) => {
+                const item = document.createElement('div');
+                item.className = `city-item ${city.status}`;
+                item.innerHTML = `
+                    <span class="dot"></span>
+                    <span class="city-name">${city.name}</span>
+                `;
+                
+                item.addEventListener('click', () => handleCityClick(city));
+                cityList.appendChild(item);
+            });
+        }
+
+        // Tooltip functions
+        function showTooltip(e, city) {
+            const tooltipCity = tooltip.querySelector('.tooltip-city');
+            const tooltipStatus = tooltip.querySelector('.tooltip-status');
+            const tooltipPartner = tooltip.querySelector('.tooltip-partner');
+            
+            tooltipCity.textContent = city.name;
+            tooltipStatus.textContent = city.status === 'claimed' ? 'Partner Active' : 'Available — Click to Apply';
+            tooltipStatus.className = `tooltip-status ${city.status}`;
+            tooltipPartner.style.display = 'none';
+            
+            const rect = e.target.getBoundingClientRect();
+            tooltip.style.left = `${rect.left + rect.width / 2}px`;
+            tooltip.style.top = `${rect.top - 10}px`;
+            tooltip.style.transform = 'translate(-50%, -100%)';
+            tooltip.classList.add('visible');
+        }
+
+        function hideTooltip() {
+            tooltip.classList.remove('visible');
+        }
+
+        // Click handlers
+        function handleMarkerClick(city) {
+            if (city.status === 'available') {
+                window.location.href = `partners.html#apply?city=${encodeURIComponent(city.name)}`;
+            }
+        }
+
+        function handleCityClick(city) {
+            // Highlight marker on map
+            const markers = document.querySelectorAll('.map-marker');
+            const cityIndex = cities.findIndex(c => c.name === city.name);
+            
+            markers.forEach((m, i) => {
+                m.style.transform = i === cityIndex 
+                    ? 'translate(-50%, -50%) scale(1.5)' 
+                    : 'translate(-50%, -50%)';
+            });
+            
+            if (city.status === 'available') {
+                setTimeout(() => {
+                    window.location.href = `partners.html#apply?city=${encodeURIComponent(city.name)}`;
+                }, 300);
+            }
+        }
+
+        // Toggle filter
+        toggleFilter.addEventListener('click', () => {
+            showOnlyAvailable = !showOnlyAvailable;
+            toggleFilter.textContent = showOnlyAvailable ? 'Show All' : 'Show Available Only';
+            createCityList();
+        });
+
+        // Update counts
+        function updateCounts() {
+            const available = cities.filter(c => c.status === 'available').length;
+            const claimed = cities.filter(c => c.status === 'claimed').length;
+            document.getElementById('available-count').textContent = available;
+            document.getElementById('claimed-count').textContent = claimed;
+        }
+
+        // Initialize
+        createMarkers();
+        createCityList();
+        updateCounts();
+    </script>
+</body>
+</html>
