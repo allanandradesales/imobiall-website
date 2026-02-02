@@ -24,7 +24,7 @@
     <meta name="twitter:url" content="https://www.imobiallholdings.com/">
     <meta name="twitter:title" content="IMOBI Holdings | AI-Powered Engineering from Brazil">
     <meta name="twitter:description" content="US-based technology operator connecting American businesses with elite AI and engineering talent from Brazil's top research institutes.">
-    <meta name="twitter:image" content="https://www.imobiallholdings.com/og-image.png">
+    <meta name="twitter:image" content="https://www.imobiallholdings.com/og-image(1).png">
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -1935,7 +1935,7 @@
             <div class="territory-card reveal">
                 <div class="territory-header">
                     <h2>Claim Your <span class="highlight">Territory</span></h2>
-                    <p>We're building an exclusive network of sales partners across the US. Each city has only one partner, secure yours before it's taken.</p>
+                    <p>We're building an exclusive network of sales partners across the US. Each city has only one partner — secure yours before it's taken.</p>
                 </div>
                 
                 <div class="territory-stats-row">
@@ -2362,6 +2362,20 @@
     .nova-send svg{width:18px;height:18px;fill:var(--navy-deep)}
     .nova-foot{text-align:center;padding:10px;font-size:0.7rem;color:var(--gray-600)}
     @media(max-width:480px){#nova-chat{width:calc(100%-16px);height:70vh;bottom:8px;right:8px;left:8px}#nova-banner{right:8px;left:8px;max-width:none}}
+    /* Proposal Form Styles */
+    .nova-proposal{background:var(--navy-deep);border:1px solid rgba(201,162,39,0.3);border-radius:12px;padding:16px;margin-top:12px}
+    .nova-proposal h4{color:var(--gold);font-size:0.9rem;margin-bottom:12px}
+    .nova-proposal input,.nova-proposal select,.nova-proposal textarea{width:100%;padding:10px 12px;margin-bottom:10px;background:var(--navy-mid);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:0.85rem;font-family:inherit}
+    .nova-proposal input:focus,.nova-proposal select:focus,.nova-proposal textarea:focus{border-color:var(--gold);outline:none}
+    .nova-proposal input::placeholder,.nova-proposal textarea::placeholder{color:var(--gray-600)}
+    .nova-proposal select{cursor:pointer}
+    .nova-proposal textarea{min-height:70px;resize:vertical}
+    .nova-proposal-btns{display:flex;gap:8px;margin-top:8px}
+    .nova-proposal-submit{flex:1;padding:12px;background:var(--gold);border:none;border-radius:8px;color:var(--navy-deep);font-weight:600;cursor:pointer;transition:all .2s}
+    .nova-proposal-submit:hover{transform:translateY(-1px)}
+    .nova-proposal-submit:disabled{opacity:0.5;cursor:not-allowed}
+    .nova-proposal-cancel{padding:12px 16px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--gray-500);cursor:pointer}
+    .nova-proposal-cancel:hover{border-color:var(--gold);color:var(--gold)}
     </style>
 
     <div id="nova-banner">
@@ -2499,7 +2513,93 @@
             document.getElementById('nova-status').textContent = 'Online';
         }
         
+        function showProposalForm(){
+            var c = document.getElementById('nova-body');
+            var f = document.createElement('div');
+            f.id = 'nova-proposal-form';
+            f.className = 'nova-proposal';
+            f.innerHTML = 
+                '<h4>Generate Your Proposal</h4>' +
+                '<input type="text" id="pf-name" placeholder="Your name *">' +
+                '<input type="text" id="pf-company" placeholder="Company name *">' +
+                '<input type="email" id="pf-email" placeholder="Email address *">' +
+                '<select id="pf-type">' +
+                    '<option value="">Select project type *</option>' +
+                    '<option value="AI/ML Solutions">AI/ML Solutions</option>' +
+                    '<option value="Custom Software">Custom Software Development</option>' +
+                    '<option value="IoT Solutions">IoT & Embedded Systems</option>' +
+                    '<option value="R&D & Innovation">R&D & Innovation</option>' +
+                    '<option value="Team Extension">Team Extension</option>' +
+                    '<option value="MVP & Prototypes">MVP & Prototypes</option>' +
+                    '<option value="Other">Other</option>' +
+                '</select>' +
+                '<textarea id="pf-desc" placeholder="Briefly describe your project..."></textarea>' +
+                '<select id="pf-budget">' +
+                    '<option value="">Estimated budget (optional)</option>' +
+                    '<option value="$25K - $50K">$25,000 - $50,000</option>' +
+                    '<option value="$50K - $100K">$50,000 - $100,000</option>' +
+                    '<option value="$100K - $200K">$100,000 - $200,000</option>' +
+                    '<option value="$200K+">$200,000+</option>' +
+                    '<option value="Not sure">Not sure yet</option>' +
+                '</select>' +
+                '<div class="nova-proposal-btns">' +
+                    '<button class="nova-proposal-submit" id="pf-submit" onclick="novaSubmitProposal()">Generate & Send</button>' +
+                    '<button class="nova-proposal-cancel" onclick="novaCancelProposal()">Cancel</button>' +
+                '</div>';
+            c.appendChild(f);
+            c.scrollTop = c.scrollHeight;
+        }
+        
+        window.novaSubmitProposal = function(){
+            var name = document.getElementById('pf-name').value.trim();
+            var company = document.getElementById('pf-company').value.trim();
+            var email = document.getElementById('pf-email').value.trim();
+            var type = document.getElementById('pf-type').value;
+            var desc = document.getElementById('pf-desc').value.trim();
+            var budget = document.getElementById('pf-budget').value;
+            if(!name || !company || !email || !type){ alert('Please fill in all required fields'); return; }
+            var btn = document.getElementById('pf-submit');
+            btn.disabled = true;
+            btn.textContent = 'Generating...';
+            fetch(API_BASE + '/proposal', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ contact_name: name, company: company, email: email, project_type: type, project_description: desc, budget_range: budget })
+            })
+            .then(function(res){ return res.json(); })
+            .then(function(data){
+                var form = document.getElementById('nova-proposal-form');
+                if(form) form.remove();
+                if(data.success){
+                    addBot("✅ Great news, " + name + "! I've generated a customized proposal and sent it to " + email + ".\n\nPlease check your inbox (and spam folder). Our team will follow up within 24 hours.", ['Learn More', 'Contact Team']);
+                } else {
+                    addBot("I apologize, but there was an issue: " + (data.error || 'Unknown error') + "\n\nPlease contact us directly at contact@imobiallholdings.com", ['Try Again', 'Contact Team']);
+                }
+            })
+            .catch(function(err){
+                var form = document.getElementById('nova-proposal-form');
+                if(form) form.remove();
+                addBot("I couldn't connect to our system. Please contact us at contact@imobiallholdings.com", ['Contact Team']);
+            });
+        };
+        
+        window.novaCancelProposal = function(){
+            var form = document.getElementById('nova-proposal-form');
+            if(form) form.remove();
+            isLoading = false;
+            addBot("No problem! Let me know if you have any other questions.", ['Our Services', 'Pricing Info']);
+        };
+        
         function callAPI(userMessage){
+            var msgLower = userMessage.toLowerCase();
+            // Check if user wants a proposal
+            if(msgLower.includes('proposal') || msgLower.includes('quote') || msgLower.includes('get a proposal')){
+                hideTyping();
+                isLoading = false;
+                addBot("I'd be happy to generate a customized proposal for you! Let me collect a few details.", null);
+                setTimeout(showProposalForm, 500);
+                return;
+            }
             fetch(API_BASE + '/chat', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
