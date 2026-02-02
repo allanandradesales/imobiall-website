@@ -2133,27 +2133,21 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form reveal" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="31c0d468-13d6-4c79-8e66-68f95b169c46">
-                    <input type="hidden" name="subject" value="New Contact from IMOBI Website">
-                    <input type="hidden" name="redirect" value="https://www.imobiallholdings.com/thank-you.html">
-                    <input type="hidden" name="from_name" value="IMOBI Website Contact">
-                    <input type="checkbox" name="botcheck" style="display: none;">
-                    
+                <form class="contact-form reveal" id="contact-form" onsubmit="submitContactForm(event)">
                     <div class="form-row">
                         <div class="form-group">
                             <label>Name *</label>
-                            <input type="text" name="name" required placeholder="John Smith">
+                            <input type="text" name="name" id="cf-name" required placeholder="John Smith">
                         </div>
                         <div class="form-group">
                             <label>Company</label>
-                            <input type="text" name="company" placeholder="Acme Inc.">
+                            <input type="text" name="company" id="cf-company" placeholder="Acme Inc.">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Email *</label>
-                            <input type="email" name="email" required placeholder="john@company.com">
+                            <input type="email" name="email" id="cf-email" required placeholder="john@company.com">
                         </div>
                         <div class="form-group">
                             <label>Phone</label>
@@ -2273,6 +2267,56 @@
                     referralNameGroup.style.display = 'none';
                     document.getElementById('referrer-name').value = '';
                 }
+            });
+        }
+
+        // Contact Form Submit - Sends proposal to client + notification to IMOBI
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            var form = document.getElementById('contact-form');
+            var submitBtn = form.querySelector('.form-submit');
+            var originalText = submitBtn.textContent;
+            
+            // Get form values
+            var name = document.getElementById('cf-name').value.trim();
+            var company = document.getElementById('cf-company').value.trim() || 'Not specified';
+            var email = document.getElementById('cf-email').value.trim();
+            var interest = form.querySelector('select[name="interest"]').value || 'Custom Software';
+            var message = form.querySelector('textarea[name="message"]').value.trim();
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending proposal...';
+            
+            // Send to /api/proposal (generates and sends proposal to client)
+            fetch('https://imobi-api.vercel.app/api/proposal', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    contact_name: name,
+                    company: company,
+                    email: email,
+                    project_type: interest,
+                    project_description: message,
+                    budget_range: ''
+                })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    // Redirect to thank you page
+                    window.location.href = 'thank-you.html';
+                } else {
+                    // If proposal fails, still redirect but log error
+                    console.error('Proposal error:', data.error);
+                    window.location.href = 'thank-you.html';
+                }
+            })
+            .catch(function(err) {
+                console.error('Form submission error:', err);
+                // Redirect anyway - at least user sees confirmation
+                window.location.href = 'thank-you.html';
             });
         }
 
