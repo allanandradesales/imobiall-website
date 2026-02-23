@@ -69,7 +69,7 @@ Acesse: http://localhost:8080
 
 ## Territorios
 
-- **45** cidades disponiveis
+- **46** cidades disponiveis
 - **3** cidades claimed (Phoenix AZ, Atlanta GA, Dallas TX)
 - Dados definidos no array `cities` em `territories.html`
 - Contadores na `index.html` nos modais de available/claimed
