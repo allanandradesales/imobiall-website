@@ -21,13 +21,17 @@ imobiall-website/
 │   ├── components.css      # Buttons, cards, forms, modals
 │   ├── sections.css        # Hero, services, why, territory, contact
 │   ├── utilities.css       # Media queries, keyframes
-│   └── nova.css            # Chatbot NOVA
+│   ├── nova.css            # Chatbot NOVA
+│   ├── partners.css        # Partners page (commission, benefits, steps, form)
+│   └── territories.css     # Territories page (map, sidebar, legend)
 ├── js/
 │   ├── main.js             # Scroll reveal, smooth scroll
 │   ├── navbar.js           # Navbar scroll, mobile toggle
 │   ├── modal.js            # Territory modals
 │   ├── form.js             # Contact form, referral toggle
-│   └── nova.js             # Chatbot NOVA (Claude API)
+│   ├── nova.js             # Chatbot NOVA (Claude API)
+│   ├── nova-partners.js    # Chatbot NOVA variante para partners
+│   └── territories.js      # Mapa Leaflet, dados das cidades, filtros
 └── assets (raiz)/
     ├── logo.png            # Logo principal
     ├── og-image.png        # Open Graph (1200x630)
@@ -35,7 +39,7 @@ imobiall-website/
     ├── services-bg.webp    # Background services
     ├── about-bridge.webp   # Background why section
     ├── territory-map.webp  # Background territory
-    └── favicon.*           # Favicons (ico, svg, png)
+    └── favicon.*           # Favicons (ico, png)
 ```
 
 ## Stack
@@ -71,7 +75,7 @@ Acesse: http://localhost:8080
 
 - **46** cidades disponiveis
 - **3** cidades claimed (Phoenix AZ, Atlanta GA, Dallas TX)
-- Dados definidos no array `cities` em `territories.html`
+- Dados definidos no array `cities` em `js/territories.js`
 - Contadores na `index.html` nos modais de available/claimed
 
 ## Deploy
