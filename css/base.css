@@ -1,0 +1,63 @@
+/* ========== RESET ========== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ========== HTML & BODY ========== */
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-body);
+    background: var(--navy-deep);
+    color: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* ========== SELECTION & SCROLLBAR ========== */
+::selection { background: var(--gold); color: var(--navy-deep); }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy-deep); }
+::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ========== CONTAINER ========== */
+.container { width: min(90%, 1200px); margin: 0 auto; }
+
+/* ========== BACKGROUND GRADIENT ========== */
+.bg-gradient {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 50% at 20% 30%, rgba(27, 54, 93, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 70%, rgba(201, 162, 39, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ========== REVEAL ANIMATIONS ========== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.stagger.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger.visible > *:nth-child(1) { transition: all 0.4s ease 0s; }
+.stagger.visible > *:nth-child(2) { transition: all 0.4s ease 0.06s; }
+.stagger.visible > *:nth-child(3) { transition: all 0.4s ease 0.12s; }
+.stagger.visible > *:nth-child(4) { transition: all 0.4s ease 0.18s; }
+.stagger.visible > *:nth-child(5) { transition: all 0.4s ease 0.24s; }
+.stagger.visible > *:nth-child(6) { transition: all 0.4s ease 0.30s; }

@@ -1,0 +1,20 @@
+/* ========== CSS CUSTOM PROPERTIES ========== */
+:root {
+    --navy-deep: #0a0f1a;
+    --navy: #1B365D;
+    --navy-mid: #152238;
+    --navy-light: #1e3a5f;
+    --gold: #C9A227;
+    --gold-light: #e3c564;
+    --gold-glow: rgba(201, 162, 39, 0.25);
+    --gold-dim: rgba(201, 162, 39, 0.1);
+    --white: #ffffff;
+    --gray-100: #f3f4f6;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.15);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
