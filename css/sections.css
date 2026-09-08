@@ -12,7 +12,7 @@
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: url('hero-globe.webp') center center / cover no-repeat;
+    background: url('../hero-globe.webp') center center / cover no-repeat;
     opacity: 0.15;
     z-index: 0;
 }
@@ -219,7 +219,7 @@ section { padding: 100px 0; position: relative; z-index: 1; }
 
 /* ========== SERVICES ========== */
 .services {
-    background: url('services-bg.webp') center center / cover no-repeat;
+    background: url('../services-bg.webp') center center / cover no-repeat;
     position: relative;
 }
 
@@ -331,7 +331,7 @@ section { padding: 100px 0; position: relative; z-index: 1; }
 
 /* ========== WHY SECTION ========== */
 .why-section {
-    background: url('about-bridge.webp') center center / cover no-repeat;
+    background: url('../about-bridge.webp') center center / cover no-repeat;
     position: relative;
 }
 
@@ -557,7 +557,7 @@ section { padding: 100px 0; position: relative; z-index: 1; }
 /* ========== TERRITORY SECTION ========== */
 .territory-section {
     padding: 100px 0;
-    background: url('territory-map.webp') center center / cover no-repeat;
+    background: url('../territory-map.webp') center center / cover no-repeat;
     position: relative;
     overflow: visible;
 }
